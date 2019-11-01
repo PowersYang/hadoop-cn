@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hadoop YARN - Introduction to the web services REST API’s | Hadoop中文网</title>
+    <meta name="description" content="Hadoop官方文档中文社区">
+    <link rel="icon" href="/hadoop.jpeg">
+    
+    <link rel="preload" href="/assets/css/0.styles.299736e7.css" as="style"><link rel="preload" href="/assets/js/app.44e5c4e8.js" as="script"><link rel="preload" href="/assets/js/2.fd33e103.js" as="script"><link rel="preload" href="/assets/js/116.606be43b.js" as="script"><link rel="prefetch" href="/assets/js/10.0dbc29ee.js"><link rel="prefetch" href="/assets/js/100.51e7458e.js"><link rel="prefetch" href="/assets/js/101.cab336f3.js"><link rel="prefetch" href="/assets/js/102.d7e40b1a.js"><link rel="prefetch" href="/assets/js/103.3cd23502.js"><link rel="prefetch" href="/assets/js/104.a263cbd3.js"><link rel="prefetch" href="/assets/js/105.1cf856b7.js"><link rel="prefetch" href="/assets/js/106.1bd66c2f.js"><link rel="prefetch" href="/assets/js/107.7acc52af.js"><link rel="prefetch" href="/assets/js/108.096bf626.js"><link rel="prefetch" href="/assets/js/109.91d5ec0d.js"><link rel="prefetch" href="/assets/js/11.84130fe4.js"><link rel="prefetch" href="/assets/js/110.602bc28b.js"><link rel="prefetch" href="/assets/js/111.531e373d.js"><link rel="prefetch" href="/assets/js/112.dcdb6f77.js"><link rel="prefetch" href="/assets/js/113.7519fa7c.js"><link rel="prefetch" href="/assets/js/114.97ce2cfb.js"><link rel="prefetch" href="/assets/js/115.719819cf.js"><link rel="prefetch" href="/assets/js/117.5f1db751.js"><link rel="prefetch" href="/assets/js/118.4c8b3331.js"><link rel="prefetch" href="/assets/js/119.756df93e.js"><link rel="prefetch" href="/assets/js/12.a85df2ad.js"><link rel="prefetch" href="/assets/js/120.9735cc8b.js"><link rel="prefetch" href="/assets/js/121.de0f88c2.js"><link rel="prefetch" href="/assets/js/122.68c84b42.js"><link rel="prefetch" href="/assets/js/123.26f2d157.js"><link rel="prefetch" href="/assets/js/124.b8bb5eac.js"><link rel="prefetch" href="/assets/js/125.d3748b6f.js"><link rel="prefetch" href="/assets/js/126.74a59909.js"><link rel="prefetch" href="/assets/js/127.e75ea051.js"><link rel="prefetch" href="/assets/js/128.86691d41.js"><link rel="prefetch" href="/assets/js/129.1b73844b.js"><link rel="prefetch" href="/assets/js/13.5cc92b07.js"><link rel="prefetch" href="/assets/js/14.23af424b.js"><link rel="prefetch" href="/assets/js/15.d44d7e96.js"><link rel="prefetch" href="/assets/js/16.9433ad8d.js"><link rel="prefetch" href="/assets/js/17.e88b2671.js"><link rel="prefetch" href="/assets/js/18.621a61a9.js"><link rel="prefetch" href="/assets/js/19.c2269943.js"><link rel="prefetch" href="/assets/js/20.97a13073.js"><link rel="prefetch" href="/assets/js/21.cfddb2e0.js"><link rel="prefetch" href="/assets/js/22.3fc2e173.js"><link rel="prefetch" href="/assets/js/23.b44f9aaa.js"><link rel="prefetch" href="/assets/js/24.5118c903.js"><link rel="prefetch" href="/assets/js/25.d075e5d7.js"><link rel="prefetch" href="/assets/js/26.773f2460.js"><link rel="prefetch" href="/assets/js/27.d0e0d308.js"><link rel="prefetch" href="/assets/js/28.bba4c1c3.js"><link rel="prefetch" href="/assets/js/29.0d309c43.js"><link rel="prefetch" href="/assets/js/3.df8ab865.js"><link rel="prefetch" href="/assets/js/30.dc22d7ad.js"><link rel="prefetch" href="/assets/js/31.f4f5b282.js"><link rel="prefetch" href="/assets/js/32.126829f0.js"><link rel="prefetch" href="/assets/js/33.b7210392.js"><link rel="prefetch" href="/assets/js/34.808d7f11.js"><link rel="prefetch" href="/assets/js/35.92cc0670.js"><link rel="prefetch" href="/assets/js/36.525eca62.js"><link rel="prefetch" href="/assets/js/37.085ca99e.js"><link rel="prefetch" href="/assets/js/38.bd6ba530.js"><link rel="prefetch" href="/assets/js/39.bdcf0246.js"><link rel="prefetch" href="/assets/js/4.03a382ed.js"><link rel="prefetch" href="/assets/js/40.0a881a26.js"><link rel="prefetch" href="/assets/js/41.e2d38f86.js"><link rel="prefetch" href="/assets/js/42.d3be59ab.js"><link rel="prefetch" href="/assets/js/43.861403a7.js"><link rel="prefetch" href="/assets/js/44.64ea788c.js"><link rel="prefetch" href="/assets/js/45.586e01c2.js"><link rel="prefetch" href="/assets/js/46.4e18b7fe.js"><link rel="prefetch" href="/assets/js/47.c1dba008.js"><link rel="prefetch" href="/assets/js/48.da57593b.js"><link rel="prefetch" href="/assets/js/49.8e699822.js"><link rel="prefetch" href="/assets/js/5.21b79be3.js"><link rel="prefetch" href="/assets/js/50.697ac881.js"><link rel="prefetch" href="/assets/js/51.6c32c16e.js"><link rel="prefetch" href="/assets/js/52.d137da31.js"><link rel="prefetch" href="/assets/js/53.22caaa9a.js"><link rel="prefetch" href="/assets/js/54.7f1d1532.js"><link rel="prefetch" href="/assets/js/55.40dbbf5b.js"><link rel="prefetch" href="/assets/js/56.04c24edc.js"><link rel="prefetch" href="/assets/js/57.b15918db.js"><link rel="prefetch" href="/assets/js/58.b3eb784b.js"><link rel="prefetch" href="/assets/js/59.0d462dd8.js"><link rel="prefetch" href="/assets/js/6.a2711138.js"><link rel="prefetch" href="/assets/js/60.ae65015b.js"><link rel="prefetch" href="/assets/js/61.9b15da8f.js"><link rel="prefetch" href="/assets/js/62.ca728b66.js"><link rel="prefetch" href="/assets/js/63.312b3bdd.js"><link rel="prefetch" href="/assets/js/64.56be4886.js"><link rel="prefetch" href="/assets/js/65.dff3c3a3.js"><link rel="prefetch" href="/assets/js/66.95dfff51.js"><link rel="prefetch" href="/assets/js/67.17e7a9be.js"><link rel="prefetch" href="/assets/js/68.e3b5c05a.js"><link rel="prefetch" href="/assets/js/69.9ab8c7f8.js"><link rel="prefetch" href="/assets/js/7.e9473145.js"><link rel="prefetch" href="/assets/js/70.8d72690b.js"><link rel="prefetch" href="/assets/js/71.3c25cf04.js"><link rel="prefetch" href="/assets/js/72.02b02d8d.js"><link rel="prefetch" href="/assets/js/73.2a8d2681.js"><link rel="prefetch" href="/assets/js/74.c577aba5.js"><link rel="prefetch" href="/assets/js/75.7d2617b0.js"><link rel="prefetch" href="/assets/js/76.97ad371e.js"><link rel="prefetch" href="/assets/js/77.4495b015.js"><link rel="prefetch" href="/assets/js/78.c7510b35.js"><link rel="prefetch" href="/assets/js/79.dc2b4ca2.js"><link rel="prefetch" href="/assets/js/8.fc1e2b26.js"><link rel="prefetch" href="/assets/js/80.454a982e.js"><link rel="prefetch" href="/assets/js/81.eba66eb5.js"><link rel="prefetch" href="/assets/js/82.1f34b986.js"><link rel="prefetch" href="/assets/js/83.a15e7917.js"><link rel="prefetch" href="/assets/js/84.212c8551.js"><link rel="prefetch" href="/assets/js/85.c077f397.js"><link rel="prefetch" href="/assets/js/86.70192242.js"><link rel="prefetch" href="/assets/js/87.e53f7254.js"><link rel="prefetch" href="/assets/js/88.d2f28869.js"><link rel="prefetch" href="/assets/js/89.9b4c13ce.js"><link rel="prefetch" href="/assets/js/9.a7fc3cc9.js"><link rel="prefetch" href="/assets/js/90.af82565a.js"><link rel="prefetch" href="/assets/js/91.153dc863.js"><link rel="prefetch" href="/assets/js/92.ea32e690.js"><link rel="prefetch" href="/assets/js/93.4c656124.js"><link rel="prefetch" href="/assets/js/94.b2283b24.js"><link rel="prefetch" href="/assets/js/95.4ad17bba.js"><link rel="prefetch" href="/assets/js/96.4c0c4821.js"><link rel="prefetch" href="/assets/js/97.14f25834.js"><link rel="prefetch" href="/assets/js/98.92c9fd2d.js"><link rel="prefetch" href="/assets/js/99.ef340791.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.299736e7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Hadoop中文网</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  下载安装
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/docs/" class="nav-link router-link-active">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言支持" class="dropdown-title"><span class="title">语言支持</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/ch.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/language/en.html" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  下载安装
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/docs/" class="nav-link router-link-active">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言支持" class="dropdown-title"><span class="title">语言支持</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/ch.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/language/en.html" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Hadoop YARN - Introduction to the web services REST API’s</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#overview" class="sidebar-link">Overview</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#uri’s" class="sidebar-link">URI’s</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#http-requests" class="sidebar-link">HTTP Requests</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#summary-of-http-operations" class="sidebar-link">Summary of HTTP operations</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#security" class="sidebar-link">Security</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#headers-supported" class="sidebar-link">Headers Supported</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#http-responses" class="sidebar-link">HTTP Responses</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#compression" class="sidebar-link">Compression</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#response-formats" class="sidebar-link">Response Formats</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#response-errors" class="sidebar-link">Response Errors</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#response-examples" class="sidebar-link">Response Examples</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/WebServicesIntro.html#sample-usage" class="sidebar-link">Sample Usage</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hadoop-yarn-introduction-to-the-web-services-rest-api’s"><a href="#hadoop-yarn-introduction-to-the-web-services-rest-api’s" class="header-anchor">#</a> Hadoop YARN - Introduction to the web services REST API’s</h1> <h2 id="overview"><a href="#overview" class="header-anchor">#</a> Overview</h2> <p>The Hadoop YARN web service REST APIs are a set of URI resources that give access to the cluster, nodes, applications, and application historical information. The URI resources are grouped into APIs based on the type of information returned. Some URI resources return collections while others return singletons.</p> <h2 id="uri’s"><a href="#uri’s" class="header-anchor">#</a> URI’s</h2> <p>The URIs for the REST-based Web services have the following syntax:</p> <pre><code>  http://{http address of service}/ws/{version}/{resourcepath}
+</code></pre> <p>The elements in this syntax are as follows:</p> <pre><code>  {http address of service} - The http address of the service to get information about. 
+                              Currently supported are the ResourceManager, NodeManager, 
+                              MapReduce application master, and history server.
+  {version} - The version of the APIs. In this release, the version is v1.
+  {resourcepath} - A path that defines a singleton resource or a collection of resources. 
+</code></pre> <h2 id="http-requests"><a href="#http-requests" class="header-anchor">#</a> HTTP Requests</h2> <p>To invoke a REST API, your application calls an HTTP operation on the URI associated with a resource.</p> <h3 id="summary-of-http-operations"><a href="#summary-of-http-operations" class="header-anchor">#</a> Summary of HTTP operations</h3> <p>Currently only GET is supported. It retrieves information about the resource specified.</p> <h3 id="security"><a href="#security" class="header-anchor">#</a> Security</h3> <p>The web service REST API’s go through the same security as the web UI. If your cluster adminstrators have filters enabled you must authenticate via the mechanism they specified.</p> <h3 id="headers-supported"><a href="#headers-supported" class="header-anchor">#</a> Headers Supported</h3> <ul><li>Accept
+<ul><li>Accept-Encoding</li></ul></li></ul> <p>Currently the only fields used in the header is Accept and Accept-Encoding. Accept currently supports XML and JSON for the response type you accept. Accept-Encoding currently supports only gzip format and will return gzip compressed output if this is specified, otherwise output is uncompressed. All other header fields are ignored.</p> <h2 id="http-responses"><a href="#http-responses" class="header-anchor">#</a> HTTP Responses</h2> <p>The next few sections describe some of the syntax and other details of the HTTP Responses of the web service REST APIs.</p> <h3 id="compression"><a href="#compression" class="header-anchor">#</a> Compression</h3> <p>This release supports gzip compression if you specify gzip in the Accept-Encoding header of the HTTP request (Accept-Encoding: gzip).</p> <h3 id="response-formats"><a href="#response-formats" class="header-anchor">#</a> Response Formats</h3> <p>This release of the web service REST APIs supports responses in JSON and XML formats. JSON is the default. To set the response format, you can specify the format in the Accept header of the HTTP request.</p> <p>As specified in HTTP Response Codes, the response body can contain the data that represents the resource or an error message. In the case of success, the response body is in the selected format, either JSON or XML. In the case of error, the resonse body is in either JSON or XML based on the format requested. The Content-Type header of the response contains the format requested. If the application requests an unsupported format, the response status code is 500. Note that the order of the fields within response body is not specified and might change. Also, additional fields might be added to a response body. Therefore, your applications should use parsing routines that can extract data from a response body in any order.</p> <h3 id="response-errors"><a href="#response-errors" class="header-anchor">#</a> Response Errors</h3> <p>After calling an HTTP request, an application should check the response status code to verify success or detect an error. If the response status code indicates an error, the response body contains an error message. The first field is the exception type, currently only RemoteException is returned. The following table lists the items within the RemoteException error message:</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>exception</td> <td>String</td> <td>Exception type</td></tr> <tr><td>javaClassName</td> <td>String</td> <td>Java class name of exception</td></tr> <tr><td>message</td> <td>String</td> <td>Detailed message of exception</td></tr></tbody></table> <h3 id="response-examples"><a href="#response-examples" class="header-anchor">#</a> Response Examples</h3> <h4 id="json-response-with-single-resource"><a href="#json-response-with-single-resource" class="header-anchor">#</a> JSON response with single resource</h4> <p>_1324057493980_0001HTTP Request: GET <a href="http://rmhost.domain:8088/ws/v1/cluster/apps/application" target="_blank" rel="noopener noreferrer">http://rmhost.domain:8088/ws/v1/cluster/apps/application<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>Response Status Line: HTTP/1.1 200 OK</p> <p>Response Header:</p> <pre><code>  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Transfer-Encoding: chunked
+  Server: Jetty(6.1.26)
+</code></pre> <p>Response Body:</p> <pre><code>{
+  app&quot;:
+  {
+    &quot;id&quot;:&quot;application_1324057493980_0001&quot;,
+    &quot;user&quot;:&quot;user1&quot;,
+    &quot;name&quot;:&quot;&quot;,
+    &quot;queue&quot;:&quot;default&quot;,
+    &quot;state&quot;:&quot;ACCEPTED&quot;,
+    &quot;finalStatus&quot;:&quot;UNDEFINED&quot;,
+    &quot;progress&quot;:0,
+    &quot;trackingUI&quot;:&quot;UNASSIGNED&quot;,
+    &quot;diagnostics&quot;:&quot;&quot;,
+    &quot;clusterId&quot;:1324057493980,
+    &quot;startedTime&quot;:1324057495921,
+    &quot;finishedTime&quot;:0,
+    &quot;elapsedTime&quot;:2063,
+    &quot;amContainerLogs&quot;:&quot;http:\/\/amNM:2\/node\/containerlogs\/container_1324057493980_0001_01_000001&quot;,
+    &quot;amHostHttpAddress&quot;:&quot;amNM:2&quot;
+  }
+}
+</code></pre> <h4 id="json-response-with-error-response"><a href="#json-response-with-error-response" class="header-anchor">#</a> JSON response with Error response</h4> <p>Here we request information about an application that doesn’t exist yet.</p> <p>_1324057493980_9999HTTP Request: GET <a href="http://rmhost.domain:8088/ws/v1/cluster/apps/application" target="_blank" rel="noopener noreferrer">http://rmhost.domain:8088/ws/v1/cluster/apps/application<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>Response Status Line: HTTP/1.1 404 Not Found</p> <p>Response Header:</p> <pre><code>  HTTP/1.1 404 Not Found
+  Content-Type: application/json
+  Transfer-Encoding: chunked
+  Server: Jetty(6.1.26)
+</code></pre> <p>Response Body:</p> <pre><code>{
+   &quot;RemoteException&quot; : {
+      &quot;javaClassName&quot; : &quot;org.apache.hadoop.yarn.webapp.NotFoundException&quot;,
+      &quot;exception&quot; : &quot;NotFoundException&quot;,
+      &quot;message&quot; : &quot;java.lang.Exception: app with id: application_1324057493980_9999 not found&quot;
+   }
+}
+</code></pre> <h2 id="sample-usage"><a href="#sample-usage" class="header-anchor">#</a> Sample Usage</h2> <p>You can use any number of ways/languages to use the web services REST API’s. This example uses the curl command line interface to do the REST GET calls.</p> <p>In this example, a user submits a MapReduce application to the ResourceManager using a command like:</p> <pre><code>  hadoop jar hadoop-mapreduce-test.jar sleep -Dmapred.job.queue.name=a1 -m 1 -r 1 -rt 1200000 -mt 20
+</code></pre> <p>The client prints information about the job submitted along with the application id, similar to:</p> <pre><code>12/01/18 04:25:15 INFO mapred.ResourceMgrDelegate: Submitted application application_1326821518301_0010 to ResourceManager at host.domain.com/10.10.10.10:8032
+12/01/18 04:25:15 INFO mapreduce.Job: Running job: job_1326821518301_0010
+12/01/18 04:25:21 INFO mapred.ClientServiceDelegate: The url to track the job: host.domain.com:8088/proxy/application_1326821518301_0010/
+12/01/18 04:25:22 INFO mapreduce.Job: Job job_1326821518301_0010 running in uber mode : false
+12/01/18 04:25:22 INFO mapreduce.Job:  map 0% reduce 0%
+</code></pre> <p>The user then wishes to track the application. The users starts by getting the information about the application from the ResourceManager. Use the –comopressed option to request output compressed. curl handles uncompressing on client side.</p> <pre><code>curl --compressed -H &quot;Accept: application/json&quot; -X GET &quot;http://host.domain.com:8088/ws/v1/cluster/apps/application_1326821518301_0010&quot; 
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;app&quot; : {
+      &quot;finishedTime&quot; : 0,
+      &quot;amContainerLogs&quot; : &quot;http://host.domain.com:8042/node/containerlogs/container_1326821518301_0010_01_000001&quot;,
+      &quot;trackingUI&quot; : &quot;ApplicationMaster&quot;,
+      &quot;state&quot; : &quot;RUNNING&quot;,
+      &quot;user&quot; : &quot;user1&quot;,
+      &quot;id&quot; : &quot;application_1326821518301_0010&quot;,
+      &quot;clusterId&quot; : 1326821518301,
+      &quot;finalStatus&quot; : &quot;UNDEFINED&quot;,
+      &quot;amHostHttpAddress&quot; : &quot;host.domain.com:8042&quot;,
+      &quot;progress&quot; : 82.44703,
+      &quot;name&quot; : &quot;Sleep job&quot;,
+      &quot;startedTime&quot; : 1326860715335,
+      &quot;elapsedTime&quot; : 31814,
+      &quot;diagnostics&quot; : &quot;&quot;,
+      &quot;trackingUrl&quot; : &quot;http://host.domain.com:8088/proxy/application_1326821518301_0010/&quot;,
+      &quot;queue&quot; : &quot;a1&quot;
+   }
+}
+</code></pre> <p>_1326821518301_0010. This could either go to the web browser or use the web service REST APIThe user then wishes to get more details about the running application and goes directly to the MapReduce application master for this application. The ResourceManager lists the trackingUrl that can be used for this application: <a href="http://host.domain.com:8088/proxy/application" target="_blank" rel="noopener noreferrer">http://host.domain.com:8088/proxy/application<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>’s. The user uses the web services REST API’s to get the list of jobs this MapReduce application master is running:</p> <pre><code> curl --compressed -H &quot;Accept: application/json&quot; -X GET &quot;http://host.domain.com:8088/proxy/application_1326821518301_0010/ws/v1/mapreduce/jobs&quot;
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;jobs&quot; : {
+      &quot;job&quot; : [
+         {
+            &quot;runningReduceAttempts&quot; : 1,
+            &quot;reduceProgress&quot; : 72.104515,
+            &quot;failedReduceAttempts&quot; : 0,
+            &quot;newMapAttempts&quot; : 0,
+            &quot;mapsRunning&quot; : 0,
+            &quot;state&quot; : &quot;RUNNING&quot;,
+            &quot;successfulReduceAttempts&quot; : 0,
+            &quot;reducesRunning&quot; : 1,
+            &quot;acls&quot; : [
+               {
+                  &quot;value&quot; : &quot; &quot;,
+                  &quot;name&quot; : &quot;mapreduce.job.acl-modify-job&quot;
+               },
+               {
+                  &quot;value&quot; : &quot; &quot;,
+                  &quot;name&quot; : &quot;mapreduce.job.acl-view-job&quot;
+               }
+            ],
+            &quot;reducesPending&quot; : 0,
+            &quot;user&quot; : &quot;user1&quot;,
+            &quot;reducesTotal&quot; : 1,
+            &quot;mapsCompleted&quot; : 1,
+            &quot;startTime&quot; : 1326860720902,
+            &quot;id&quot; : &quot;job_1326821518301_10_10&quot;,
+            &quot;successfulMapAttempts&quot; : 1,
+            &quot;runningMapAttempts&quot; : 0,
+            &quot;newReduceAttempts&quot; : 0,
+            &quot;name&quot; : &quot;Sleep job&quot;,
+            &quot;mapsPending&quot; : 0,
+            &quot;elapsedTime&quot; : 64432,
+            &quot;reducesCompleted&quot; : 0,
+            &quot;mapProgress&quot; : 100,
+            &quot;diagnostics&quot; : &quot;&quot;,
+            &quot;failedMapAttempts&quot; : 0,
+            &quot;killedReduceAttempts&quot; : 0,
+            &quot;mapsTotal&quot; : 1,
+            &quot;uberized&quot; : false,
+            &quot;killedMapAttempts&quot; : 0,
+            &quot;finishTime&quot; : 0
+         }
+      ]
+   }
+}
+</code></pre> <p>The user then wishes to get the task details about the job with job id job_1326821518301_10_10 that was listed above.</p> <pre><code> curl --compressed -H &quot;Accept: application/json&quot; -X GET &quot;http://host.domain.com:8088/proxy/application_1326821518301_0010/ws/v1/mapreduce/jobs/job_1326821518301_10_10/tasks&quot; 
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;tasks&quot; : {
+      &quot;task&quot; : [
+         {
+            &quot;progress&quot; : 100,
+            &quot;elapsedTime&quot; : 5059,
+            &quot;state&quot; : &quot;SUCCEEDED&quot;,
+            &quot;startTime&quot; : 1326860725014,
+            &quot;id&quot; : &quot;task_1326821518301_10_10_m_0&quot;,
+            &quot;type&quot; : &quot;MAP&quot;,
+            &quot;successfulAttempt&quot; : &quot;attempt_1326821518301_10_10_m_0_0&quot;,
+            &quot;finishTime&quot; : 1326860730073
+         },
+         {
+            &quot;progress&quot; : 72.104515,
+            &quot;elapsedTime&quot; : 0,
+            &quot;state&quot; : &quot;RUNNING&quot;,
+            &quot;startTime&quot; : 1326860732984,
+            &quot;id&quot; : &quot;task_1326821518301_10_10_r_0&quot;,
+            &quot;type&quot; : &quot;REDUCE&quot;,
+            &quot;successfulAttempt&quot; : &quot;&quot;,
+            &quot;finishTime&quot; : 0
+         }
+      ]
+   }
+}
+</code></pre> <p>The map task has finished but the reduce task is still running. The users wishes to get the task attempt information for the reduce task task_1326821518301_10_10_r_0, note that the Accept header isn’t really required here since JSON is the default output format:</p> <pre><code>  curl --compressed -X GET &quot;http://host.domain.com:8088/proxy/application_1326821518301_0010/ws/v1/mapreduce/jobs/job_1326821518301_10_10/tasks/task_1326821518301_10_10_r_0/attempts&quot;
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;taskAttempts&quot; : {
+      &quot;taskAttempt&quot; : [
+         {
+            &quot;elapsedMergeTime&quot; : 158,
+            &quot;shuffleFinishTime&quot; : 1326860735378,
+            &quot;assignedContainerId&quot; : &quot;container_1326821518301_0010_01_000003&quot;,
+            &quot;progress&quot; : 72.104515,
+            &quot;elapsedTime&quot; : 0,
+            &quot;state&quot; : &quot;RUNNING&quot;,
+            &quot;elapsedShuffleTime&quot; : 2394,
+            &quot;mergeFinishTime&quot; : 1326860735536,
+            &quot;rack&quot; : &quot;/10.10.10.0&quot;,
+            &quot;elapsedReduceTime&quot; : 0,
+            &quot;nodeHttpAddress&quot; : &quot;host.domain.com:8042&quot;,
+            &quot;type&quot; : &quot;REDUCE&quot;,
+            &quot;startTime&quot; : 1326860732984,
+            &quot;id&quot; : &quot;attempt_1326821518301_10_10_r_0_0&quot;,
+            &quot;finishTime&quot; : 0
+         }
+      ]
+   }
+}
+</code></pre> <p>The reduce attempt is still running and the user wishes to see the current counter values for that attempt:</p> <pre><code> curl --compressed -H &quot;Accept: application/json&quot;  -X GET &quot;http://host.domain.com:8088/proxy/application_1326821518301_0010/ws/v1/mapreduce/jobs/job_1326821518301_10_10/tasks/task_1326821518301_10_10_r_0/attempts/attempt_1326821518301_10_10_r_0_0/counters&quot; 
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;JobTaskAttemptCounters&quot; : {
+      &quot;taskAttemptCounterGroup&quot; : [
+         {
+            &quot;counterGroupName&quot; : &quot;org.apache.hadoop.mapreduce.FileSystemCounter&quot;,
+            &quot;counter&quot; : [
+               {
+                  &quot;value&quot; : 4216,
+                  &quot;name&quot; : &quot;FILE_BYTES_READ&quot;
+               }, 
+               {
+                  &quot;value&quot; : 77151,
+                  &quot;name&quot; : &quot;FILE_BYTES_WRITTEN&quot;
+               }, 
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;FILE_READ_OPS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;FILE_LARGE_READ_OPS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;FILE_WRITE_OPS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;HDFS_BYTES_READ&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;HDFS_BYTES_WRITTEN&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;HDFS_READ_OPS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;HDFS_LARGE_READ_OPS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;HDFS_WRITE_OPS&quot;
+               }
+            ]  
+         }, 
+         {
+            &quot;counterGroupName&quot; : &quot;org.apache.hadoop.mapreduce.TaskCounter&quot;,
+            &quot;counter&quot; : [
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;COMBINE_INPUT_RECORDS&quot;
+               }, 
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;COMBINE_OUTPUT_RECORDS&quot;
+               }, 
+               {  
+                  &quot;value&quot; : 1767,
+                  &quot;name&quot; : &quot;REDUCE_INPUT_GROUPS&quot;
+               },
+               {  
+                  &quot;value&quot; : 25104,
+                  &quot;name&quot; : &quot;REDUCE_SHUFFLE_BYTES&quot;
+               },
+               {
+                  &quot;value&quot; : 1767,
+                  &quot;name&quot; : &quot;REDUCE_INPUT_RECORDS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;REDUCE_OUTPUT_RECORDS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;SPILLED_RECORDS&quot;
+               },
+               {
+                  &quot;value&quot; : 1,
+                  &quot;name&quot; : &quot;SHUFFLED_MAPS&quot;
+               },
+               {
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;FAILED_SHUFFLE&quot;
+               },
+               {
+                  &quot;value&quot; : 1,
+                  &quot;name&quot; : &quot;MERGED_MAP_OUTPUTS&quot;
+               },
+               {
+                  &quot;value&quot; : 50,
+                  &quot;name&quot; : &quot;GC_TIME_MILLIS&quot;
+               },
+               {
+                  &quot;value&quot; : 1580,
+                  &quot;name&quot; : &quot;CPU_MILLISECONDS&quot;
+               },
+               {
+                  &quot;value&quot; : 141320192,
+                  &quot;name&quot; : &quot;PHYSICAL_MEMORY_BYTES&quot;
+               },
+              {
+                  &quot;value&quot; : 1118552064,
+                  &quot;name&quot; : &quot;VIRTUAL_MEMORY_BYTES&quot;
+               }, 
+               {  
+                  &quot;value&quot; : 73728000,
+                  &quot;name&quot; : &quot;COMMITTED_HEAP_BYTES&quot;
+               }
+            ]
+         },
+         {  
+            &quot;counterGroupName&quot; : &quot;Shuffle Errors&quot;,
+            &quot;counter&quot; : [
+               {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;BAD_ID&quot;
+               },
+               {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;CONNECTION&quot;
+               },
+               {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;IO_ERROR&quot;
+               },
+               {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;WRONG_LENGTH&quot;
+               },
+               {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;WRONG_MAP&quot;
+               },
+               {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;WRONG_REDUCE&quot;
+               }
+            ]
+         },
+         {  
+            &quot;counterGroupName&quot; : &quot;org.apache.hadoop.mapreduce.lib.output.FileOutputFormatCounter&quot;,
+            &quot;counter&quot; : [
+              {  
+                  &quot;value&quot; : 0,
+                  &quot;name&quot; : &quot;BYTES_WRITTEN&quot;
+               }
+            ]
+         }
+      ],
+      &quot;id&quot; : &quot;attempt_1326821518301_10_10_r_0_0&quot;
+   }
+}
+</code></pre> <p>The job finishes and the user wishes to get the final job information from the history server for this job.</p> <pre><code>  curl --compressed -X GET &quot;http://host.domain.com:19888/ws/v1/history/mapreduce/jobs/job_1326821518301_10_10&quot; 
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;job&quot; : {
+      &quot;avgReduceTime&quot; : 1250784,
+      &quot;failedReduceAttempts&quot; : 0,
+      &quot;state&quot; : &quot;SUCCEEDED&quot;,
+      &quot;successfulReduceAttempts&quot; : 1,
+      &quot;acls&quot; : [
+         {
+            &quot;value&quot; : &quot; &quot;,
+            &quot;name&quot; : &quot;mapreduce.job.acl-modify-job&quot;
+         },
+         {
+            &quot;value&quot; : &quot; &quot;,
+            &quot;name&quot; : &quot;mapreduce.job.acl-view-job&quot;
+         }
+      ],
+      &quot;user&quot; : &quot;user1&quot;,
+      &quot;reducesTotal&quot; : 1,
+      &quot;mapsCompleted&quot; : 1,
+      &quot;startTime&quot; : 1326860720902,
+      &quot;id&quot; : &quot;job_1326821518301_10_10&quot;,
+      &quot;avgMapTime&quot; : 5059,
+      &quot;successfulMapAttempts&quot; : 1,
+      &quot;name&quot; : &quot;Sleep job&quot;,
+      &quot;avgShuffleTime&quot; : 2394,
+      &quot;reducesCompleted&quot; : 1,
+      &quot;diagnostics&quot; : &quot;&quot;,
+      &quot;failedMapAttempts&quot; : 0,
+      &quot;avgMergeTime&quot; : 2552,
+      &quot;killedReduceAttempts&quot; : 0,
+      &quot;mapsTotal&quot; : 1,
+      &quot;queue&quot; : &quot;a1&quot;,
+      &quot;uberized&quot; : false,
+      &quot;killedMapAttempts&quot; : 0,
+      &quot;finishTime&quot; : 1326861986164
+   }
+}
+</code></pre> <p>The user also gets the final applications information from the ResourceManager.</p> <pre><code>  curl --compressed -H &quot;Accept: application/json&quot; -X GET &quot;http://host.domain.com:8088/ws/v1/cluster/apps/application_1326821518301_0010&quot; 
+</code></pre> <p>Output:</p> <pre><code>{
+   &quot;app&quot; : {
+      &quot;finishedTime&quot; : 1326861991282,
+      &quot;amContainerLogs&quot; : &quot;http://host.domain.com:8042/node/containerlogs/container_1326821518301_0010_01_000001&quot;,
+      &quot;trackingUI&quot; : &quot;History&quot;,
+      &quot;state&quot; : &quot;FINISHED&quot;,
+      &quot;user&quot; : &quot;user1&quot;,
+      &quot;id&quot; : &quot;application_1326821518301_0010&quot;,
+      &quot;clusterId&quot; : 1326821518301,
+      &quot;finalStatus&quot; : &quot;SUCCEEDED&quot;,
+      &quot;amHostHttpAddress&quot; : &quot;host.domain.com:8042&quot;,
+      &quot;progress&quot; : 100,
+      &quot;name&quot; : &quot;Sleep job&quot;,
+      &quot;startedTime&quot; : 1326860715335,
+      &quot;elapsedTime&quot; : 1275947,
+      &quot;diagnostics&quot; : &quot;&quot;,
+      &quot;trackingUrl&quot; : &quot;http://host.domain.com:8088/proxy/application_1326821518301_0010/jobhistory/job/job_1326821518301_10_10&quot;,
+      &quot;queue&quot; : &quot;a1&quot;
+   }
+}
+</code></pre></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.44e5c4e8.js" defer></script><script src="/assets/js/2.fd33e103.js" defer></script><script src="/assets/js/116.606be43b.js" defer></script>
+  </body>
+</html>

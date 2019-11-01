@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WebHDFS REST API | Hadoop中文网</title>
+    <meta name="description" content="Hadoop官方文档中文社区">
+    <link rel="icon" href="/hadoop.jpeg">
+    
+    <link rel="preload" href="/assets/css/0.styles.299736e7.css" as="style"><link rel="preload" href="/assets/js/app.44e5c4e8.js" as="script"><link rel="preload" href="/assets/js/2.fd33e103.js" as="script"><link rel="preload" href="/assets/js/84.212c8551.js" as="script"><link rel="prefetch" href="/assets/js/10.0dbc29ee.js"><link rel="prefetch" href="/assets/js/100.51e7458e.js"><link rel="prefetch" href="/assets/js/101.cab336f3.js"><link rel="prefetch" href="/assets/js/102.d7e40b1a.js"><link rel="prefetch" href="/assets/js/103.3cd23502.js"><link rel="prefetch" href="/assets/js/104.a263cbd3.js"><link rel="prefetch" href="/assets/js/105.1cf856b7.js"><link rel="prefetch" href="/assets/js/106.1bd66c2f.js"><link rel="prefetch" href="/assets/js/107.7acc52af.js"><link rel="prefetch" href="/assets/js/108.096bf626.js"><link rel="prefetch" href="/assets/js/109.91d5ec0d.js"><link rel="prefetch" href="/assets/js/11.84130fe4.js"><link rel="prefetch" href="/assets/js/110.602bc28b.js"><link rel="prefetch" href="/assets/js/111.531e373d.js"><link rel="prefetch" href="/assets/js/112.dcdb6f77.js"><link rel="prefetch" href="/assets/js/113.7519fa7c.js"><link rel="prefetch" href="/assets/js/114.97ce2cfb.js"><link rel="prefetch" href="/assets/js/115.719819cf.js"><link rel="prefetch" href="/assets/js/116.606be43b.js"><link rel="prefetch" href="/assets/js/117.5f1db751.js"><link rel="prefetch" href="/assets/js/118.4c8b3331.js"><link rel="prefetch" href="/assets/js/119.756df93e.js"><link rel="prefetch" href="/assets/js/12.a85df2ad.js"><link rel="prefetch" href="/assets/js/120.9735cc8b.js"><link rel="prefetch" href="/assets/js/121.de0f88c2.js"><link rel="prefetch" href="/assets/js/122.68c84b42.js"><link rel="prefetch" href="/assets/js/123.26f2d157.js"><link rel="prefetch" href="/assets/js/124.b8bb5eac.js"><link rel="prefetch" href="/assets/js/125.d3748b6f.js"><link rel="prefetch" href="/assets/js/126.74a59909.js"><link rel="prefetch" href="/assets/js/127.e75ea051.js"><link rel="prefetch" href="/assets/js/128.86691d41.js"><link rel="prefetch" href="/assets/js/129.1b73844b.js"><link rel="prefetch" href="/assets/js/13.5cc92b07.js"><link rel="prefetch" href="/assets/js/14.23af424b.js"><link rel="prefetch" href="/assets/js/15.d44d7e96.js"><link rel="prefetch" href="/assets/js/16.9433ad8d.js"><link rel="prefetch" href="/assets/js/17.e88b2671.js"><link rel="prefetch" href="/assets/js/18.621a61a9.js"><link rel="prefetch" href="/assets/js/19.c2269943.js"><link rel="prefetch" href="/assets/js/20.97a13073.js"><link rel="prefetch" href="/assets/js/21.cfddb2e0.js"><link rel="prefetch" href="/assets/js/22.3fc2e173.js"><link rel="prefetch" href="/assets/js/23.b44f9aaa.js"><link rel="prefetch" href="/assets/js/24.5118c903.js"><link rel="prefetch" href="/assets/js/25.d075e5d7.js"><link rel="prefetch" href="/assets/js/26.773f2460.js"><link rel="prefetch" href="/assets/js/27.d0e0d308.js"><link rel="prefetch" href="/assets/js/28.bba4c1c3.js"><link rel="prefetch" href="/assets/js/29.0d309c43.js"><link rel="prefetch" href="/assets/js/3.df8ab865.js"><link rel="prefetch" href="/assets/js/30.dc22d7ad.js"><link rel="prefetch" href="/assets/js/31.f4f5b282.js"><link rel="prefetch" href="/assets/js/32.126829f0.js"><link rel="prefetch" href="/assets/js/33.b7210392.js"><link rel="prefetch" href="/assets/js/34.808d7f11.js"><link rel="prefetch" href="/assets/js/35.92cc0670.js"><link rel="prefetch" href="/assets/js/36.525eca62.js"><link rel="prefetch" href="/assets/js/37.085ca99e.js"><link rel="prefetch" href="/assets/js/38.bd6ba530.js"><link rel="prefetch" href="/assets/js/39.bdcf0246.js"><link rel="prefetch" href="/assets/js/4.03a382ed.js"><link rel="prefetch" href="/assets/js/40.0a881a26.js"><link rel="prefetch" href="/assets/js/41.e2d38f86.js"><link rel="prefetch" href="/assets/js/42.d3be59ab.js"><link rel="prefetch" href="/assets/js/43.861403a7.js"><link rel="prefetch" href="/assets/js/44.64ea788c.js"><link rel="prefetch" href="/assets/js/45.586e01c2.js"><link rel="prefetch" href="/assets/js/46.4e18b7fe.js"><link rel="prefetch" href="/assets/js/47.c1dba008.js"><link rel="prefetch" href="/assets/js/48.da57593b.js"><link rel="prefetch" href="/assets/js/49.8e699822.js"><link rel="prefetch" href="/assets/js/5.21b79be3.js"><link rel="prefetch" href="/assets/js/50.697ac881.js"><link rel="prefetch" href="/assets/js/51.6c32c16e.js"><link rel="prefetch" href="/assets/js/52.d137da31.js"><link rel="prefetch" href="/assets/js/53.22caaa9a.js"><link rel="prefetch" href="/assets/js/54.7f1d1532.js"><link rel="prefetch" href="/assets/js/55.40dbbf5b.js"><link rel="prefetch" href="/assets/js/56.04c24edc.js"><link rel="prefetch" href="/assets/js/57.b15918db.js"><link rel="prefetch" href="/assets/js/58.b3eb784b.js"><link rel="prefetch" href="/assets/js/59.0d462dd8.js"><link rel="prefetch" href="/assets/js/6.a2711138.js"><link rel="prefetch" href="/assets/js/60.ae65015b.js"><link rel="prefetch" href="/assets/js/61.9b15da8f.js"><link rel="prefetch" href="/assets/js/62.ca728b66.js"><link rel="prefetch" href="/assets/js/63.312b3bdd.js"><link rel="prefetch" href="/assets/js/64.56be4886.js"><link rel="prefetch" href="/assets/js/65.dff3c3a3.js"><link rel="prefetch" href="/assets/js/66.95dfff51.js"><link rel="prefetch" href="/assets/js/67.17e7a9be.js"><link rel="prefetch" href="/assets/js/68.e3b5c05a.js"><link rel="prefetch" href="/assets/js/69.9ab8c7f8.js"><link rel="prefetch" href="/assets/js/7.e9473145.js"><link rel="prefetch" href="/assets/js/70.8d72690b.js"><link rel="prefetch" href="/assets/js/71.3c25cf04.js"><link rel="prefetch" href="/assets/js/72.02b02d8d.js"><link rel="prefetch" href="/assets/js/73.2a8d2681.js"><link rel="prefetch" href="/assets/js/74.c577aba5.js"><link rel="prefetch" href="/assets/js/75.7d2617b0.js"><link rel="prefetch" href="/assets/js/76.97ad371e.js"><link rel="prefetch" href="/assets/js/77.4495b015.js"><link rel="prefetch" href="/assets/js/78.c7510b35.js"><link rel="prefetch" href="/assets/js/79.dc2b4ca2.js"><link rel="prefetch" href="/assets/js/8.fc1e2b26.js"><link rel="prefetch" href="/assets/js/80.454a982e.js"><link rel="prefetch" href="/assets/js/81.eba66eb5.js"><link rel="prefetch" href="/assets/js/82.1f34b986.js"><link rel="prefetch" href="/assets/js/83.a15e7917.js"><link rel="prefetch" href="/assets/js/85.c077f397.js"><link rel="prefetch" href="/assets/js/86.70192242.js"><link rel="prefetch" href="/assets/js/87.e53f7254.js"><link rel="prefetch" href="/assets/js/88.d2f28869.js"><link rel="prefetch" href="/assets/js/89.9b4c13ce.js"><link rel="prefetch" href="/assets/js/9.a7fc3cc9.js"><link rel="prefetch" href="/assets/js/90.af82565a.js"><link rel="prefetch" href="/assets/js/91.153dc863.js"><link rel="prefetch" href="/assets/js/92.ea32e690.js"><link rel="prefetch" href="/assets/js/93.4c656124.js"><link rel="prefetch" href="/assets/js/94.b2283b24.js"><link rel="prefetch" href="/assets/js/95.4ad17bba.js"><link rel="prefetch" href="/assets/js/96.4c0c4821.js"><link rel="prefetch" href="/assets/js/97.14f25834.js"><link rel="prefetch" href="/assets/js/98.92c9fd2d.js"><link rel="prefetch" href="/assets/js/99.ef340791.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.299736e7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Hadoop中文网</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  下载安装
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/docs/" class="nav-link router-link-active">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言支持" class="dropdown-title"><span class="title">语言支持</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/ch.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/language/en.html" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  下载安装
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/docs/" class="nav-link router-link-active">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言支持" class="dropdown-title"><span class="title">语言支持</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/ch.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/language/en.html" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>WebHDFS REST API</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#document-conventions" class="sidebar-link">Document Conventions</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#introduction" class="sidebar-link">Introduction</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#operations" class="sidebar-link">Operations</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#filesystem-uris-vs-http-urls" class="sidebar-link">FileSystem URIs vs HTTP URLs</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#hdfs-configuration-options" class="sidebar-link">HDFS Configuration Options</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#authentication" class="sidebar-link">Authentication</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#ssl-configurations-for-swebhdfs" class="sidebar-link">SSL Configurations for SWebHDFS</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#proxy-users" class="sidebar-link">Proxy Users</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#cross-site-request-forgery-prevention" class="sidebar-link">Cross-Site Request Forgery Prevention</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#webhdfs-retry-policy" class="sidebar-link">WebHDFS Retry Policy</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#file-and-directory-operations" class="sidebar-link">File and Directory Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#create-and-write-to-a-file" class="sidebar-link">Create and Write to a File</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#append-to-a-file" class="sidebar-link">Append to a File</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#concat-file-s" class="sidebar-link">Concat File(s)</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#open-and-read-a-file" class="sidebar-link">Open and Read a File</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#make-a-directory" class="sidebar-link">Make a Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#create-a-symbolic-link" class="sidebar-link">Create a Symbolic Link</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#rename-a-file-directory" class="sidebar-link">Rename a File/Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#delete-a-file-directory" class="sidebar-link">Delete a File/Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#truncate-a-file" class="sidebar-link">Truncate a File</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#status-of-a-file-directory" class="sidebar-link">Status of a File/Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#list-a-directory" class="sidebar-link">List a Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#list-a-file" class="sidebar-link">List a File</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#iteratively-list-a-directory" class="sidebar-link">Iteratively List a Directory</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#other-file-system-operations" class="sidebar-link">Other File System Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-content-summary-of-a-directory" class="sidebar-link">Get Content Summary of a Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-quota-usage-of-a-directory" class="sidebar-link">Get Quota Usage of a Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-file-checksum" class="sidebar-link">Get File Checksum</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-home-directory" class="sidebar-link">Get Home Directory</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-trash-root" class="sidebar-link">Get Trash Root</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-permission" class="sidebar-link">Set Permission</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-owner" class="sidebar-link">Set Owner</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-replication-factor" class="sidebar-link">Set Replication Factor</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-access-or-modification-time" class="sidebar-link">Set Access or Modification Time</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#modify-acl-entries" class="sidebar-link">Modify ACL Entries</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#remove-acl-entries" class="sidebar-link">Remove ACL Entries</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#remove-default-acl" class="sidebar-link">Remove Default ACL</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#remove-acl" class="sidebar-link">Remove ACL</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-acl" class="sidebar-link">Set ACL</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-acl-status" class="sidebar-link">Get ACL Status</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#check-access" class="sidebar-link">Check access</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#storage-policy-operations" class="sidebar-link">Storage Policy Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-all-storage-policies" class="sidebar-link">Get all Storage Policies</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-storage-policy" class="sidebar-link">Set Storage Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#unset-storage-policy" class="sidebar-link">Unset Storage Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-storage-policy" class="sidebar-link">Get Storage Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-file-block-locations" class="sidebar-link">Get File Block Locations</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#extended-attributes-xattrs-operations" class="sidebar-link">Extended Attributes(XAttrs) Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-xattr" class="sidebar-link">Set XAttr</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#remove-xattr" class="sidebar-link">Remove XAttr</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-an-xattr" class="sidebar-link">Get an XAttr</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-multiple-xattrs" class="sidebar-link">Get multiple XAttrs</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-all-xattrs" class="sidebar-link">Get all XAttrs</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#list-all-xattrs" class="sidebar-link">List all XAttrs</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#erasure-coding-operations" class="sidebar-link">Erasure Coding Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#enable-ec-policy" class="sidebar-link">Enable EC Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#disable-ec-policy" class="sidebar-link">Disable EC Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#set-ec-policy" class="sidebar-link">Set EC Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-ec-policy" class="sidebar-link">Get EC Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#unset-ec-policy" class="sidebar-link">Unset EC Policy</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#snapshot-operations" class="sidebar-link">Snapshot Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#create-snapshot" class="sidebar-link">Create Snapshot</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#delete-snapshot" class="sidebar-link">Delete Snapshot</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#rename-snapshot" class="sidebar-link">Rename Snapshot</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-snapshot-diff" class="sidebar-link">Get Snapshot Diff</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-snapshottable-directory-list" class="sidebar-link">Get Snapshottable Directory List</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#delegation-token-operations" class="sidebar-link">Delegation Token Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#get-delegation-token" class="sidebar-link">Get Delegation Token</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#renew-delegation-token" class="sidebar-link">Renew Delegation Token</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#cancel-delegation-token" class="sidebar-link">Cancel Delegation Token</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#error-responses" class="sidebar-link">Error Responses</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#http-response-codes" class="sidebar-link">HTTP Response Codes</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#json-schemas" class="sidebar-link">JSON Schemas</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#acl-status-json-schema" class="sidebar-link">ACL Status JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#xattrs-json-schema" class="sidebar-link">XAttrs JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#xattrnames-json-schema" class="sidebar-link">XAttrNames JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#boolean-json-schema" class="sidebar-link">Boolean JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#contentsummary-json-schema" class="sidebar-link">ContentSummary JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#quotausage-json-schema" class="sidebar-link">QuotaUsage JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#filechecksum-json-schema" class="sidebar-link">FileChecksum JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#filestatus-json-schema" class="sidebar-link">FileStatus JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#filestatuses-json-schema" class="sidebar-link">FileStatuses JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#directorylisting-json-schema" class="sidebar-link">DirectoryListing JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#long-json-schema" class="sidebar-link">Long JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#path-json-schema" class="sidebar-link">Path JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#remoteexception-json-schema" class="sidebar-link">RemoteException JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#token-json-schema" class="sidebar-link">Token JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#blockstoragepolicy-json-schema" class="sidebar-link">BlockStoragePolicy JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#ecpolicy-json-schema" class="sidebar-link">ECPolicy JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#blockstoragepolicies-json-schema" class="sidebar-link">BlockStoragePolicies JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#snapshotdiffreport-json-schema" class="sidebar-link">SnapshotDiffReport JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#snapshottabledirectorylist-json-schema" class="sidebar-link">SnapshottableDirectoryList JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#blocklocations-json-schema" class="sidebar-link">BlockLocations JSON Schema</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#blocklocation-json-schema" class="sidebar-link">BlockLocation JSON Schema</a></li></ul></li><li><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#http-query-parameter-dictionary" class="sidebar-link">HTTP Query Parameter Dictionary</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#acl-spec" class="sidebar-link">ACL Spec</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#xattr-name" class="sidebar-link">XAttr Name</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#xattr-value" class="sidebar-link">XAttr Value</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#xattr-set-flag" class="sidebar-link">XAttr set flag</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#xattr-value-encoding" class="sidebar-link">XAttr value encoding</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#access-time" class="sidebar-link">Access Time</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#block-size" class="sidebar-link">Block Size</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#buffer-size" class="sidebar-link">Buffer Size</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#create-flag" class="sidebar-link">Create Flag</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#create-parent" class="sidebar-link">Create Parent</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#delegation" class="sidebar-link">Delegation</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#destination" class="sidebar-link">Destination</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#do-as" class="sidebar-link">Do As</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#fs-action" class="sidebar-link">Fs Action</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#group" class="sidebar-link">Group</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#length" class="sidebar-link">Length</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#modification-time" class="sidebar-link">Modification Time</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#new-length" class="sidebar-link">New Length</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#offset" class="sidebar-link">Offset</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#old-snapshot-name" class="sidebar-link">Old Snapshot Name</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#op" class="sidebar-link">Op</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#overwrite" class="sidebar-link">Overwrite</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#owner" class="sidebar-link">Owner</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#permission" class="sidebar-link">Permission</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#recursive" class="sidebar-link">Recursive</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#renewer" class="sidebar-link">Renewer</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#replication" class="sidebar-link">Replication</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#snapshot-name" class="sidebar-link">Snapshot Name</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#sources" class="sidebar-link">Sources</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#token" class="sidebar-link">Token</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#token-kind" class="sidebar-link">Token Kind</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#token-service" class="sidebar-link">Token Service</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#username" class="sidebar-link">Username</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#noredirect" class="sidebar-link">NoRedirect</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#storage-policy" class="sidebar-link">Storage Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#erasure-coding-policy" class="sidebar-link">Erasure Coding Policy</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#start-after" class="sidebar-link">Start After</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webhdfs-rest-api"><a href="#webhdfs-rest-api" class="header-anchor">#</a> WebHDFS REST API</h1> <h2 id="document-conventions"><a href="#document-conventions" class="header-anchor">#</a> Document Conventions</h2> <table><thead><tr><th>Monospaced</th> <th>Used for commands, HTTP request and responses and code blocks.</th></tr></thead> <tbody><tr><td><Monospaced></Monospaced></td> <td>User entered values.</td></tr> <tr><td>[Monospaced]</td> <td>Optional values. When the value is not specified, the default value is used.</td></tr> <tr><td>Italics</td> <td>Important phrases and words.</td></tr></tbody></table> <h2 id="introduction"><a href="#introduction" class="header-anchor">#</a> Introduction</h2> <p>The HTTP REST API supports the complete <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>/<a href="/docs/api/org/apache/hadoop/fs/FileContext.html">FileContext</a> interface for HDFS. The operations and the corresponding FileSystem/FileContext methods are shown in the next section. The Section HTTP Query Parameter Dictionary specifies the parameter details such as the defaults and the valid values.</p> <h3 id="operations"><a href="#operations" class="header-anchor">#</a> Operations</h3> <ul><li>HTTP GET
+<ul><li>OPEN (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.open)</li> <li>GETFILESTATUS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getFileStatus)</li> <li>LISTSTATUS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listStatus)</li> <li>LISTSTATUS_BATCH (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listStatusIterator)</li> <li>GETCONTENTSUMMARY (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getContentSummary)</li> <li>GETQUOTAUSAGE (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getQuotaUsage)</li> <li>GETFILECHECKSUM (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getFileChecksum)</li> <li>GETHOMEDIRECTORY (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getHomeDirectory)</li> <li>GETDELEGATIONTOKEN (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getDelegationToken)</li> <li>GETTRASHROOT (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getTrashRoot)</li> <li>GETXATTRS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getXAttr)</li> <li>GETXATTRS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getXAttrs)</li> <li>GETXATTRS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getXAttrs)</li> <li>LISTXATTRS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listXAttrs)</li> <li>CHECKACCESS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.access)</li> <li>GETALLSTORAGEPOLICY (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getAllStoragePolicies)</li> <li>GETSTORAGEPOLICY (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getStoragePolicy)</li> <li>GETSNAPSHOTDIFF</li> <li>GETSNAPSHOTTABLEDIRECTORYLIST</li> <li>GETFILEBLOCKLOCATIONS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getFileBlockLocations)</li> <li>GETECPOLICY (see <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.getErasureCodingPolicy)</li></ul></li> <li>HTTP PUT
+<ul><li>CREATE (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.create)</li> <li>MKDIRS (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.mkdirs)</li> <li>CREATESYMLINK (see <a href="/docs/api/org/apache/hadoop/fs/FileContext.html">FileContext</a>.createSymlink)</li> <li>RENAME (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.rename)</li> <li>SETREPLICATION (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setReplication)</li> <li>SETOWNER (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setOwner)</li> <li>SETPERMISSION (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setPermission)</li> <li>SETTIMES (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setTimes)</li> <li>RENEWDELEGATIONTOKEN (see <a href="/docs/api/org/apache/hadoop/security/token/delegation/web/DelegationTokenAuthenticator.html">DelegationTokenAuthenticator</a>.renewDelegationToken)</li> <li>CANCELDELEGATIONTOKEN (see <a href="/docs/api/org/apache/hadoop/security/token/delegation/web/DelegationTokenAuthenticator.html">DelegationTokenAuthenticator</a>.cancelDelegationToken)</li> <li>CREATESNAPSHOT (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.createSnapshot)</li> <li>RENAMESNAPSHOT (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.renameSnapshot)</li> <li>SETXATTR (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setXAttr)</li> <li>REMOVEXATTR (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.removeXAttr)</li> <li>SETSTORAGEPOLICY (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setStoragePolicy)</li> <li>ENABLEECPOLICY (see <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.enablePolicy)</li> <li>DISABLEECPOLICY (see <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.disablePolicy)</li> <li>SETECPOLICY (see <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.setErasureCodingPolicy)</li></ul></li> <li>HTTP POST
+<ul><li>APPEND (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.append)</li> <li>CONCAT (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.concat)</li> <li>TRUNCATE (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.truncate)</li> <li>UNSETSTORAGEPOLICY (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.unsetStoragePolicy)</li> <li>UNSETECPOLICY (see <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.unsetErasureCodingPolicy)</li></ul></li> <li>HTTP DELETE
+<ul><li>DELETE (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.delete)</li> <li>DELETESNAPSHOT (see <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.deleteSnapshot)</li></ul></li></ul> <h3 id="filesystem-uris-vs-http-urls"><a href="#filesystem-uris-vs-http-urls" class="header-anchor">#</a> FileSystem URIs vs HTTP URLs</h3> <p>The FileSystem scheme of WebHDFS is “webhdfs://”. A WebHDFS FileSystem URI has the following format.</p> <pre><code>  webhdfs://&lt;HOST&gt;:&lt;HTTP_PORT&gt;/&lt;PATH&gt;
+</code></pre> <p>The above WebHDFS URI corresponds to the below HDFS URI.</p> <pre><code>  hdfs://&lt;HOST&gt;:&lt;RPC_PORT&gt;/&lt;PATH&gt;
+</code></pre> <p>In the REST API, the prefix “/webhdfs/v1” is inserted in the path and a query is appended at the end. Therefore, the corresponding HTTP URL has the following format.</p> <pre><code>  http://&lt;HOST&gt;:&lt;HTTP_PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=...
+</code></pre> <p>Note that if WebHDFS is secured with SSL, then the scheme should be “swebhdfs://”.</p> <pre><code>  swebhdfs://&lt;HOST&gt;:&lt;HTTP_PORT&gt;/&lt;PATH&gt;
+</code></pre> <p>See also: SSL Configurations for SWebHDFS</p> <h3 id="hdfs-configuration-options"><a href="#hdfs-configuration-options" class="header-anchor">#</a> HDFS Configuration Options</h3> <p>Below are the HDFS configuration options for WebHDFS.</p> <table><thead><tr><th>Property Name</th> <th>Description</th></tr></thead> <tbody><tr><td>dfs.web.authentication.kerberos.principal</td> <td>The HTTP Kerberos principal used by Hadoop-Auth in the HTTP endpoint. The HTTP Kerberos principal MUST start with ‘HTTP/’ per Kerberos HTTP SPNEGO specification. A value of “*” will use all HTTP principals found in the keytab.</td></tr> <tr><td>dfs.web.authentication.kerberos.keytab</td> <td>The Kerberos keytab file with the credentials for the HTTP Kerberos principal used by Hadoop-Auth in the HTTP endpoint.</td></tr> <tr><td>dfs.webhdfs.socket.connect-timeout</td> <td>How long to wait for a connection to be established before failing. Specified as a time duration, ie numerical value followed by a units symbol, eg 2m for two minutes. Defaults to 60s.</td></tr> <tr><td>dfs.webhdfs.socket.read-timeout</td> <td>How long to wait for data to arrive before failing. Defaults to 60s.</td></tr></tbody></table> <h2 id="authentication"><a href="#authentication" class="header-anchor">#</a> Authentication</h2> <p>When security is off, the authenticated user is the username specified in the user.name query parameter. If the user.name parameter is not set, the server may either set the authenticated user to a default web user, if there is any, or return an error response.</p> <p>When security is on, authentication is performed by either Hadoop delegation token or Kerberos SPNEGO. If a token is set in the delegation query parameter, the authenticated user is the user encoded in the token. If the delegation parameter is not set, the user is authenticated by Kerberos SPNEGO.</p> <p>Below are examples using the curl command tool.</p> <ol><li><p>Authentication when security is off:</p> <p>curl -i &quot;http://<HOST>:<PORT>/webhdfs/v1/<PATH>?[user.name=<USER>&amp;]op=...&quot;</USER></PATH></PORT></HOST></p></li> <li><p>Authentication using Kerberos SPNEGO when security is on:</p> <p>curl -i --negotiate -u : &quot;http://<HOST>:<PORT>/webhdfs/v1/<PATH>?op=...&quot;</PATH></PORT></HOST></p></li> <li><p>Authentication using Hadoop delegation token when security is on:</p> <p>curl -i &quot;http://<HOST>:<PORT>/webhdfs/v1/<PATH>?delegation=<TOKEN>&amp;op=...&quot;</TOKEN></PATH></PORT></HOST></p></li></ol> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-common/HttpAuthentication.html">Authentication for Hadoop HTTP web-consoles</a></p> <p>Additionally, WebHDFS supports OAuth2 on the client side. The Namenode and Datanodes do not currently support clients using OAuth2 but other backends that implement the WebHDFS REST interface may.</p> <p>WebHDFS supports two type of OAuth2 code grants (user-provided refresh and access token or user provided credential) by default and provides a pluggable mechanism for implementing other OAuth2 authentications per the <a href="https://tools.ietf.org/html/rfc6749" target="_blank" rel="noopener noreferrer">OAuth2 RFC<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>, or custom authentications. When using either of the provided code grant mechanisms, the WebHDFS client will refresh the access token as necessary.</p> <p>OAuth2 should only be enabled for clients not running with Kerberos SPENGO.</p> <table><thead><tr><th>OAuth2 code grant mechanism</th> <th>Description</th> <th>Value of dfs.webhdfs.oauth2.access.token.provider that implements code grant</th></tr></thead> <tbody><tr><td>Authorization Code Grant</td> <td>The user provides an initial access token and refresh token, which are then used to authenticate WebHDFS requests and obtain replacement access tokens, respectively.</td> <td>org.apache.hadoop.hdfs.web.oauth2.ConfRefreshTokenBasedAccessTokenProvider</td></tr> <tr><td>Client Credentials Grant</td> <td>The user provides a credential which is used to obtain access tokens, which are then used to authenticate WebHDFS requests.</td> <td>org.apache.hadoop.hdfs.web.oauth2.ConfCredentialBasedAccessTokenProvider</td></tr></tbody></table> <p>The following properties control OAuth2 authentication.</p> <table><thead><tr><th>OAuth2 related property</th> <th>Description</th></tr></thead> <tbody><tr><td>dfs.webhdfs.oauth2.enabled</td> <td>Boolean to enable/disable OAuth2 authentication</td></tr> <tr><td>dfs.webhdfs.oauth2.access.token.provider</td> <td>Class name of an implementation of org.apache.hadoop.hdfs.web.oauth.AccessTokenProvider. Two are provided with the code, as described above, or the user may specify a user-provided implementation. The default value for this configuration key is the ConfCredentialBasedAccessTokenProvider implementation.</td></tr> <tr><td>dfs.webhdfs.oauth2.client.id</td> <td>Client id used to obtain access token with either credential or refresh token</td></tr> <tr><td>dfs.webhdfs.oauth2.refresh.url</td> <td>URL against which to post for obtaining bearer token with either credential or refresh token</td></tr> <tr><td>dfs.webhdfs.oauth2.access.token</td> <td>(required if using ConfRefreshTokenBasedAccessTokenProvider) Initial access token with which to authenticate</td></tr> <tr><td>dfs.webhdfs.oauth2.refresh.token</td> <td>(required if using ConfRefreshTokenBasedAccessTokenProvider) Initial refresh token to use to obtain new access tokens</td></tr> <tr><td>dfs.webhdfs.oauth2.refresh.token.expires.ms.since.epoch</td> <td>(required if using ConfRefreshTokenBasedAccessTokenProvider) Access token expiration measured in milliseconds since Jan 1, 1970. Note this is a different value than provided by OAuth providers and has been munged as described in interface to be suitable for a client application</td></tr> <tr><td>dfs.webhdfs.oauth2.credential</td> <td>(required if using ConfCredentialBasedAccessTokenProvider). Credential used to obtain initial and subsequent access tokens.</td></tr></tbody></table> <h2 id="ssl-configurations-for-swebhdfs"><a href="#ssl-configurations-for-swebhdfs" class="header-anchor">#</a> SSL Configurations for SWebHDFS</h2> <p>To use SWebHDFS FileSystem (i.e. using the swebhdfs protocol), a SSL configuration file needs to be specified on the client side. This must specify 3 parameters:</p> <table><thead><tr><th>SSL property</th> <th>Description</th></tr></thead> <tbody><tr><td>ssl.client.truststore.location</td> <td>The local-filesystem location of the trust-store file, containing the certificate for the NameNode.</td></tr> <tr><td>ssl.client.truststore.type</td> <td>(Optional) The format of the trust-store file.</td></tr> <tr><td>ssl.client.truststore.password</td> <td>(Optional) Password for the trust-store file.</td></tr></tbody></table> <p>The following is an example SSL configuration file (ssl-client.xml):</p> <pre><code>&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;ssl.client.truststore.location&lt;/name&gt;
+    &lt;value&gt;/work/keystore.jks&lt;/value&gt;
+    &lt;description&gt;Truststore to be used by clients. Must be specified.&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;ssl.client.truststore.password&lt;/name&gt;
+    &lt;value&gt;changeme&lt;/value&gt;
+    &lt;description&gt;Optional. Default value is &quot;&quot;.&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;ssl.client.truststore.type&lt;/name&gt;
+    &lt;value&gt;jks&lt;/value&gt;
+    &lt;description&gt;Optional. Default value is &quot;jks&quot;.&lt;/description&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre> <p>The SSL configuration file must be in the class-path of the client program and the filename needs to be specified in core-site.xml:</p> <pre><code>&lt;property&gt;
+  &lt;name&gt;hadoop.ssl.client.conf&lt;/name&gt;
+  &lt;value&gt;ssl-client.xml&lt;/value&gt;
+  &lt;description&gt;
+    Resource file from which ssl client keystore information will be extracted.
+    This file is looked up in the classpath, typically it should be in Hadoop
+    conf/ directory. Default value is &quot;ssl-client.xml&quot;.
+  &lt;/description&gt;
+&lt;/property&gt;
+</code></pre> <h2 id="proxy-users"><a href="#proxy-users" class="header-anchor">#</a> Proxy Users</h2> <p>When the proxy user feature is enabled, a proxy user P may submit a request on behalf of another user U. The username of U must be specified in the doas query parameter unless a delegation token is presented in authentication. In such case, the information of both users P and U must be encoded in the delegation token.</p> <ol><li><p>A proxy request when security is off:</p> <p>curl -i &quot;http://<HOST>:<PORT>/webhdfs/v1/<PATH>?[user.name=<USER>&amp;]doas=<USER>&amp;op=...&quot;</USER></USER></PATH></PORT></HOST></p></li> <li><p>A proxy request using Kerberos SPNEGO when security is on:</p> <p>curl -i --negotiate -u : &quot;http://<HOST>:<PORT>/webhdfs/v1/<PATH>?doas=<USER>&amp;op=...&quot;</USER></PATH></PORT></HOST></p></li> <li><p>A proxy request using Hadoop delegation token when security is on:</p> <p>curl -i &quot;http://<HOST>:<PORT>/webhdfs/v1/<PATH>?delegation=<TOKEN>&amp;op=...&quot;</TOKEN></PATH></PORT></HOST></p></li></ol> <h2 id="cross-site-request-forgery-prevention"><a href="#cross-site-request-forgery-prevention" class="header-anchor">#</a> Cross-Site Request Forgery Prevention</h2> <p>WebHDFS supports an optional, configurable mechanism for cross-site request forgery (CSRF) prevention. When enabled, WebHDFS HTTP requests to the NameNode or DataNode must include a custom HTTP header. Configuration properties allow adjusting which specific HTTP methods are protected and the name of the HTTP header. The value sent in the header is not relevant. Only the presence of a header by that name is required.</p> <p>Enabling CSRF prevention also sets up the WebHdfsFileSystem class to send the required header. This ensures that CLI commands like <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html#dfs">hdfs dfs</a> and <a href="/docs/hadoop-distcp/DistCp.html">hadoop distcp</a> continue to work correctly when used with webhdfs: URIs.</p> <p>Enabling CSRF prevention also sets up the NameNode web UI to send the required header. After enabling CSRF prevention and restarting the NameNode, existing users of the NameNode web UI need to refresh the browser to reload the page and find the new configuration.</p> <p>The following properties control CSRF prevention.</p> <table><thead><tr><th>Property</th> <th>Description</th> <th>Default Value</th></tr></thead> <tbody><tr><td>dfs.webhdfs.rest-csrf.enabled</td> <td>If true, then enables WebHDFS protection against cross-site request forgery (CSRF). The WebHDFS client also uses this property to determine whether or not it needs to send the custom CSRF prevention header in its HTTP requests.</td> <td>false</td></tr> <tr><td>dfs.webhdfs.rest-csrf.custom-header</td> <td>The name of a custom header that HTTP requests must send when protection against cross-site request forgery (CSRF) is enabled for WebHDFS by setting dfs.webhdfs.rest-csrf.enabled to true. The WebHDFS client also uses this property to determine whether or not it needs to send the custom CSRF prevention header in its HTTP requests.</td> <td>X-XSRF-HEADER</td></tr> <tr><td>dfs.webhdfs.rest-csrf.methods-to-ignore</td> <td>A comma-separated list of HTTP methods that do not require HTTP requests to include a custom header when protection against cross-site request forgery (CSRF) is enabled for WebHDFS by setting dfs.webhdfs.rest-csrf.enabled to true. The WebHDFS client also uses this property to determine whether or not it needs to send the custom CSRF prevention header in its HTTP requests.</td> <td>GET,OPTIONS,HEAD,TRACE</td></tr> <tr><td>dfs.webhdfs.rest-csrf.browser-useragents-regex</td> <td>A comma-separated list of regular expressions used to match against an HTTP request’s User-Agent header when protection against cross-site request forgery (CSRF) is enabled for WebHDFS by setting dfs.webhdfs.reset-csrf.enabled to true. If the incoming User-Agent matches any of these regular expressions, then the request is considered to be sent by a browser, and therefore CSRF prevention is enforced. If the request’s User-Agent does not match any of these regular expressions, then the request is considered to be sent by something other than a browser, such as scripted automation. In this case, CSRF is not a potential attack vector, so the prevention is not enforced. This helps achieve backwards-compatibility with existing automation that has not been updated to send the CSRF prevention header.</td> <td>^Mozilla.<em>,^Opera.</em></td></tr></tbody></table> <p>The following is an example curl call that uses the -H option to include the custom header in the request.</p> <pre><code>    curl -i -L -X PUT -H 'X-XSRF-HEADER: &quot;&quot;' 'http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATE'
+</code></pre> <h2 id="webhdfs-retry-policy"><a href="#webhdfs-retry-policy" class="header-anchor">#</a> WebHDFS Retry Policy</h2> <p>WebHDFS supports an optional, configurable retry policy for resilient copy of large files that could timeout, or copy file between HA clusters that could failover during the copy.</p> <p>The following properties control WebHDFS retry and failover policy.</p> <table><thead><tr><th>Property</th> <th>Description</th> <th>Default Value</th></tr></thead> <tbody><tr><td>dfs.http.client.retry.policy.enabled</td> <td>If “true”, enable the retry policy of WebHDFS client. If “false”, retry policy is turned off.</td> <td>false</td></tr> <tr><td>dfs.http.client.retry.policy.spec</td> <td>Specify a policy of multiple linear random retry for WebHDFS client, e.g. given pairs of number of retries and sleep time (n0, t0), (n1, t1), …, the first n0 retries sleep t0 milliseconds on average, the following n1 retries sleep t1 milliseconds on average, and so on.</td> <td>10000,6,60000,10</td></tr> <tr><td>dfs.http.client.failover.max.attempts</td> <td>Specify the max number of failover attempts for WebHDFS client in case of network exception.</td> <td>15</td></tr> <tr><td>dfs.http.client.retry.max.attempts</td> <td>Specify the max number of retry attempts for WebHDFS client, if the difference between retried attempts and failovered attempts is larger than the max number of retry attempts, there will be no more retries.</td> <td>10</td></tr> <tr><td>dfs.http.client.failover.sleep.base.millis</td> <td>Specify the base amount of time in milliseconds upon which the exponentially increased sleep time between retries or failovers is calculated for WebHDFS client.</td> <td>500</td></tr> <tr><td>dfs.http.client.failover.sleep.max.millis</td> <td>Specify the upper bound of sleep time in milliseconds between retries or failovers for WebHDFS client.</td> <td>15000</td></tr></tbody></table> <h2 id="file-and-directory-operations"><a href="#file-and-directory-operations" class="header-anchor">#</a> File and Directory Operations</h2> <h3 id="create-and-write-to-a-file"><a href="#create-and-write-to-a-file" class="header-anchor">#</a> Create and Write to a File</h3> <ul><li><p>Step 1: Submit a HTTP PUT request without automatically following redirects and without sending the file data.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATE
+                [&amp;overwrite=&lt;true |false&gt;][&amp;blocksize=&lt;LONG&gt;][&amp;replication=&lt;SHORT&gt;]
+                [&amp;permission=&lt;OCTAL&gt;][&amp;buffersize=&lt;INT&gt;][&amp;noredirect=&lt;true|false&gt;]&quot;
+</code></pre></li></ul> <p>Usually the request is redirected to a datanode where the file data is to be written.</p> <pre><code>    HTTP/1.1 307 TEMPORARY_REDIRECT
+Location: http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATE...
+Content-Length: 0
+</code></pre> <p>However, if you do not want to be automatically redirected, you can set the noredirect flag.</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+{&quot;Location&quot;:&quot;http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATE...&quot;}
+</code></pre> <ul><li><p>Step 2: Submit another HTTP PUT request using the URL in the Location header (or the returned response in case you specified noredirect) with the file data to be written.</p> <pre><code>curl -i -X PUT -T &lt;LOCAL_FILE&gt; &quot;http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATE...&quot;
+</code></pre></li></ul> <p>The client receives a 201 Created response with zero content length and the WebHDFS URI of the file in the Location header:</p> <pre><code>    HTTP/1.1 201 Created
+Location: webhdfs://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;
+Content-Length: 0
+</code></pre> <p>If no permissions are specified, the newly created file will be assigned with default 644 permission. No umask mode will be applied from server side (so “fs.permissions.umask-mode” value configuration set on Namenode side will have no effect).</p> <p>Note that the reason of having two-step create/append is for preventing clients to send out data before the redirect. This issue is addressed by the “Expect: 100-continue” header in HTTP/1.1; see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.2.3" target="_blank" rel="noopener noreferrer">RFC 2616, Section 8.2.3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>. Unfortunately, there are software library bugs (e.g. Jetty 6 HTTP server and Java 6 HTTP client), which do not correctly implement “Expect: 100-continue”. The two-step create/append is a temporary workaround for the software library bugs.</p> <p>See also: overwrite, blocksize, replication, permission, buffersize, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.create</p> <h3 id="append-to-a-file"><a href="#append-to-a-file" class="header-anchor">#</a> Append to a File</h3> <ul><li><p>Step 1: Submit a HTTP POST request without automatically following redirects and without sending the file data.</p> <pre><code>curl -i -X POST &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=APPEND[&amp;buffersize=&lt;INT&gt;][&amp;noredirect=&lt;true|false&gt;]&quot;
+</code></pre></li></ul> <p>Usually the request is redirected to a datanode where the file data is to be appended:</p> <pre><code>    HTTP/1.1 307 TEMPORARY_REDIRECT
+Location: http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=APPEND...
+Content-Length: 0
+</code></pre> <p>However, if you do not want to be automatically redirected, you can set the noredirect flag.</p> <pre><code>    HTTP/1.1 200 OK
+    Content-Type: application/json
+    {&quot;Location&quot;:&quot;http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=APPEND...&quot;}
+</code></pre> <ul><li><p>Step 2: Submit another HTTP POST request using the URL in the Location header (or the returned response in case you specified noredirect) with the file data to be appended.</p> <pre><code>curl -i -X POST -T &lt;LOCAL_FILE&gt; &quot;http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=APPEND...&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See the note in the previous section for the description of why this operation requires two steps.</p> <p>See also: buffersize, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.append</p> <h3 id="concat-file-s"><a href="#concat-file-s" class="header-anchor">#</a> Concat File(s)</h3> <ul><li><p>Submit a HTTP POST request.</p> <pre><code>curl -i -X POST &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CONCAT&amp;sources=&lt;PATHS&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: sources, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.concat</p> <h3 id="open-and-read-a-file"><a href="#open-and-read-a-file" class="header-anchor">#</a> Open and Read a File</h3> <ul><li><p>Submit a HTTP GET request with automatically following redirects.</p> <pre><code>curl -i -L &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=OPEN
+                [&amp;offset=&lt;LONG&gt;][&amp;length=&lt;LONG&gt;][&amp;buffersize=&lt;INT&gt;][&amp;noredirect=&lt;true|false&gt;]&quot;
+</code></pre></li></ul> <p>Usually the request is redirected to a datanode where the file data can be read:</p> <pre><code>    HTTP/1.1 307 TEMPORARY_REDIRECT
+Location: http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=OPEN...
+Content-Length: 0
+</code></pre> <p>However if you do not want to be automatically redirected, you can set the noredirect flag.</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+{&quot;Location&quot;:&quot;http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=OPEN...&quot;}
+</code></pre> <p>The client follows the redirect to the datanode and receives the file data:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+Content-Length: 22
+
+Hello, webhdfs user!
+</code></pre> <p>See also: offset, length, buffersize, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.open</p> <h3 id="make-a-directory"><a href="#make-a-directory" class="header-anchor">#</a> Make a Directory</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=MKDIRS[&amp;permission=&lt;OCTAL&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with a boolean JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;boolean&quot;: true}
+</code></pre> <p>If no permissions are specified, the newly created directory will have 755 permission as default. No umask mode will be applied from server side (so “fs.permissions.umask-mode” value configuration set on Namenode side will have no effect).</p> <p>See also: permission, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.mkdirs</p> <h3 id="create-a-symbolic-link"><a href="#create-a-symbolic-link" class="header-anchor">#</a> Create a Symbolic Link</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATESYMLINK
+                          &amp;destination=&lt;PATH&gt;[&amp;createParent=&lt;true |false&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: destination, createParent, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.createSymlink</p> <h3 id="rename-a-file-directory"><a href="#rename-a-file-directory" class="header-anchor">#</a> Rename a File/Directory</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=RENAME&amp;destination=&lt;PATH&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a boolean JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;boolean&quot;: true}
+</code></pre> <p>See also: destination, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.rename</p> <h3 id="delete-a-file-directory"><a href="#delete-a-file-directory" class="header-anchor">#</a> Delete a File/Directory</h3> <ul><li><p>Submit a HTTP DELETE request.</p> <pre><code>curl -i -X DELETE &quot;http://&lt;host&gt;:&lt;port&gt;/webhdfs/v1/&lt;path&gt;?op=DELETE
+                          [&amp;recursive=&lt;true |false&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with a boolean JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;boolean&quot;: true}
+</code></pre> <p>See also: recursive, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.delete</p> <h3 id="truncate-a-file"><a href="#truncate-a-file" class="header-anchor">#</a> Truncate a File</h3> <ul><li><p>Submit a HTTP POST request.</p> <pre><code>curl -i -X POST &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=TRUNCATE&amp;newlength=&lt;LONG&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a boolean JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;boolean&quot;: true}
+</code></pre> <p>See also: newlength, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.truncate</p> <h3 id="status-of-a-file-directory"><a href="#status-of-a-file-directory" class="header-anchor">#</a> Status of a File/Directory</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i  &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETFILESTATUS&quot;
+</code></pre></li></ul> <p>The client receives a response with a FileStatus JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;FileStatus&quot;:
+  {
+    &quot;accessTime&quot;      : 0,
+    &quot;blockSize&quot;       : 0,
+    &quot;group&quot;           : &quot;supergroup&quot;,
+    &quot;length&quot;          : 0,             //in bytes, zero for directories
+    &quot;modificationTime&quot;: 1320173277227,
+    &quot;owner&quot;           : &quot;webuser&quot;,
+    &quot;pathSuffix&quot;      : &quot;&quot;,
+    &quot;permission&quot;      : &quot;777&quot;,
+    &quot;replication&quot;     : 0,
+    &quot;snapshotEnabled&quot; : true
+    &quot;type&quot;            : &quot;DIRECTORY&quot;    //enum {FILE, DIRECTORY, SYMLINK}
+  }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getFileStatus</p> <h3 id="list-a-directory"><a href="#list-a-directory" class="header-anchor">#</a> List a Directory</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i  &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=LISTSTATUS&quot;
+</code></pre></li></ul> <p>The client receives a response with a FileStatuses JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 427
+
+{
+  &quot;FileStatuses&quot;:
+  {
+    &quot;FileStatus&quot;:
+    [
+      {
+        &quot;accessTime&quot;      : 1320171722771,
+        &quot;blockSize&quot;       : 33554432,
+        &quot;childrenNum&quot;     : 0,
+        &quot;fileId&quot;          : 16388,
+        &quot;group&quot;           : &quot;supergroup&quot;,
+        &quot;length&quot;          : 24930,
+        &quot;modificationTime&quot;: 1320171722771,
+        &quot;owner&quot;           : &quot;webuser&quot;,
+        &quot;pathSuffix&quot;      : &quot;a.patch&quot;,
+        &quot;permission&quot;      : &quot;644&quot;,
+        &quot;replication&quot;     : 1,
+        &quot;storagePolicy&quot;   : 0,
+        &quot;type&quot;            : &quot;FILE&quot;
+      },
+      {
+        &quot;accessTime&quot;      : 0,
+        &quot;blockSize&quot;       : 0,
+        &quot;childrenNum&quot;     : 0,
+        &quot;fileId&quot;          : 16389,
+        &quot;group&quot;           : &quot;supergroup&quot;,
+        &quot;length&quot;          : 0,
+        &quot;modificationTime&quot;: 1320895981256,
+        &quot;owner&quot;           : &quot;username&quot;,
+        &quot;pathSuffix&quot;      : &quot;bar&quot;,
+        &quot;permission&quot;      : &quot;711&quot;,
+        &quot;replication&quot;     : 0,
+        &quot;snapshotEnabled&quot; : true
+        &quot;type&quot;            : &quot;DIRECTORY&quot;
+      },
+      ...
+    ]
+  }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listStatus</p> <h3 id="list-a-file"><a href="#list-a-file" class="header-anchor">#</a> List a File</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i  &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=LISTSTATUS&quot;
+</code></pre></li></ul> <p>The client receives a response with a FileStatuses JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 427
+
+{
+  &quot;FileStatuses&quot;:
+  {
+    &quot;FileStatus&quot;:
+    [
+      {
+        &quot;accessTime&quot;      : 1320171722771,
+        &quot;blockSize&quot;       : 33554432,
+        &quot;childrenNum&quot;     : 0,
+        &quot;fileId&quot;          : 16390,
+        &quot;group&quot;           : &quot;supergroup&quot;,
+        &quot;length&quot;          : 1366,
+        &quot;modificationTime&quot;: 1501770633062,
+        &quot;owner&quot;           : &quot;webuser&quot;,
+        &quot;pathSuffix&quot;      : &quot;&quot;,
+        &quot;permission&quot;      : &quot;644&quot;,
+        &quot;replication&quot;     : 1,
+        &quot;storagePolicy&quot;   : 0,
+        &quot;type&quot;            : &quot;FILE&quot;
+      }
+    ]
+  }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listStatus</p> <h3 id="iteratively-list-a-directory"><a href="#iteratively-list-a-directory" class="header-anchor">#</a> Iteratively List a Directory</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i  &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=LISTSTATUS_BATCH&amp;startAfter=&lt;CHILD&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a DirectoryListing JSON object, which contains a FileStatuses JSON object, as well as iteration information:</p> <pre><code>    HTTP/1.1 200 OK
+Cache-Control: no-cache
+Expires: Thu, 08 Sep 2016 03:40:38 GMT
+Date: Thu, 08 Sep 2016 03:40:38 GMT
+Pragma: no-cache
+Expires: Thu, 08 Sep 2016 03:40:38 GMT
+Date: Thu, 08 Sep 2016 03:40:38 GMT
+Pragma: no-cache
+Content-Type: application/json
+X-FRAME-OPTIONS: SAMEORIGIN
+Transfer-Encoding: chunked
+Server: Jetty(6.1.26)
+
+{
+    &quot;DirectoryListing&quot;: {
+        &quot;partialListing&quot;: {
+            &quot;FileStatuses&quot;: {
+                &quot;FileStatus&quot;: [
+                    {
+                        &quot;accessTime&quot;: 0,
+                        &quot;blockSize&quot;: 0,
+                        &quot;childrenNum&quot;: 0,
+                        &quot;fileId&quot;: 16387,
+                        &quot;group&quot;: &quot;supergroup&quot;,
+                        &quot;length&quot;: 0,
+                        &quot;modificationTime&quot;: 1473305882563,
+                        &quot;owner&quot;: &quot;andrew&quot;,
+                        &quot;pathSuffix&quot;: &quot;bardir&quot;,
+                        &quot;permission&quot;: &quot;755&quot;,
+                        &quot;replication&quot;: 0,
+                        &quot;storagePolicy&quot;: 0,
+                        &quot;type&quot;: &quot;DIRECTORY&quot;
+                    },
+                    {
+                        &quot;accessTime&quot;: 1473305896945,
+                        &quot;blockSize&quot;: 1024,
+                        &quot;childrenNum&quot;: 0,
+                        &quot;fileId&quot;: 16388,
+                        &quot;group&quot;: &quot;supergroup&quot;,
+                        &quot;length&quot;: 0,
+                        &quot;modificationTime&quot;: 1473305896965,
+                        &quot;owner&quot;: &quot;andrew&quot;,
+                        &quot;pathSuffix&quot;: &quot;bazfile&quot;,
+                        &quot;permission&quot;: &quot;644&quot;,
+                        &quot;replication&quot;: 3,
+                        &quot;storagePolicy&quot;: 0,
+                        &quot;type&quot;: &quot;FILE&quot;
+                    }
+                ]
+            }
+        },
+        &quot;remainingEntries&quot;: 2
+    }
+}
+</code></pre> <p>If remainingEntries is non-zero, there are additional entries in the directory. To query the next batch, set the startAfter parameter to the pathSuffix of the last item returned in the current batch. For example:</p> <pre><code>    curl -i  &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=LISTSTATUS_BATCH&amp;startAfter=bazfile&quot;
+</code></pre> <p>Which will return the next batch of directory entries:</p> <pre><code>    HTTP/1.1 200 OK
+    Cache-Control: no-cache
+    Expires: Thu, 08 Sep 2016 03:43:20 GMT
+    Date: Thu, 08 Sep 2016 03:43:20 GMT
+    Pragma: no-cache
+    Expires: Thu, 08 Sep 2016 03:43:20 GMT
+    Date: Thu, 08 Sep 2016 03:43:20 GMT
+    Pragma: no-cache
+    Content-Type: application/json
+    X-FRAME-OPTIONS: SAMEORIGIN
+    Transfer-Encoding: chunked
+    Server: Jetty(6.1.26)
+
+    {
+        &quot;DirectoryListing&quot;: {
+            &quot;partialListing&quot;: {
+                &quot;FileStatuses&quot;: {
+                    &quot;FileStatus&quot;: [
+                        {
+                            &quot;accessTime&quot;: 0,
+                            &quot;blockSize&quot;: 0,
+                            &quot;childrenNum&quot;: 0,
+                            &quot;fileId&quot;: 16386,
+                            &quot;group&quot;: &quot;supergroup&quot;,
+                            &quot;length&quot;: 0,
+                            &quot;modificationTime&quot;: 1473305878951,
+                            &quot;owner&quot;: &quot;andrew&quot;,
+                            &quot;pathSuffix&quot;: &quot;foodir&quot;,
+                            &quot;permission&quot;: &quot;755&quot;,
+                            &quot;replication&quot;: 0,
+                            &quot;storagePolicy&quot;: 0,
+                            &quot;type&quot;: &quot;DIRECTORY&quot;
+                        },
+                        {
+                            &quot;accessTime&quot;: 1473305902864,
+                            &quot;blockSize&quot;: 1024,
+                            &quot;childrenNum&quot;: 0,
+                            &quot;fileId&quot;: 16389,
+                            &quot;group&quot;: &quot;supergroup&quot;,
+                            &quot;length&quot;: 0,
+                            &quot;modificationTime&quot;: 1473305902878,
+                            &quot;owner&quot;: &quot;andrew&quot;,
+                            &quot;pathSuffix&quot;: &quot;quxfile&quot;,
+                            &quot;permission&quot;: &quot;644&quot;,
+                            &quot;replication&quot;: 3,
+                            &quot;storagePolicy&quot;: 0,
+                            &quot;type&quot;: &quot;FILE&quot;
+                        }
+                    ]
+                }
+            },
+            &quot;remainingEntries&quot;: 0
+        }
+    }
+</code></pre> <p>Batch size is controlled by the dfs.ls.limit option on the NameNode.</p> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listStatusIterator</p> <h2 id="other-file-system-operations"><a href="#other-file-system-operations" class="header-anchor">#</a> Other File System Operations</h2> <h3 id="get-content-summary-of-a-directory"><a href="#get-content-summary-of-a-directory" class="header-anchor">#</a> Get Content Summary of a Directory</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETCONTENTSUMMARY&quot;
+</code></pre></li></ul> <p>The client receives a response with a ContentSummary JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;ContentSummary&quot;:
+  {
+    &quot;directoryCount&quot;: 2,
+    &quot;fileCount&quot;     : 1,
+    &quot;length&quot;        : 24930,
+    &quot;quota&quot;         : -1,
+    &quot;spaceConsumed&quot; : 24930,
+    &quot;spaceQuota&quot;    : -1,
+    &quot;typeQuota&quot;:
+    {
+      &quot;ARCHIVE&quot;:
+      {
+        &quot;consumed&quot;: 500,
+        &quot;quota&quot;: 10000
+      },
+      &quot;DISK&quot;:
+      {
+        &quot;consumed&quot;: 500,
+        &quot;quota&quot;: 10000
+      },
+      &quot;SSD&quot;:
+      {
+        &quot;consumed&quot;: 500,
+        &quot;quota&quot;: 10000
+      }
+    }
+  }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getContentSummary</p> <h3 id="get-quota-usage-of-a-directory"><a href="#get-quota-usage-of-a-directory" class="header-anchor">#</a> Get Quota Usage of a Directory</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETQUOTAUSAGE&quot;
+</code></pre></li></ul> <p>The client receives a response with a QuotaUsage JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;QuotaUsage&quot;:
+  {
+    &quot;fileAndDirectoryCount&quot;: 1,
+    &quot;quota&quot;         : 100,
+    &quot;spaceConsumed&quot; : 24930,
+    &quot;spaceQuota&quot;    : 100000,
+    &quot;typeQuota&quot;:
+    {
+      &quot;ARCHIVE&quot;:
+      {
+        &quot;consumed&quot;: 500,
+        &quot;quota&quot;: 10000
+      },
+      &quot;DISK&quot;:
+      {
+        &quot;consumed&quot;: 500,
+        &quot;quota&quot;: 10000
+      },
+      &quot;SSD&quot;:
+      {
+        &quot;consumed&quot;: 500,
+        &quot;quota&quot;: 10000
+      }
+    }
+  }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getQuotaUsage</p> <h3 id="get-file-checksum"><a href="#get-file-checksum" class="header-anchor">#</a> Get File Checksum</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETFILECHECKSUM&quot;
+</code></pre></li></ul> <p>Usually the request is redirected to a datanode:</p> <pre><code>    HTTP/1.1 307 TEMPORARY_REDIRECT
+Location: http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETFILECHECKSUM...
+Content-Length: 0
+</code></pre> <p>However, if you do not want to be automatically redirected, you can set the noredirect flag.</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+{&quot;Location&quot;:&quot;http://&lt;DATANODE&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETFILECHECKSUM...&quot;}
+</code></pre> <p>The client follows the redirect to the datanode and receives a FileChecksum JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;FileChecksum&quot;:
+  {
+    &quot;algorithm&quot;: &quot;MD5-of-1MD5-of-512CRC32&quot;,
+    &quot;bytes&quot;    : &quot;eadb10de24aa315748930df6e185c0d ...&quot;,
+    &quot;length&quot;   : 28
+  }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getFileChecksum</p> <h3 id="get-home-directory"><a href="#get-home-directory" class="header-anchor">#</a> Get Home Directory</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?op=GETHOMEDIRECTORY&quot;
+</code></pre></li></ul> <p>The client receives a response with a Path JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;Path&quot;: &quot;/user/username&quot;}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getHomeDirectory</p> <h3 id="get-trash-root"><a href="#get-trash-root" class="header-anchor">#</a> Get Trash Root</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETTRASHROOT&quot;
+</code></pre></li></ul> <p>The client receives a response with a Path JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;Path&quot;: &quot;/user/username/.Trash&quot;}
+</code></pre> <p>if the path is an encrypted zone path and user has permission of the path, the client receives a response like this:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;Path&quot;: &quot;/PATH/.Trash/username&quot;}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getTrashRoot</p> <p>For more details about trash root in an encrypted zone, please refer to <a href="/docs/hadoop-project-dist/hadoop-hdfs/TransparentEncryption.html#Rename_and_Trash_considerations">Transparent Encryption Guide</a>.</p> <h3 id="set-permission"><a href="#set-permission" class="header-anchor">#</a> Set Permission</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETPERMISSION
+                          [&amp;permission=&lt;OCTAL&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: permission, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setPermission</p> <h3 id="set-owner"><a href="#set-owner" class="header-anchor">#</a> Set Owner</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETOWNER
+                          [&amp;owner=&lt;USER&gt;][&amp;group=&lt;GROUP&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: owner, group, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setOwner</p> <h3 id="set-replication-factor"><a href="#set-replication-factor" class="header-anchor">#</a> Set Replication Factor</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETREPLICATION
+                          [&amp;replication=&lt;SHORT&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with a boolean JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;boolean&quot;: true}
+</code></pre> <p>See also: replication, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setReplication</p> <h3 id="set-access-or-modification-time"><a href="#set-access-or-modification-time" class="header-anchor">#</a> Set Access or Modification Time</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETTIMES
+                          [&amp;modificationtime=&lt;TIME&gt;][&amp;accesstime=&lt;TIME&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: modificationtime, accesstime, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setTimes</p> <h3 id="modify-acl-entries"><a href="#modify-acl-entries" class="header-anchor">#</a> Modify ACL Entries</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=MODIFYACLENTRIES
+                          &amp;aclspec=&lt;ACLSPEC&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.modifyAclEntries</p> <h3 id="remove-acl-entries"><a href="#remove-acl-entries" class="header-anchor">#</a> Remove ACL Entries</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=REMOVEACLENTRIES
+                          &amp;aclspec=&lt;ACLSPEC&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.removeAclEntries</p> <h3 id="remove-default-acl"><a href="#remove-default-acl" class="header-anchor">#</a> Remove Default ACL</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=REMOVEDEFAULTACL&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.removeDefaultAcl</p> <h3 id="remove-acl"><a href="#remove-acl" class="header-anchor">#</a> Remove ACL</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=REMOVEACL&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.removeAcl</p> <h3 id="set-acl"><a href="#set-acl" class="header-anchor">#</a> Set ACL</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETACL
+                          &amp;aclspec=&lt;ACLSPEC&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setAcl</p> <h3 id="get-acl-status"><a href="#get-acl-status" class="header-anchor">#</a> Get ACL Status</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETACLSTATUS&quot;
+</code></pre></li></ul> <p>The client receives a response with a AclStatus JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;AclStatus&quot;: {
+        &quot;entries&quot;: [
+            &quot;user:carla:rw-&quot;, 
+            &quot;group::r-x&quot;
+        ], 
+        &quot;group&quot;: &quot;supergroup&quot;, 
+        &quot;owner&quot;: &quot;hadoop&quot;, 
+        &quot;permission&quot;:&quot;775&quot;,
+        &quot;stickyBit&quot;: false
+    }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getAclStatus</p> <h3 id="check-access"><a href="#check-access" class="header-anchor">#</a> Check access</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CHECKACCESS
+                          &amp;fsaction=&lt;FSACTION&gt;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.access</p> <h2 id="storage-policy-operations"><a href="#storage-policy-operations" class="header-anchor">#</a> Storage Policy Operations</h2> <h3 id="get-all-storage-policies"><a href="#get-all-storage-policies" class="header-anchor">#</a> Get all Storage Policies</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1?op=GETALLSTORAGEPOLICY&quot;
+</code></pre></li></ul> <p>The client receives a response with a BlockStoragePolicies JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;BlockStoragePolicies&quot;: {
+        &quot;BlockStoragePolicy&quot;: [
+           {
+               &quot;copyOnCreateFile&quot;: false,
+               &quot;creationFallbacks&quot;: [],
+               &quot;id&quot;: 2,
+               &quot;name&quot;: &quot;COLD&quot;,
+               &quot;replicationFallbacks&quot;: [],
+               &quot;storageTypes&quot;: [&quot;ARCHIVE&quot;]
+           },
+           {
+               &quot;copyOnCreateFile&quot;: false,
+               &quot;creationFallbacks&quot;: [&quot;DISK&quot;,&quot;ARCHIVE&quot;],
+               &quot;id&quot;: 5,
+               &quot;name&quot;: &quot;WARM&quot;,
+               &quot;replicationFallbacks&quot;: [&quot;DISK&quot;,&quot;ARCHIVE&quot;],
+               &quot;storageTypes&quot;: [&quot;DISK&quot;,&quot;ARCHIVE&quot;]
+           },
+           {
+               &quot;copyOnCreateFile&quot;: false,
+               &quot;creationFallbacks&quot;: [],
+               &quot;id&quot;: 7,
+               &quot;name&quot;: &quot;HOT&quot;,
+               &quot;replicationFallbacks&quot;: [&quot;ARCHIVE&quot;],
+               &quot;storageTypes&quot;: [&quot;DISK&quot;]
+           },
+           {
+               &quot;copyOnCreateFile&quot;: false,
+               &quot;creationFallbacks&quot;: [&quot;SSD&quot;,&quot;DISK&quot;],
+               &quot;id&quot;: 10,&quot;name&quot;: &quot;ONE_SSD&quot;,
+               &quot;replicationFallbacks&quot;: [&quot;SSD&quot;,&quot;DISK&quot;],
+               &quot;storageTypes&quot;: [&quot;SSD&quot;,&quot;DISK&quot;]
+           },
+           {
+               &quot;copyOnCreateFile&quot;: false,
+               &quot;creationFallbacks&quot;: [&quot;DISK&quot;],
+               &quot;id&quot;: 12,
+               &quot;name&quot;: &quot;ALL_SSD&quot;,
+               &quot;replicationFallbacks&quot;: [&quot;DISK&quot;],
+               &quot;storageTypes&quot;: [&quot;SSD&quot;]
+           },
+           {
+               &quot;copyOnCreateFile&quot;: true,
+               &quot;creationFallbacks&quot;: [&quot;DISK&quot;],
+               &quot;id&quot;: 15,
+               &quot;name&quot;: &quot;LAZY_PERSIST&quot;,
+               &quot;replicationFallbacks&quot;: [&quot;DISK&quot;],
+               &quot;storageTypes&quot;: [&quot;RAM_DISK&quot;,&quot;DISK&quot;]
+           }
+       ]
+   }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getAllStoragePolicies</p> <h3 id="set-storage-policy"><a href="#set-storage-policy" class="header-anchor">#</a> Set Storage Policy</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETSTORAGEPOLICY
+                          &amp;storagepolicy=&lt;policy&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setStoragePolicy</p> <h3 id="unset-storage-policy"><a href="#unset-storage-policy" class="header-anchor">#</a> Unset Storage Policy</h3> <ul><li><p>Submit a HTTP POT request.</p> <pre><code>curl -i -X POST &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=UNSETSTORAGEPOLICY&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.unsetStoragePolicy</p> <h3 id="get-storage-policy"><a href="#get-storage-policy" class="header-anchor">#</a> Get Storage Policy</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETSTORAGEPOLICY&quot;
+</code></pre></li></ul> <p>The client receives a response with a BlockStoragePolicy JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;BlockStoragePolicy&quot;: {
+        &quot;copyOnCreateFile&quot;: false,
+       &quot;creationFallbacks&quot;: [],
+        &quot;id&quot;:7,
+        &quot;name&quot;:&quot;HOT&quot;,
+        &quot;replicationFallbacks&quot;:[&quot;ARCHIVE&quot;],
+        &quot;storageTypes&quot;:[&quot;DISK&quot;]
+    }
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getStoragePolicy</p> <h3 id="get-file-block-locations"><a href="#get-file-block-locations" class="header-anchor">#</a> Get File Block Locations</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETFILEBLOCKLOCATIONS
+</code></pre></li></ul> <p>The client receives a response with a BlockLocations JSON Object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;BlockLocations&quot; :
+  {
+    &quot;BlockLocation&quot;:
+    [
+      {
+        &quot;cachedHosts&quot; : [],
+        &quot;corrupt&quot; : false,
+        &quot;hosts&quot; : [&quot;host&quot;],
+        &quot;length&quot; : 134217728,                             // length of this block
+        &quot;names&quot; : [&quot;host:ip&quot;],
+        &quot;offset&quot; : 0,                                     // offset of the block in the file
+        &quot;storageTypes&quot; : [&quot;DISK&quot;],                        // enum {RAM_DISK, SSD, DISK, ARCHIVE}
+        &quot;topologyPaths&quot; : [&quot;/default-rack/hostname:ip&quot;]
+      }, {
+        &quot;cachedHosts&quot; : [],
+        &quot;corrupt&quot; : false,
+        &quot;hosts&quot; : [&quot;host&quot;],
+        &quot;length&quot; : 62599364,
+        &quot;names&quot; : [&quot;host:ip&quot;],
+        &quot;offset&quot; : 134217728,
+        &quot;storageTypes&quot; : [&quot;DISK&quot;],
+        &quot;topologyPaths&quot; : [&quot;/default-rack/hostname:ip&quot;]
+      },
+      ...
+    ]
+  }
+}
+</code></pre> <p>See also: offset, length, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getFileBlockLocations</p> <h2 id="extended-attributes-xattrs-operations"><a href="#extended-attributes-xattrs-operations" class="header-anchor">#</a> Extended Attributes(XAttrs) Operations</h2> <h3 id="set-xattr"><a href="#set-xattr" class="header-anchor">#</a> Set XAttr</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETXATTR
+                          &amp;xattr.name=&lt;XATTRNAME&gt;&amp;xattr.value=&lt;XATTRVALUE&gt;
+                          &amp;flag=&lt;FLAG&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.setXAttr</p> <h3 id="remove-xattr"><a href="#remove-xattr" class="header-anchor">#</a> Remove XAttr</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=REMOVEXATTR
+                          &amp;xattr.name=&lt;XATTRNAME&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.removeXAttr</p> <h3 id="get-an-xattr"><a href="#get-an-xattr" class="header-anchor">#</a> Get an XAttr</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETXATTRS
+                          &amp;xattr.name=&lt;XATTRNAME&gt;&amp;encoding=&lt;ENCODING&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a XAttrs JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;XAttrs&quot;: [
+        {
+            &quot;name&quot;:&quot;XATTRNAME&quot;,
+            &quot;value&quot;:&quot;XATTRVALUE&quot;
+        }
+    ]
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getXAttr</p> <h3 id="get-multiple-xattrs"><a href="#get-multiple-xattrs" class="header-anchor">#</a> Get multiple XAttrs</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETXATTRS
+                          &amp;xattr.name=&lt;XATTRNAME1&gt;&amp;xattr.name=&lt;XATTRNAME2&gt;
+                          &amp;encoding=&lt;ENCODING&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a XAttrs JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;XAttrs&quot;: [
+        {
+            &quot;name&quot;:&quot;XATTRNAME1&quot;,
+            &quot;value&quot;:&quot;XATTRVALUE1&quot;
+        },
+        {
+            &quot;name&quot;:&quot;XATTRNAME2&quot;,
+            &quot;value&quot;:&quot;XATTRVALUE2&quot;
+        }
+    ]
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getXAttrs</p> <h3 id="get-all-xattrs"><a href="#get-all-xattrs" class="header-anchor">#</a> Get all XAttrs</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETXATTRS
+                          &amp;encoding=&lt;ENCODING&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a XAttrs JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;XAttrs&quot;: [
+        {
+            &quot;name&quot;:&quot;XATTRNAME1&quot;,
+            &quot;value&quot;:&quot;XATTRVALUE1&quot;
+        },
+        {
+            &quot;name&quot;:&quot;XATTRNAME2&quot;,
+            &quot;value&quot;:&quot;XATTRVALUE2&quot;
+        },
+        {
+            &quot;name&quot;:&quot;XATTRNAME3&quot;,
+            &quot;value&quot;:&quot;XATTRVALUE3&quot;
+        }
+    ]
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getXAttrs</p> <h3 id="list-all-xattrs"><a href="#list-all-xattrs" class="header-anchor">#</a> List all XAttrs</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=LISTXATTRS&quot;
+</code></pre></li></ul> <p>The client receives a response with a XAttrNames JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;XAttrNames&quot;:&quot;[\&quot;XATTRNAME1\&quot;,\&quot;XATTRNAME2\&quot;,\&quot;XATTRNAME3\&quot;]&quot;
+}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.listXAttrs</p> <h2 id="erasure-coding-operations"><a href="#erasure-coding-operations" class="header-anchor">#</a> Erasure Coding Operations</h2> <h3 id="enable-ec-policy"><a href="#enable-ec-policy" class="header-anchor">#</a> Enable EC Policy</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?op=ENABLEECPOLICY
+                          &amp;ecpolicy=&lt;policy&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.enablePolicy</p> <h3 id="disable-ec-policy"><a href="#disable-ec-policy" class="header-anchor">#</a> Disable EC Policy</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?op=DISABLEECPOLICY
+                          &amp;ecpolicy=&lt;policy&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.disablePolicy</p> <h3 id="set-ec-policy"><a href="#set-ec-policy" class="header-anchor">#</a> Set EC Policy</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=SETECPOLICY
+                          &amp;ecpolicy=&lt;policy&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.setErasureCodingPolicy</p> <h3 id="get-ec-policy"><a href="#get-ec-policy" class="header-anchor">#</a> Get EC Policy</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i -X GET &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETECPOLICY
+                         &quot;
+</code></pre></li></ul> <p>The client receives a response with a ECPolicy JSON object:</p> <pre><code>    {
+        &quot;name&quot;: &quot;RS-10-4-1024k&quot;,
+        &quot;schema&quot;:
+        {
+        &quot;codecName&quot;: &quot;rs&quot;,
+        &quot;numDataUnits&quot;: 10,
+        &quot;numParityUnits&quot;: 4,
+        &quot;extraOptions&quot;: {}
+        }
+        &quot;cellSize&quot;: 1048576,
+        &quot;id&quot;:5,
+        &quot;codecname&quot;:&quot;rs&quot;,
+        &quot;numDataUnits&quot;: 10,
+        &quot;numParityUnits&quot;: 4,
+        &quot;replicationpolicy&quot;:false,
+        &quot;systemPolicy&quot;:true
+
+    }
+</code></pre> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.getErasureCodingPolicy</p> <h3 id="unset-ec-policy"><a href="#unset-ec-policy" class="header-anchor">#</a> Unset EC Policy</h3> <ul><li><p>Submit a HTTP POST request.</p> <pre><code>curl -i -X POST &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=UNSETECPOLICY
+                         &quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/HDFSErasureCoding.html#Administrative_commands">HDFSErasureCoding</a>.unsetErasureCodingPolicy</p> <h2 id="snapshot-operations"><a href="#snapshot-operations" class="header-anchor">#</a> Snapshot Operations</h2> <h3 id="create-snapshot"><a href="#create-snapshot" class="header-anchor">#</a> Create Snapshot</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=CREATESNAPSHOT[&amp;snapshotname=&lt;SNAPSHOTNAME&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with a Path JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;Path&quot;: &quot;/user/username/.snapshot/s1&quot;}
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.createSnapshot</p> <h3 id="delete-snapshot"><a href="#delete-snapshot" class="header-anchor">#</a> Delete Snapshot</h3> <ul><li><p>Submit a HTTP DELETE request.</p> <pre><code>curl -i -X DELETE &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=DELETESNAPSHOT&amp;snapshotname=&lt;SNAPSHOTNAME&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.deleteSnapshot</p> <h3 id="rename-snapshot"><a href="#rename-snapshot" class="header-anchor">#</a> Rename Snapshot</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=RENAMESNAPSHOT
+               &amp;oldsnapshotname=&lt;SNAPSHOTNAME&gt;&amp;snapshotname=&lt;SNAPSHOTNAME&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.renameSnapshot</p> <h3 id="get-snapshot-diff"><a href="#get-snapshot-diff" class="header-anchor">#</a> Get Snapshot Diff</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i GET &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/&lt;PATH&gt;?op=GETSNAPSHOTDIFF
+               &amp;oldsnapshotname=&lt;SNAPSHOTNAME&gt;&amp;snapshotname=&lt;SNAPSHOTNAME&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a SnapshotDiffReport JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;SnapshotDiffReport&quot;:{&quot;diffList&quot;:[],&quot;fromSnapshot&quot;:&quot;s3&quot;,&quot;snapshotRoot&quot;:&quot;/foo&quot;,&quot;toSnapshot&quot;:&quot;s4&quot;}}
+</code></pre> <h3 id="get-snapshottable-directory-list"><a href="#get-snapshottable-directory-list" class="header-anchor">#</a> Get Snapshottable Directory List</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i GET &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?user.name=&lt;USER&gt;&amp;op=GETSNAPSHOTTABLEDIRECTORYLIST&quot;
+</code></pre></li></ul> <p>If the USER is not the hdfs super user, the call lists only the snapshottable directories owned by the user. If the USER is the hdfs super user, the call lists all the snapshottable directories. The client receives a response with a SnapshottableDirectoryList JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+    &quot;SnapshottableDirectoryList&quot;:
+    [
+        {
+          &quot;dirStatus&quot;:
+            {
+                &quot;accessTime&quot;:0,
+                &quot;blockSize&quot;:0,
+                &quot;childrenNum&quot;:0,
+                &quot;fileId&quot;:16386,
+                &quot;group&quot;:&quot;hadoop&quot;,
+                &quot;length&quot;:0,
+                &quot;modificationTime&quot;:1520761889225,
+                &quot;owner&quot;:&quot;random&quot;,
+                &quot;pathSuffix&quot;:&quot;bar&quot;,
+                &quot;permission&quot;:&quot;755&quot;,
+                &quot;replication&quot;:0,
+                &quot;storagePolicy&quot;:0,
+                &quot;type&quot;:&quot;DIRECTORY&quot;
+            },
+          &quot;parentFullPath&quot;:&quot;/&quot;,
+          &quot;snapshotNumber&quot;:0,
+          &quot;snapshotQuota&quot;:65536
+        }
+    ]
+}
+</code></pre> <h2 id="delegation-token-operations"><a href="#delegation-token-operations" class="header-anchor">#</a> Delegation Token Operations</h2> <h3 id="get-delegation-token"><a href="#get-delegation-token" class="header-anchor">#</a> Get Delegation Token</h3> <ul><li><p>Submit a HTTP GET request.</p> <pre><code>curl -i &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?op=GETDELEGATIONTOKEN
+        [&amp;renewer=&lt;USER&gt;][&amp;service=&lt;SERVICE&gt;][&amp;kind=&lt;KIND&gt;]&quot;
+</code></pre></li></ul> <p>The client receives a response with a Token JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;Token&quot;:
+  {
+    &quot;urlString&quot;: &quot;JQAIaG9y...&quot;
+  }
+}
+</code></pre> <p>See also: renewer, <a href="/docs/api/org/apache/hadoop/fs/FileSystem.html">FileSystem</a>.getDelegationToken, kind, service</p> <h3 id="renew-delegation-token"><a href="#renew-delegation-token" class="header-anchor">#</a> Renew Delegation Token</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?op=RENEWDELEGATIONTOKEN&amp;token=&lt;TOKEN&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with a long JSON object:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{&quot;long&quot;: 1320962673997}           //the new expiration time
+</code></pre> <p>See also: token, <a href="/docs/api/org/apache/hadoop/security/token/delegation/web/DelegationTokenAuthenticator.html">DelegationTokenAuthenticator</a>.renewDelegationToken</p> <h3 id="cancel-delegation-token"><a href="#cancel-delegation-token" class="header-anchor">#</a> Cancel Delegation Token</h3> <ul><li><p>Submit a HTTP PUT request.</p> <pre><code>curl -i -X PUT &quot;http://&lt;HOST&gt;:&lt;PORT&gt;/webhdfs/v1/?op=CANCELDELEGATIONTOKEN&amp;token=&lt;TOKEN&gt;&quot;
+</code></pre></li></ul> <p>The client receives a response with zero content length:</p> <pre><code>    HTTP/1.1 200 OK
+Content-Length: 0
+</code></pre> <p>See also: token, <a href="/docs/api/org/apache/hadoop/security/token/delegation/web/DelegationTokenAuthenticator.html">DelegationTokenAuthenticator</a>.cancelDelegationToken</p> <h2 id="error-responses"><a href="#error-responses" class="header-anchor">#</a> Error Responses</h2> <p>When an operation fails, the server may throw an exception. The JSON schema of error responses is defined in RemoteException JSON Schema. The table below shows the mapping from exceptions to HTTP response codes.</p> <h3 id="http-response-codes"><a href="#http-response-codes" class="header-anchor">#</a> HTTP Response Codes</h3> <table><thead><tr><th>Exceptions</th> <th>HTTP Response Codes</th></tr></thead> <tbody><tr><td>IllegalArgumentException</td> <td>400 Bad Request</td></tr> <tr><td>UnsupportedOperationException</td> <td>400 Bad Request</td></tr> <tr><td>SecurityException</td> <td>401 Unauthorized</td></tr> <tr><td>IOException</td> <td>403 Forbidden</td></tr> <tr><td>FileNotFoundException</td> <td>404 Not Found</td></tr> <tr><td>RuntimeException</td> <td>500 Internal Server Error</td></tr></tbody></table> <p>Below are examples of exception responses.</p> <h4 id="illegal-argument-exception"><a href="#illegal-argument-exception" class="header-anchor">#</a> Illegal Argument Exception</h4> <pre><code>HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;RemoteException&quot;:
+  {
+    &quot;exception&quot;    : &quot;IllegalArgumentException&quot;,
+    &quot;javaClassName&quot;: &quot;java.lang.IllegalArgumentException&quot;,
+    &quot;message&quot;      : &quot;Invalid value for webhdfs parameter \&quot;permission\&quot;: ...&quot;
+  }
+}
+</code></pre> <h4 id="security-exception"><a href="#security-exception" class="header-anchor">#</a> Security Exception</h4> <pre><code>HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;RemoteException&quot;:
+  {
+    &quot;exception&quot;    : &quot;SecurityException&quot;,
+    &quot;javaClassName&quot;: &quot;java.lang.SecurityException&quot;,
+    &quot;message&quot;      : &quot;Failed to obtain user group information: ...&quot;
+  }
+}
+</code></pre> <h4 id="access-control-exception"><a href="#access-control-exception" class="header-anchor">#</a> Access Control Exception</h4> <pre><code>HTTP/1.1 403 Forbidden
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;RemoteException&quot;:
+  {
+    &quot;exception&quot;    : &quot;AccessControlException&quot;,
+    &quot;javaClassName&quot;: &quot;org.apache.hadoop.security.AccessControlException&quot;,
+    &quot;message&quot;      : &quot;Permission denied: ...&quot;
+  }
+}
+</code></pre> <h4 id="file-not-found-exception"><a href="#file-not-found-exception" class="header-anchor">#</a> File Not Found Exception</h4> <pre><code>HTTP/1.1 404 Not Found
+Content-Type: application/json
+Transfer-Encoding: chunked
+
+{
+  &quot;RemoteException&quot;:
+  {
+    &quot;exception&quot;    : &quot;FileNotFoundException&quot;,
+    &quot;javaClassName&quot;: &quot;java.io.FileNotFoundException&quot;,
+    &quot;message&quot;      : &quot;File does not exist: /foo/a.patch&quot;
+  }
+}
+</code></pre> <h2 id="json-schemas"><a href="#json-schemas" class="header-anchor">#</a> JSON Schemas</h2> <p>All operations, except for OPEN, either return a zero-length response or a JSON response. For OPEN, the response is an octet-stream. The JSON schemas are shown below. See <a href="http://tools.ietf.org/id/draft-zyp-json-schema-03.html" target="_blank" rel="noopener noreferrer">draft-zyp-json-schema-03<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for the syntax definitions of the JSON schemas.</p> <p>Note that the default value of <a href="http://tools.ietf.org/id/draft-zyp-json-schema-03.html#additionalProperties" target="_blank" rel="noopener noreferrer">additionalProperties<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> is an empty schema which allows any value for additional properties. Therefore, all WebHDFS JSON responses allow any additional property. However, if additional properties are included in the responses, they are considered as optional properties in order to maintain compatibility.</p> <h3 id="acl-status-json-schema"><a href="#acl-status-json-schema" class="header-anchor">#</a> ACL Status JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;AclStatus&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;AclStatus&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;entries&quot;:
+        {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;:
+          {
+            &quot;description&quot;: &quot;ACL entry.&quot;,
+            &quot;type&quot;: &quot;string&quot;
+          }
+        },
+        &quot;group&quot;:
+        {
+          &quot;description&quot;: &quot;The group owner.&quot;,
+          &quot;type&quot;       : &quot;string&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;owner&quot;:
+        {
+          &quot;description&quot;: &quot;The user who is the owner.&quot;,
+          &quot;type&quot;       : &quot;string&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;stickyBit&quot;:
+        {
+          &quot;description&quot;: &quot;True if the sticky bit is on.&quot;,
+          &quot;type&quot;       : &quot;boolean&quot;,
+          &quot;required&quot;   : true
+        }
+      }
+    }
+  }
+}
+</code></pre> <h3 id="xattrs-json-schema"><a href="#xattrs-json-schema" class="header-anchor">#</a> XAttrs JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;XAttrs&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;XAttrs&quot;:
+    {
+      &quot;type&quot;      : &quot;array&quot;,
+      &quot;items&quot;:
+      {
+        &quot;type&quot;    : &quot;object&quot;,
+        &quot;properties&quot;:
+        {
+          &quot;name&quot;:
+          {
+            &quot;description&quot;: &quot;XAttr name.&quot;,
+            &quot;type&quot;       : &quot;string&quot;,
+            &quot;required&quot;   : true
+          },
+          &quot;value&quot;:
+          {
+            &quot;description&quot;: &quot;XAttr value.&quot;,
+            &quot;type&quot;       : &quot;string&quot;
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre> <h3 id="xattrnames-json-schema"><a href="#xattrnames-json-schema" class="header-anchor">#</a> XAttrNames JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;XAttrNames&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;XAttrNames&quot;:
+    {
+      &quot;description&quot;: &quot;XAttr names.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    }
+  }
+}
+</code></pre> <h3 id="boolean-json-schema"><a href="#boolean-json-schema" class="header-anchor">#</a> Boolean JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;boolean&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;boolean&quot;:
+    {
+      &quot;description&quot;: &quot;A boolean value&quot;,
+      &quot;type&quot;       : &quot;boolean&quot;,
+      &quot;required&quot;   : true
+    }
+  }
+}
+</code></pre> <p>See also: MKDIRS, RENAME, DELETE, SETREPLICATION</p> <h3 id="contentsummary-json-schema"><a href="#contentsummary-json-schema" class="header-anchor">#</a> ContentSummary JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;ContentSummary&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;ContentSummary&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;directoryCount&quot;:
+        {
+          &quot;description&quot;: &quot;The number of directories.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;fileCount&quot;:
+        {
+          &quot;description&quot;: &quot;The number of files.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;length&quot;:
+        {
+          &quot;description&quot;: &quot;The number of bytes used by the content.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;quota&quot;:
+        {
+          &quot;description&quot;: &quot;The namespace quota of this directory.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;spaceConsumed&quot;:
+        {
+          &quot;description&quot;: &quot;The disk space consumed by the content.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;spaceQuota&quot;:
+        {
+          &quot;description&quot;: &quot;The disk space quota.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;typeQuota&quot;:
+        {
+          &quot;type&quot;      : &quot;object&quot;,
+          &quot;properties&quot;:
+          {
+            &quot;ARCHIVE&quot;:
+            {
+              &quot;type&quot;      : &quot;object&quot;,
+              &quot;properties&quot;:
+              {
+                &quot;consumed&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type space consumed.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                },
+                &quot;quota&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type quota.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                }
+              }
+            },
+            &quot;DISK&quot;:
+            {
+              &quot;type&quot;      : &quot;object&quot;,
+              &quot;properties&quot;:
+              {
+                &quot;consumed&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type space consumed.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                },
+                &quot;quota&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type quota.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                }
+              }
+            },
+            &quot;SSD&quot;:
+            {
+              &quot;type&quot;      : &quot;object&quot;,
+              &quot;properties&quot;:
+              {
+                &quot;consumed&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type space consumed.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                },
+                &quot;quota&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type quota.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre> <p>See also: GETCONTENTSUMMARY</p> <h3 id="quotausage-json-schema"><a href="#quotausage-json-schema" class="header-anchor">#</a> QuotaUsage JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;QuotaUsage&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;QuotaUsage&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;fileAndDirectoryCount&quot;:
+        {
+          &quot;description&quot;: &quot;The number of files and directories.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;quota&quot;:
+        {
+          &quot;description&quot;: &quot;The namespace quota of this directory.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;spaceConsumed&quot;:
+        {
+          &quot;description&quot;: &quot;The disk space consumed by the content.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;spaceQuota&quot;:
+        {
+          &quot;description&quot;: &quot;The disk space quota.&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;typeQuota&quot;:
+        {
+          &quot;type&quot;      : &quot;object&quot;,
+          &quot;properties&quot;:
+          {
+            &quot;ARCHIVE&quot;:
+            {
+              &quot;type&quot;      : &quot;object&quot;,
+              &quot;properties&quot;:
+              {
+                &quot;consumed&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type space consumed.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                },
+                &quot;quota&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type quota.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                }
+              }
+            },
+            &quot;DISK&quot;:
+            {
+              &quot;type&quot;      : &quot;object&quot;,
+              &quot;properties&quot;:
+              {
+                &quot;consumed&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type space consumed.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                },
+                &quot;quota&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type quota.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                }
+              }
+            },
+            &quot;SSD&quot;:
+            {
+              &quot;type&quot;      : &quot;object&quot;,
+              &quot;properties&quot;:
+              {
+                &quot;consumed&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type space consumed.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                },
+                &quot;quota&quot;:
+                {
+                  &quot;description&quot;: &quot;The storage type quota.&quot;,
+                  &quot;type&quot;       : &quot;integer&quot;,
+                  &quot;required&quot;   : true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre> <p>See also: GETQUOTAUSAGE</p> <h3 id="filechecksum-json-schema"><a href="#filechecksum-json-schema" class="header-anchor">#</a> FileChecksum JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;FileChecksum&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;FileChecksum&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;algorithm&quot;:
+        {
+          &quot;description&quot;: &quot;The name of the checksum algorithm.&quot;,
+          &quot;type&quot;       : &quot;string&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;bytes&quot;:
+        {
+          &quot;description&quot;: &quot;The byte sequence of the checksum in hexadecimal.&quot;,
+          &quot;type&quot;       : &quot;string&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;length&quot;:
+        {
+          &quot;description&quot;: &quot;The length of the bytes (not the length of the string).&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        }
+      }
+    }
+  }
+}
+</code></pre> <h3 id="filestatus-json-schema"><a href="#filestatus-json-schema" class="header-anchor">#</a> FileStatus JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;FileStatus&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;FileStatus&quot;: fileStatusProperties      //See FileStatus Properties
+  }
+}
+</code></pre> <p>See also: FileStatus Properties, GETFILESTATUS, <a href="/docs/api/org/apache/hadoop/fs/FileStatus.html">FileStatus</a></p> <h4 id="filestatus-properties"><a href="#filestatus-properties" class="header-anchor">#</a> FileStatus Properties</h4> <p>JavaScript syntax is used to define fileStatusProperties so that it can be referred in both FileStatus and FileStatuses JSON schemas.</p> <pre><code>var fileStatusProperties =
+{
+  &quot;type&quot;      : &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;accessTime&quot;:
+    {
+      &quot;description&quot;: &quot;The access time.&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;blockSize&quot;:
+    {
+      &quot;description&quot;: &quot;The block size of a file.&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;group&quot;:
+    {
+      &quot;description&quot;: &quot;The group owner.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;length&quot;:
+    {
+      &quot;description&quot;: &quot;The number of bytes in a file.&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;modificationTime&quot;:
+    {
+      &quot;description&quot;: &quot;The modification time.&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;owner&quot;:
+    {
+      &quot;description&quot;: &quot;The user who is the owner.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;pathSuffix&quot;:
+    {
+      &quot;description&quot;: &quot;The path suffix.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;permission&quot;:
+    {
+      &quot;description&quot;: &quot;The permission represented as a octal string.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;replication&quot;:
+    {
+      &quot;description&quot;: &quot;The number of replication of a file.&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    },
+   &quot;symlink&quot;:                                         //an optional property
+    {
+      &quot;description&quot;: &quot;The link target of a symlink.&quot;,
+      &quot;type&quot;       : &quot;string&quot;
+    },
+   &quot;type&quot;:
+    {
+      &quot;description&quot;: &quot;The type of the path object.&quot;,
+      &quot;enum&quot;       : [&quot;FILE&quot;, &quot;DIRECTORY&quot;, &quot;SYMLINK&quot;],
+      &quot;required&quot;   : true
+    }
+  }
+};
+</code></pre> <h3 id="filestatuses-json-schema"><a href="#filestatuses-json-schema" class="header-anchor">#</a> FileStatuses JSON Schema</h3> <p>A FileStatuses JSON object represents an array of FileStatus JSON objects.</p> <pre><code>{
+  &quot;name&quot;      : &quot;FileStatuses&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;FileStatuses&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;FileStatus&quot;:
+        {
+          &quot;description&quot;: &quot;An array of FileStatus&quot;,
+          &quot;type&quot;       : &quot;array&quot;,
+          &quot;items&quot;      : fileStatusProperties      //See FileStatus Properties
+        }
+      }
+    }
+  }
+}
+</code></pre> <p>See also: FileStatus Properties, LISTSTATUS, <a href="/docs/api/org/apache/hadoop/fs/FileStatus.html">FileStatus</a></p> <h3 id="directorylisting-json-schema"><a href="#directorylisting-json-schema" class="header-anchor">#</a> DirectoryListing JSON Schema</h3> <p>A DirectoryListing JSON object represents a batch of directory entries while iteratively listing a directory. It contains a FileStatuses JSON object as well as iteration information.</p> <pre><code>{
+  &quot;name&quot;      : &quot;DirectoryListing&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;DirectoryListing&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;partialListing&quot;:
+        {
+          &quot;description&quot;: &quot;A partial directory listing&quot;,
+          &quot;type&quot;       : &quot;object&quot;, // A FileStatuses object
+          &quot;required&quot;   : true
+        },
+        &quot;remainingEntries&quot;:
+        {
+          &quot;description&quot;: &quot;Number of remaining entries&quot;,
+          &quot;type&quot;       : &quot;integer&quot;,
+          &quot;required&quot;   : true
+        }
+      }
+    }
+  }
+
+}
+</code></pre> <p>See also: FileStatuses JSON Schema, LISTSTATUS_BATCH, <a href="/docs/api/org/apache/hadoop/fs/FileStatus.html">FileStatus</a></p> <h3 id="long-json-schema"><a href="#long-json-schema" class="header-anchor">#</a> Long JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;long&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;long&quot;:
+    {
+      &quot;description&quot;: &quot;A long integer value&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    }
+  }
+}
+</code></pre> <p>See also: RENEWDELEGATIONTOKEN,</p> <h3 id="path-json-schema"><a href="#path-json-schema" class="header-anchor">#</a> Path JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;Path&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;Path&quot;:
+    {
+      &quot;description&quot;: &quot;The string representation a Path.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    }
+  }
+}
+</code></pre> <p>See also: GETHOMEDIRECTORY, <a href="/docs/api/org/apache/hadoop/fs/Path.html">Path</a></p> <h3 id="remoteexception-json-schema"><a href="#remoteexception-json-schema" class="header-anchor">#</a> RemoteException JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;RemoteException&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;RemoteException&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;exception&quot;:
+        {
+          &quot;description&quot;: &quot;Name of the exception&quot;,
+          &quot;type&quot;       : &quot;string&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;message&quot;:
+        {
+          &quot;description&quot;: &quot;Exception message&quot;,
+          &quot;type&quot;       : &quot;string&quot;,
+          &quot;required&quot;   : true
+        },
+        &quot;javaClassName&quot;:                                     //an optional property
+        {
+          &quot;description&quot;: &quot;Java class name of the exception&quot;,
+          &quot;type&quot;       : &quot;string&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre> <p>See also: Error Responses</p> <h3 id="token-json-schema"><a href="#token-json-schema" class="header-anchor">#</a> Token JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;Token&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;Token&quot;: tokenProperties      //See Token Properties
+  }
+}
+</code></pre> <p>See also: Token Properties, GETDELEGATIONTOKEN, the note in Delegation.</p> <h4 id="token-properties"><a href="#token-properties" class="header-anchor">#</a> Token Properties</h4> <p>JavaScript syntax is used to define tokenProperties so that it can be referred in Token JSON schema.</p> <pre><code>var tokenProperties =
+{
+  &quot;type&quot;      : &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;urlString&quot;:
+    {
+      &quot;description&quot;: &quot;A delegation token encoded as a URL safe string.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    }
+  }
+}
+</code></pre> <p>See also: Token Properties, the note in Delegation.</p> <h3 id="blockstoragepolicy-json-schema"><a href="#blockstoragepolicy-json-schema" class="header-anchor">#</a> BlockStoragePolicy JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;BlockStoragePolicy&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;BlockStoragePolicy&quot;: blockStoragePolicyProperties      //See BlockStoragePolicy Properties
+  }
+}
+</code></pre> <p>See also: BlockStoragePolicy Properties, GETSTORAGEPOLICY</p> <h4 id="blockstoragepolicy-properties"><a href="#blockstoragepolicy-properties" class="header-anchor">#</a> BlockStoragePolicy Properties</h4> <p>JavaScript syntax is used to define blockStoragePolicyProperties so that it can be referred in both BlockStoragePolicy and BlockStoragePolicies JSON schemas.</p> <pre><code>var blockStoragePolicyProperties =
+{
+  &quot;type&quot;      : &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;id&quot;:
+    {
+      &quot;description&quot;: &quot;Policy ID.&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;name&quot;:
+    {
+      &quot;description&quot;: &quot;Policy name.&quot;,
+      &quot;type&quot;       : &quot;string&quot;,
+      &quot;required&quot;   : true
+    },
+    &quot;storageTypes&quot;:
+    {
+      &quot;description&quot;: &quot;An array of storage types for block placement.&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : true
+      &quot;items&quot;      :
+      {
+        &quot;type&quot;: &quot;string&quot;
+      }
+    },
+    &quot;replicationFallbacks&quot;:
+    {
+      &quot;description&quot;: &quot;An array of fallback storage types for replication.&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : true
+      &quot;items&quot;      :
+      {
+        &quot;type&quot;: &quot;string&quot;
+      }
+    },
+    &quot;creationFallbacks&quot;:
+    {
+      &quot;description&quot;: &quot;An array of fallback storage types for file creation.&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : true
+      &quot;items&quot;      :
+      {
+       &quot;type&quot;: &quot;string&quot;
+      }
+    },
+    &quot;copyOnCreateFile&quot;:
+    {
+      &quot;description&quot;: &quot;If set then the policy cannot be changed after file creation.&quot;,
+      &quot;type&quot;       : &quot;boolean&quot;,
+      &quot;required&quot;   : true
+    }
+  }
+};
+</code></pre> <h3 id="ecpolicy-json-schema"><a href="#ecpolicy-json-schema" class="header-anchor">#</a> ECPolicy JSON Schema</h3> <pre><code>{
+  &quot;name&quot;: &quot;RS-10-4-1024k&quot;,
+  schema {
+           &quot;codecName&quot;: &quot;rs&quot;,
+           &quot;numDataUnits&quot;: 10,
+           &quot;numParityUnits&quot;: 4,
+           &quot;extraOptions&quot;: {}
+          }
+  &quot;cellSize&quot;: 1048576,
+  &quot;id&quot;:5,
+  &quot;codecname&quot;:&quot;rs&quot;,
+  &quot;numDataUnits&quot;: 10,
+  &quot;numParityUnits&quot;: 4,
+  &quot;replicationpolicy&quot;:false,
+  &quot;systemPolicy&quot;:true
+}
+</code></pre> <h3 id="blockstoragepolicies-json-schema"><a href="#blockstoragepolicies-json-schema" class="header-anchor">#</a> BlockStoragePolicies JSON Schema</h3> <p>A BlockStoragePolicies JSON object represents an array of BlockStoragePolicy JSON objects.</p> <pre><code>{
+  &quot;name&quot;      : &quot;BlockStoragePolicies&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;BlockStoragePolicies&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;BlockStoragePolicy&quot;:
+        {
+          &quot;description&quot;: &quot;An array of BlockStoragePolicy&quot;,
+          &quot;type&quot;       : &quot;array&quot;,
+          &quot;items&quot;      : blockStoragePolicyProperties      //See BlockStoragePolicy Properties
+        }
+      }
+    }
+  }
+}
+</code></pre> <h3 id="snapshotdiffreport-json-schema"><a href="#snapshotdiffreport-json-schema" class="header-anchor">#</a> SnapshotDiffReport JSON Schema</h3> <pre><code>{
+  &quot;name&quot;: &quot;SnapshotDiffReport&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;SnapshotDiffReport&quot;:
+    {
+      &quot;type&quot;        : &quot;object&quot;,
+      &quot;properties&quot;  :
+      {
+        &quot;diffList&quot;:
+        {
+          &quot;description&quot;: &quot;An array of DiffReportEntry&quot;,
+          &quot;type&quot;        : &quot;array&quot;,
+          &quot;items&quot;       : diffReportEntries,
+          &quot;required&quot;    : true
+        },
+        &quot;fromSnapshot&quot;:
+        {
+          &quot;description&quot;: &quot;Source snapshot&quot;,
+          &quot;type&quot;        : &quot;string&quot;,
+          &quot;required&quot;    : true
+        },
+        &quot;snapshotRoot&quot;:
+        {
+          &quot;description&quot; : &quot;String representation of snapshot root path&quot;,
+          &quot;type&quot;        : &quot;string&quot;,
+          &quot;required&quot;    : true
+        },
+        &quot;toSnapshot&quot;:
+        {
+          &quot;description&quot; : &quot;Destination snapshot&quot;,
+          &quot;type&quot;        : &quot;string&quot;,
+          &quot;required&quot;    : true
+        }
+      }
+    }
+  }
+}
+</code></pre> <h4 id="diffreport-entries"><a href="#diffreport-entries" class="header-anchor">#</a> DiffReport Entries</h4> <p>JavaScript syntax is used to define diffReportEntries so that it can be referred in SnapshotDiffReport JSON schema.</p> <pre><code>var diffReportEntries =
+{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;sourcePath&quot;:
+    {
+      &quot;description&quot; : &quot;Source path name relative to snapshot root&quot;,
+      &quot;type&quot;        : &quot;string&quot;,
+      &quot;required&quot;    : true
+    },
+    &quot;targetPath&quot;:
+    {
+      &quot;description&quot; : &quot;Target path relative to snapshot root used for renames&quot;,
+      &quot;type&quot;        : &quot;string&quot;,
+      &quot;required&quot;    : true
+    },
+    &quot;type&quot;:
+    {
+      &quot;description&quot; : &quot;Type of diff report entry&quot;,
+      &quot;enum&quot;        : [&quot;CREATE&quot;, &quot;MODIFY&quot;, &quot;DELETE&quot;, &quot;RENAME&quot;],
+      &quot;required&quot;    : true
+    }
+  }
+}
+</code></pre> <h3 id="snapshottabledirectorylist-json-schema"><a href="#snapshottabledirectorylist-json-schema" class="header-anchor">#</a> SnapshottableDirectoryList JSON Schema</h3> <pre><code>{
+  &quot;name&quot;: &quot;SnapshottableDirectoryList&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;SnapshottableDirectoryList&quot;:
+    {
+      &quot;description&quot;: &quot;An array of SnapshottableDirectoryStatus&quot;,
+      &quot;type&quot;        : &quot;array&quot;,
+      &quot;items&quot;       : snapshottableDirectoryStatus,
+      &quot;required&quot;    : true
+    }
+  }
+}
+</code></pre> <h4 id="snapshottabledirectorystatus"><a href="#snapshottabledirectorystatus" class="header-anchor">#</a> SnapshottableDirectoryStatus</h4> <p>JavaScript syntax is used to define snapshottableDirectoryStatus so that it can be referred in SnapshottableDirectoryList JSON schema.</p> <pre><code>var snapshottableDirectoryStatus =
+{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;dirStatus&quot;: fileStatusProperties,
+    &quot;parentFullPath&quot;:
+    {
+      &quot;description&quot; : &quot;Full path of the parent of snapshottable directory&quot;,
+      &quot;type&quot;        : &quot;string&quot;,
+      &quot;required&quot;    : true
+    },
+    &quot;snapshotNumber&quot;:
+    {
+      &quot;description&quot; : &quot;Number of snapshots created on the snapshottable directory&quot;,
+      &quot;type&quot;        : &quot;integer&quot;,
+      &quot;required&quot;    : true
+    },
+    &quot;snapshotQuota&quot;:
+    {
+      &quot;description&quot; : &quot;Total number of snapshots allowed on the snapshottable directory&quot;,
+      &quot;type&quot;        : &quot;integer&quot;,
+      &quot;required&quot;    : true
+    }
+  }
+}
+</code></pre> <h3 id="blocklocations-json-schema"><a href="#blocklocations-json-schema" class="header-anchor">#</a> BlockLocations JSON Schema</h3> <p>A BlockLocations JSON object represents an array of BlockLocation JSON objects.</p> <pre><code>{
+  &quot;name&quot;      : &quot;BlockLocations&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;BlockLocations&quot;:
+    {
+      &quot;type&quot;      : &quot;object&quot;,
+      &quot;properties&quot;:
+      {
+        &quot;BlockLocation&quot;:
+        {
+          &quot;description&quot;: &quot;An array of BlockLocation&quot;,
+          &quot;type&quot;       : &quot;array&quot;,
+          &quot;items&quot;      : blockLocationProperties      //See BlockLocation Properties
+        }
+      }
+    }
+  }
+}
+</code></pre> <p>See also BlockLocation Properties, GETFILEBLOCKLOCATIONS, <a href="/docs/api/org/apache/hadoop/fs/BlockLocation.html">BlockLocation</a></p> <h3 id="blocklocation-json-schema"><a href="#blocklocation-json-schema" class="header-anchor">#</a> BlockLocation JSON Schema</h3> <pre><code>{
+  &quot;name&quot;      : &quot;BlockLocation&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;BlockLocation&quot;: blockLocationProperties      //See BlockLocation Properties
+  }
+}
+</code></pre> <p>See also BlockLocation Properties, GETFILEBLOCKLOCATIONS, <a href="/docs/api/org/apache/hadoop/fs/BlockLocation.html">BlockLocation</a></p> <h4 id="blocklocation-properties"><a href="#blocklocation-properties" class="header-anchor">#</a> BlockLocation Properties</h4> <p>JavaScript syntax is used to define blockLocationProperties so that it can be referred in both BlockLocation and BlockLocations JSON schemas.</p> <pre><code>var blockLocationProperties =
+{
+  &quot;type&quot;      : &quot;object&quot;,
+  &quot;properties&quot;:
+  {
+    &quot;cachedHosts&quot;:
+    {
+      &quot;description&quot;: &quot;Datanode hostnames with a cached replica&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : &quot;true&quot;,
+      &quot;items&quot;      :
+      {
+        &quot;description&quot;: &quot;A datanode hostname&quot;,
+        &quot;type&quot;       : &quot;string&quot;
+      }
+    },
+    &quot;corrupt&quot;:
+    {
+      &quot;description&quot;: &quot;True if the block is corrupted&quot;,
+      &quot;type&quot;       : &quot;boolean&quot;,
+      &quot;required&quot;   : &quot;true&quot;
+    },
+    &quot;hosts&quot;:
+    {
+      &quot;description&quot;: &quot;Datanode hostnames store the block&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : &quot;true&quot;,
+      &quot;items&quot;      :
+      {
+        &quot;description&quot;: &quot;A datanode hostname&quot;,
+        &quot;type&quot;       : &quot;string&quot;
+      }
+    },
+    &quot;length&quot;:
+    {
+      &quot;description&quot;: &quot;Length of the block&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : &quot;true&quot;
+    },
+    &quot;names&quot;:
+    {
+      &quot;description&quot;: &quot;Datanode IP:xferPort for accessing the block&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : &quot;true&quot;,
+      &quot;items&quot;      :
+      {
+        &quot;description&quot;: &quot;DatanodeIP:xferPort&quot;,
+        &quot;type&quot;       : &quot;string&quot;
+      }
+    },
+    &quot;offset&quot;:
+    {
+      &quot;description&quot;: &quot;Offset of the block in the file&quot;,
+      &quot;type&quot;       : &quot;integer&quot;,
+      &quot;required&quot;   : &quot;true&quot;
+    },
+    &quot;storageTypes&quot;:
+    {
+      &quot;description&quot;: &quot;Storage type of each replica&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : &quot;true&quot;,
+      &quot;items&quot;      :
+      {
+        &quot;description&quot;: &quot;Storage type&quot;,
+        &quot;enum&quot;       : [&quot;RAM_DISK&quot;, &quot;SSD&quot;, &quot;DISK&quot;, &quot;ARCHIVE&quot;]
+      }
+    },
+    &quot;topologyPaths&quot;:
+    {
+      &quot;description&quot;: &quot;Datanode addresses in network topology&quot;,
+      &quot;type&quot;       : &quot;array&quot;,
+      &quot;required&quot;   : &quot;true&quot;,
+      &quot;items&quot;      :
+      {
+        &quot;description&quot;: &quot;/rack/host:ip&quot;,
+        &quot;type&quot;       : &quot;string&quot;
+      }
+    }
+  }
+};
+</code></pre> <h2 id="http-query-parameter-dictionary"><a href="#http-query-parameter-dictionary" class="header-anchor">#</a> HTTP Query Parameter Dictionary</h2> <h3 id="acl-spec"><a href="#acl-spec" class="header-anchor">#</a> ACL Spec</h3> <table><thead><tr><th>Name</th> <th>aclspec</th></tr></thead> <tbody><tr><td>Description</td> <td>The ACL spec included in ACL modification operations.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>See <a href="/docs/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html">Permissions and HDFS</a>.</td></tr> <tr><td>Syntax</td> <td>See <a href="/docs/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html">Permissions and HDFS</a>.</td></tr></tbody></table> <h3 id="xattr-name"><a href="#xattr-name" class="header-anchor">#</a> XAttr Name</h3> <table><thead><tr><th>Name</th> <th>xattr.name</th></tr></thead> <tbody><tr><td>Description</td> <td>The XAttr name of a file/directory.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>Any string prefixed with user./trusted./system./security..</td></tr> <tr><td>Syntax</td> <td>Any string prefixed with user./trusted./system./security..</td></tr></tbody></table> <h3 id="xattr-value"><a href="#xattr-value" class="header-anchor">#</a> XAttr Value</h3> <table><thead><tr><th>Name</th> <th>xattr.value</th></tr></thead> <tbody><tr><td>Description</td> <td>The XAttr value of a file/directory.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>An encoded value.</td></tr> <tr><td>Syntax</td> <td>Enclosed in double quotes or prefixed with 0x or 0s.</td></tr></tbody></table> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/ExtendedAttributes.html">Extended Attributes</a></p> <h3 id="xattr-set-flag"><a href="#xattr-set-flag" class="header-anchor">#</a> XAttr set flag</h3> <table><thead><tr><th>Name</th> <th>flag</th></tr></thead> <tbody><tr><td>Description</td> <td>The XAttr set flag.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>CREATE,REPLACE.</td></tr> <tr><td>Syntax</td> <td>CREATE,REPLACE.</td></tr></tbody></table> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/ExtendedAttributes.html">Extended Attributes</a></p> <h3 id="xattr-value-encoding"><a href="#xattr-value-encoding" class="header-anchor">#</a> XAttr value encoding</h3> <table><thead><tr><th>Name</th> <th>encoding</th></tr></thead> <tbody><tr><td>Description</td> <td>The XAttr value encoding.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>text</td></tr> <tr><td>Syntax</td> <td>text</td></tr></tbody></table> <p>See also: <a href="/docs/hadoop-project-dist/hadoop-hdfs/ExtendedAttributes.html">Extended Attributes</a></p> <h3 id="access-time"><a href="#access-time" class="header-anchor">#</a> Access Time</h3> <table><thead><tr><th>Name</th> <th>accesstime</th></tr></thead> <tbody><tr><td>Description</td> <td>The access time of a file/directory.</td></tr> <tr><td>Type</td> <td>long</td></tr> <tr><td>Default Value</td> <td>-1 (means keeping it unchanged)</td></tr> <tr><td>Valid Values</td> <td>-1 or a timestamp</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: SETTIMES</p> <h3 id="block-size"><a href="#block-size" class="header-anchor">#</a> Block Size</h3> <table><thead><tr><th>Name</th> <th>blocksize</th></tr></thead> <tbody><tr><td>Description</td> <td>The block size of a file.</td></tr> <tr><td>Type</td> <td>long</td></tr> <tr><td>Default Value</td> <td>Specified in the configuration.</td></tr> <tr><td>Valid Values</td> <td>&gt; 0</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: CREATE</p> <h3 id="buffer-size"><a href="#buffer-size" class="header-anchor">#</a> Buffer Size</h3> <table><thead><tr><th>Name</th> <th>buffersize</th></tr></thead> <tbody><tr><td>Description</td> <td>The size of the buffer used in transferring data.</td></tr> <tr><td>Type</td> <td>int</td></tr> <tr><td>Default Value</td> <td>Specified in the configuration.</td></tr> <tr><td>Valid Values</td> <td>&gt; 0</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: CREATE, APPEND, OPEN</p> <h3 id="create-flag"><a href="#create-flag" class="header-anchor">#</a> Create Flag</h3> <table><thead><tr><th>Name</th> <th>createflag</th></tr></thead> <tbody><tr><td>Description</td> <td>Enum of possible flags to process while creating a file</td></tr> <tr><td>Type</td> <td>enumerated strings</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>Legal combinations of create, overwrite, append and sync_block</td></tr> <tr><td>Syntax</td> <td>See note below</td></tr></tbody></table> <p>The following combinations are not valid: * append,create * create,append,overwrite</p> <p>See also: CREATE</p> <h3 id="create-parent"><a href="#create-parent" class="header-anchor">#</a> Create Parent</h3> <table><thead><tr><th>Name</th> <th>createparent</th></tr></thead> <tbody><tr><td>Description</td> <td>If the parent directories do not exist, should they be created?</td></tr> <tr><td>Type</td> <td>boolean</td></tr> <tr><td>Default Value</td> <td>true</td></tr> <tr><td>Valid Values</td> <td>true, false</td></tr> <tr><td>Syntax</td> <td>true</td></tr></tbody></table> <p>See also: CREATESYMLINK</p> <h3 id="delegation"><a href="#delegation" class="header-anchor">#</a> Delegation</h3> <table><thead><tr><th>Name</th> <th>delegation</th></tr></thead> <tbody><tr><td>Description</td> <td>The delegation token used for authentication.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>An encoded token.</td></tr> <tr><td>Syntax</td> <td>See the note below.</td></tr></tbody></table> <p>Note that delegation tokens are encoded as a URL safe string; see encodeToUrlString() and decodeFromUrlString(String) in org.apache.hadoop.security.token.Token for the details of the encoding.</p> <p>See also: Authentication</p> <h3 id="destination"><a href="#destination" class="header-anchor">#</a> Destination</h3> <table><thead><tr><th>Name</th> <th>destination</th></tr></thead> <tbody><tr><td>Description</td> <td>The destination path.</td></tr> <tr><td>Type</td> <td>Path</td></tr> <tr><td>Default Value</td> <td><empty> (an invalid path)</empty></td></tr> <tr><td>Valid Values</td> <td>An absolute FileSystem path without scheme and authority.</td></tr> <tr><td>Syntax</td> <td>Any path.</td></tr></tbody></table> <p>See also: CREATESYMLINK, RENAME</p> <h3 id="do-as"><a href="#do-as" class="header-anchor">#</a> Do As</h3> <table><thead><tr><th>Name</th> <th>doas</th></tr></thead> <tbody><tr><td>Description</td> <td>Allowing a proxy user to do as another user.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td>null</td></tr> <tr><td>Valid Values</td> <td>Any valid username.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: Proxy Users</p> <h3 id="fs-action"><a href="#fs-action" class="header-anchor">#</a> Fs Action</h3> <table><thead><tr><th>Name</th> <th>fsaction</th></tr></thead> <tbody><tr><td>Description</td> <td>File system operation read/write/execute</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td>null (an invalid value)</td></tr> <tr><td>Valid Values</td> <td>Strings matching regex pattern &quot;[r-][w-][x-] &quot;</td></tr> <tr><td>Syntax</td> <td>&quot;[r-][w-][x-] &quot;</td></tr></tbody></table> <p>See also: CHECKACCESS,</p> <h3 id="group"><a href="#group" class="header-anchor">#</a> Group</h3> <table><thead><tr><th>Name</th> <th>group</th></tr></thead> <tbody><tr><td>Description</td> <td>The name of a group.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty> (means keeping it unchanged)</empty></td></tr> <tr><td>Valid Values</td> <td>Any valid group name.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: SETOWNER</p> <h3 id="length"><a href="#length" class="header-anchor">#</a> Length</h3> <table><thead><tr><th>Name</th> <th>length</th></tr></thead> <tbody><tr><td>Description</td> <td>The number of bytes to be processed.</td></tr> <tr><td>Type</td> <td>long</td></tr> <tr><td>Default Value</td> <td>null (means the entire file)</td></tr> <tr><td>Valid Values</td> <td>&gt;= 0 or null</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: OPEN</p> <h3 id="modification-time"><a href="#modification-time" class="header-anchor">#</a> Modification Time</h3> <table><thead><tr><th>Name</th> <th>modificationtime</th></tr></thead> <tbody><tr><td>Description</td> <td>The modification time of a file/directory.</td></tr> <tr><td>Type</td> <td>long</td></tr> <tr><td>Default Value</td> <td>-1 (means keeping it unchanged)</td></tr> <tr><td>Valid Values</td> <td>-1 or a timestamp</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: SETTIMES</p> <h3 id="new-length"><a href="#new-length" class="header-anchor">#</a> New Length</h3> <table><thead><tr><th>Name</th> <th>newlength</th></tr></thead> <tbody><tr><td>Description</td> <td>The size the file is to be truncated to.</td></tr> <tr><td>Type</td> <td>long</td></tr> <tr><td>Valid Values</td> <td>&gt;= 0</td></tr> <tr><td>Syntax</td> <td>Any long.</td></tr></tbody></table> <h3 id="offset"><a href="#offset" class="header-anchor">#</a> Offset</h3> <table><thead><tr><th>Name</th> <th>offset</th></tr></thead> <tbody><tr><td>Description</td> <td>The starting byte position.</td></tr> <tr><td>Type</td> <td>long</td></tr> <tr><td>Default Value</td> <td>0</td></tr> <tr><td>Valid Values</td> <td>&gt;= 0</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: OPEN</p> <h3 id="old-snapshot-name"><a href="#old-snapshot-name" class="header-anchor">#</a> Old Snapshot Name</h3> <table><thead><tr><th>Name</th> <th>oldsnapshotname</th></tr></thead> <tbody><tr><td>Description</td> <td>The old name of the snapshot to be renamed.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td>null</td></tr> <tr><td>Valid Values</td> <td>An existing snapshot name.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: RENAMESNAPSHOT</p> <h3 id="op"><a href="#op" class="header-anchor">#</a> Op</h3> <table><thead><tr><th>Name</th> <th>op</th></tr></thead> <tbody><tr><td>Description</td> <td>The name of the operation to be executed.</td></tr> <tr><td>Type</td> <td>enum</td></tr> <tr><td>Default Value</td> <td>null (an invalid value)</td></tr> <tr><td>Valid Values</td> <td>Any valid operation name.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: Operations</p> <h3 id="overwrite"><a href="#overwrite" class="header-anchor">#</a> Overwrite</h3> <table><thead><tr><th>Name</th> <th>overwrite</th></tr></thead> <tbody><tr><td>Description</td> <td>If a file already exists, should it be overwritten?</td></tr> <tr><td>Type</td> <td>boolean</td></tr> <tr><td>Default Value</td> <td>false</td></tr> <tr><td>Valid Values</td> <td>true</td></tr> <tr><td>Syntax</td> <td>true</td></tr></tbody></table> <p>See also: CREATE</p> <h3 id="owner"><a href="#owner" class="header-anchor">#</a> Owner</h3> <table><thead><tr><th>Name</th> <th>owner</th></tr></thead> <tbody><tr><td>Description</td> <td>The username who is the owner of a file/directory.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty> (means keeping it unchanged)</empty></td></tr> <tr><td>Valid Values</td> <td>Any valid username.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: SETOWNER</p> <h3 id="permission"><a href="#permission" class="header-anchor">#</a> Permission</h3> <table><thead><tr><th>Name</th> <th>permission</th></tr></thead> <tbody><tr><td>Description</td> <td>The permission of a file/directory.</td></tr> <tr><td>Type</td> <td>Octal</td></tr> <tr><td>Default Value</td> <td>644 for files, 755 for directories</td></tr> <tr><td>Valid Values</td> <td>0 - 1777</td></tr> <tr><td>Syntax</td> <td>Any radix-8 integer (leading zeros may be omitted.)</td></tr></tbody></table> <p>See also: CREATE, MKDIRS, SETPERMISSION</p> <h3 id="recursive"><a href="#recursive" class="header-anchor">#</a> Recursive</h3> <table><thead><tr><th>Name</th> <th>recursive</th></tr></thead> <tbody><tr><td>Description</td> <td>Should the operation act on the content in the subdirectories?</td></tr> <tr><td>Type</td> <td>boolean</td></tr> <tr><td>Default Value</td> <td>false</td></tr> <tr><td>Valid Values</td> <td>true</td></tr> <tr><td>Syntax</td> <td>true</td></tr></tbody></table> <p>See also: RENAME</p> <h3 id="renewer"><a href="#renewer" class="header-anchor">#</a> Renewer</h3> <table><thead><tr><th>Name</th> <th>renewer</th></tr></thead> <tbody><tr><td>Description</td> <td>The username of the renewer of a delegation token.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty> (means the current user)</empty></td></tr> <tr><td>Valid Values</td> <td>Any valid username.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: GETDELEGATIONTOKEN</p> <h3 id="replication"><a href="#replication" class="header-anchor">#</a> Replication</h3> <table><thead><tr><th>Name</th> <th>replication</th></tr></thead> <tbody><tr><td>Description</td> <td>The number of replications of a file.</td></tr> <tr><td>Type</td> <td>short</td></tr> <tr><td>Default Value</td> <td>Specified in the configuration.</td></tr> <tr><td>Valid Values</td> <td>&gt; 0</td></tr> <tr><td>Syntax</td> <td>Any integer.</td></tr></tbody></table> <p>See also: CREATE, SETREPLICATION</p> <h3 id="snapshot-name"><a href="#snapshot-name" class="header-anchor">#</a> Snapshot Name</h3> <table><thead><tr><th>Name</th> <th>snapshotname</th></tr></thead> <tbody><tr><td>Description</td> <td>The name of the snapshot to be created/deleted. Or the new name for snapshot rename.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td>null</td></tr> <tr><td>Valid Values</td> <td>Any valid snapshot name.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: CREATESNAPSHOT, DELETESNAPSHOT, RENAMESNAPSHOT</p> <h3 id="sources"><a href="#sources" class="header-anchor">#</a> Sources</h3> <table><thead><tr><th>Name</th> <th>sources</th></tr></thead> <tbody><tr><td>Description</td> <td>A list of source paths.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>A list of comma seperated absolute FileSystem paths without scheme and authority.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: CONCAT</p> <h3 id="token"><a href="#token" class="header-anchor">#</a> Token</h3> <table><thead><tr><th>Name</th> <th>token</th></tr></thead> <tbody><tr><td>Description</td> <td>The delegation token used for the operation.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>An encoded token.</td></tr> <tr><td>Syntax</td> <td>See the note in Delegation.</td></tr></tbody></table> <p>See also: RENEWDELEGATIONTOKEN, CANCELDELEGATIONTOKEN</p> <h3 id="token-kind"><a href="#token-kind" class="header-anchor">#</a> Token Kind</h3> <table><thead><tr><th>Name</th> <th>kind</th></tr></thead> <tbody><tr><td>Description</td> <td>The kind of the delegation token requested</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty> (Server sets the default kind for the service)</empty></td></tr> <tr><td>Valid Values</td> <td>A string that represents token kind e.g “HDFS_DELEGATION_TOKEN” or “WEBHDFS delegation”</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: GETDELEGATIONTOKEN</p> <h3 id="token-service"><a href="#token-service" class="header-anchor">#</a> Token Service</h3> <table><thead><tr><th>Name</th> <th>service</th></tr></thead> <tbody><tr><td>Description</td> <td>The name of the service where the token is supposed to be used, e.g. ip:port of the namenode</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>ip:port in string format or logical name of the service</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: GETDELEGATIONTOKEN</p> <h3 id="username"><a href="#username" class="header-anchor">#</a> Username</h3> <table><thead><tr><th>Name</th> <th>user.name</th></tr></thead> <tbody><tr><td>Description</td> <td>The authenticated user; see Authentication.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td>null</td></tr> <tr><td>Valid Values</td> <td>Any valid username.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: Authentication</p> <h3 id="noredirect"><a href="#noredirect" class="header-anchor">#</a> NoRedirect</h3> <table><thead><tr><th>Name</th> <th>noredirect</th></tr></thead> <tbody><tr><td>Description</td> <td>Whether the response should return an HTTP 307 redirect or HTTP 200 OK. See Create and Write to a File.</td></tr> <tr><td>Type</td> <td>boolean</td></tr> <tr><td>Default Value</td> <td>false</td></tr> <tr><td>Valid Values</td> <td>true</td></tr> <tr><td>Syntax</td> <td>true</td></tr></tbody></table> <p>See also: Create and Write to a File</p> <h3 id="storage-policy"><a href="#storage-policy" class="header-anchor">#</a> Storage Policy</h3> <table><thead><tr><th>Name</th> <th>storagepolicy</th></tr></thead> <tbody><tr><td>Description</td> <td>The name of the storage policy.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>Any valid storage policy name; see GETALLSTORAGEPOLICY.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: SETSTORAGEPOLICY</p> <h3 id="erasure-coding-policy"><a href="#erasure-coding-policy" class="header-anchor">#</a> Erasure Coding Policy</h3> <table><thead><tr><th>Name</th> <th>ecpolicy</th></tr></thead> <tbody><tr><td>Description</td> <td>The name of the erasure coding policy.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>Any valid erasure coding policy name;</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: ENABLEECPOLICY or DISABLEECPOLICY</p> <h3 id="start-after"><a href="#start-after" class="header-anchor">#</a> Start After</h3> <table><thead><tr><th>Name</th> <th>startAfter</th></tr></thead> <tbody><tr><td>Description</td> <td>The last item returned in the liststatus batch.</td></tr> <tr><td>Type</td> <td>String</td></tr> <tr><td>Default Value</td> <td><empty></empty></td></tr> <tr><td>Valid Values</td> <td>Any valid file/directory name.</td></tr> <tr><td>Syntax</td> <td>Any string.</td></tr></tbody></table> <p>See also: LISTSTATUS_BATCH</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.44e5c4e8.js" defer></script><script src="/assets/js/2.fd33e103.js" defer></script><script src="/assets/js/84.212c8551.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>The YARN Timeline Server | Hadoop中文网</title>
+    <meta name="description" content="Hadoop官方文档中文社区">
+    <link rel="icon" href="/hadoop.jpeg">
+    
+    <link rel="preload" href="/assets/css/0.styles.299736e7.css" as="style"><link rel="preload" href="/assets/js/app.44e5c4e8.js" as="script"><link rel="preload" href="/assets/js/2.fd33e103.js" as="script"><link rel="preload" href="/assets/js/111.531e373d.js" as="script"><link rel="prefetch" href="/assets/js/10.0dbc29ee.js"><link rel="prefetch" href="/assets/js/100.51e7458e.js"><link rel="prefetch" href="/assets/js/101.cab336f3.js"><link rel="prefetch" href="/assets/js/102.d7e40b1a.js"><link rel="prefetch" href="/assets/js/103.3cd23502.js"><link rel="prefetch" href="/assets/js/104.a263cbd3.js"><link rel="prefetch" href="/assets/js/105.1cf856b7.js"><link rel="prefetch" href="/assets/js/106.1bd66c2f.js"><link rel="prefetch" href="/assets/js/107.7acc52af.js"><link rel="prefetch" href="/assets/js/108.096bf626.js"><link rel="prefetch" href="/assets/js/109.91d5ec0d.js"><link rel="prefetch" href="/assets/js/11.84130fe4.js"><link rel="prefetch" href="/assets/js/110.602bc28b.js"><link rel="prefetch" href="/assets/js/112.dcdb6f77.js"><link rel="prefetch" href="/assets/js/113.7519fa7c.js"><link rel="prefetch" href="/assets/js/114.97ce2cfb.js"><link rel="prefetch" href="/assets/js/115.719819cf.js"><link rel="prefetch" href="/assets/js/116.606be43b.js"><link rel="prefetch" href="/assets/js/117.5f1db751.js"><link rel="prefetch" href="/assets/js/118.4c8b3331.js"><link rel="prefetch" href="/assets/js/119.756df93e.js"><link rel="prefetch" href="/assets/js/12.a85df2ad.js"><link rel="prefetch" href="/assets/js/120.9735cc8b.js"><link rel="prefetch" href="/assets/js/121.de0f88c2.js"><link rel="prefetch" href="/assets/js/122.68c84b42.js"><link rel="prefetch" href="/assets/js/123.26f2d157.js"><link rel="prefetch" href="/assets/js/124.b8bb5eac.js"><link rel="prefetch" href="/assets/js/125.d3748b6f.js"><link rel="prefetch" href="/assets/js/126.74a59909.js"><link rel="prefetch" href="/assets/js/127.e75ea051.js"><link rel="prefetch" href="/assets/js/128.86691d41.js"><link rel="prefetch" href="/assets/js/129.1b73844b.js"><link rel="prefetch" href="/assets/js/13.5cc92b07.js"><link rel="prefetch" href="/assets/js/14.23af424b.js"><link rel="prefetch" href="/assets/js/15.d44d7e96.js"><link rel="prefetch" href="/assets/js/16.9433ad8d.js"><link rel="prefetch" href="/assets/js/17.e88b2671.js"><link rel="prefetch" href="/assets/js/18.621a61a9.js"><link rel="prefetch" href="/assets/js/19.c2269943.js"><link rel="prefetch" href="/assets/js/20.97a13073.js"><link rel="prefetch" href="/assets/js/21.cfddb2e0.js"><link rel="prefetch" href="/assets/js/22.3fc2e173.js"><link rel="prefetch" href="/assets/js/23.b44f9aaa.js"><link rel="prefetch" href="/assets/js/24.5118c903.js"><link rel="prefetch" href="/assets/js/25.d075e5d7.js"><link rel="prefetch" href="/assets/js/26.773f2460.js"><link rel="prefetch" href="/assets/js/27.d0e0d308.js"><link rel="prefetch" href="/assets/js/28.bba4c1c3.js"><link rel="prefetch" href="/assets/js/29.0d309c43.js"><link rel="prefetch" href="/assets/js/3.df8ab865.js"><link rel="prefetch" href="/assets/js/30.dc22d7ad.js"><link rel="prefetch" href="/assets/js/31.f4f5b282.js"><link rel="prefetch" href="/assets/js/32.126829f0.js"><link rel="prefetch" href="/assets/js/33.b7210392.js"><link rel="prefetch" href="/assets/js/34.808d7f11.js"><link rel="prefetch" href="/assets/js/35.92cc0670.js"><link rel="prefetch" href="/assets/js/36.525eca62.js"><link rel="prefetch" href="/assets/js/37.085ca99e.js"><link rel="prefetch" href="/assets/js/38.bd6ba530.js"><link rel="prefetch" href="/assets/js/39.bdcf0246.js"><link rel="prefetch" href="/assets/js/4.03a382ed.js"><link rel="prefetch" href="/assets/js/40.0a881a26.js"><link rel="prefetch" href="/assets/js/41.e2d38f86.js"><link rel="prefetch" href="/assets/js/42.d3be59ab.js"><link rel="prefetch" href="/assets/js/43.861403a7.js"><link rel="prefetch" href="/assets/js/44.64ea788c.js"><link rel="prefetch" href="/assets/js/45.586e01c2.js"><link rel="prefetch" href="/assets/js/46.4e18b7fe.js"><link rel="prefetch" href="/assets/js/47.c1dba008.js"><link rel="prefetch" href="/assets/js/48.da57593b.js"><link rel="prefetch" href="/assets/js/49.8e699822.js"><link rel="prefetch" href="/assets/js/5.21b79be3.js"><link rel="prefetch" href="/assets/js/50.697ac881.js"><link rel="prefetch" href="/assets/js/51.6c32c16e.js"><link rel="prefetch" href="/assets/js/52.d137da31.js"><link rel="prefetch" href="/assets/js/53.22caaa9a.js"><link rel="prefetch" href="/assets/js/54.7f1d1532.js"><link rel="prefetch" href="/assets/js/55.40dbbf5b.js"><link rel="prefetch" href="/assets/js/56.04c24edc.js"><link rel="prefetch" href="/assets/js/57.b15918db.js"><link rel="prefetch" href="/assets/js/58.b3eb784b.js"><link rel="prefetch" href="/assets/js/59.0d462dd8.js"><link rel="prefetch" href="/assets/js/6.a2711138.js"><link rel="prefetch" href="/assets/js/60.ae65015b.js"><link rel="prefetch" href="/assets/js/61.9b15da8f.js"><link rel="prefetch" href="/assets/js/62.ca728b66.js"><link rel="prefetch" href="/assets/js/63.312b3bdd.js"><link rel="prefetch" href="/assets/js/64.56be4886.js"><link rel="prefetch" href="/assets/js/65.dff3c3a3.js"><link rel="prefetch" href="/assets/js/66.95dfff51.js"><link rel="prefetch" href="/assets/js/67.17e7a9be.js"><link rel="prefetch" href="/assets/js/68.e3b5c05a.js"><link rel="prefetch" href="/assets/js/69.9ab8c7f8.js"><link rel="prefetch" href="/assets/js/7.e9473145.js"><link rel="prefetch" href="/assets/js/70.8d72690b.js"><link rel="prefetch" href="/assets/js/71.3c25cf04.js"><link rel="prefetch" href="/assets/js/72.02b02d8d.js"><link rel="prefetch" href="/assets/js/73.2a8d2681.js"><link rel="prefetch" href="/assets/js/74.c577aba5.js"><link rel="prefetch" href="/assets/js/75.7d2617b0.js"><link rel="prefetch" href="/assets/js/76.97ad371e.js"><link rel="prefetch" href="/assets/js/77.4495b015.js"><link rel="prefetch" href="/assets/js/78.c7510b35.js"><link rel="prefetch" href="/assets/js/79.dc2b4ca2.js"><link rel="prefetch" href="/assets/js/8.fc1e2b26.js"><link rel="prefetch" href="/assets/js/80.454a982e.js"><link rel="prefetch" href="/assets/js/81.eba66eb5.js"><link rel="prefetch" href="/assets/js/82.1f34b986.js"><link rel="prefetch" href="/assets/js/83.a15e7917.js"><link rel="prefetch" href="/assets/js/84.212c8551.js"><link rel="prefetch" href="/assets/js/85.c077f397.js"><link rel="prefetch" href="/assets/js/86.70192242.js"><link rel="prefetch" href="/assets/js/87.e53f7254.js"><link rel="prefetch" href="/assets/js/88.d2f28869.js"><link rel="prefetch" href="/assets/js/89.9b4c13ce.js"><link rel="prefetch" href="/assets/js/9.a7fc3cc9.js"><link rel="prefetch" href="/assets/js/90.af82565a.js"><link rel="prefetch" href="/assets/js/91.153dc863.js"><link rel="prefetch" href="/assets/js/92.ea32e690.js"><link rel="prefetch" href="/assets/js/93.4c656124.js"><link rel="prefetch" href="/assets/js/94.b2283b24.js"><link rel="prefetch" href="/assets/js/95.4ad17bba.js"><link rel="prefetch" href="/assets/js/96.4c0c4821.js"><link rel="prefetch" href="/assets/js/97.14f25834.js"><link rel="prefetch" href="/assets/js/98.92c9fd2d.js"><link rel="prefetch" href="/assets/js/99.ef340791.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.299736e7.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Hadoop中文网</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  下载安装
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/docs/" class="nav-link router-link-active">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言支持" class="dropdown-title"><span class="title">语言支持</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/ch.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/language/en.html" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  下载安装
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="/docs/" class="nav-link router-link-active">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言支持" class="dropdown-title"><span class="title">语言支持</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/ch.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/language/en.html" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>The YARN Timeline Server</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#overview" class="sidebar-link">Overview</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#introduction" class="sidebar-link">Introduction</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#current-status-and-future-plans" class="sidebar-link">Current Status and Future Plans</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#timeline-structure" class="sidebar-link">Timeline Structure</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#deployment" class="sidebar-link">Deployment</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#configurations" class="sidebar-link">Configurations</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#running-the-timeline-server" class="sidebar-link">Running the Timeline Server</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#accessing-generic-data-via-command-line" class="sidebar-link">Accessing generic-data via command-line</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#publishing-application-specific-data" class="sidebar-link">Publishing application specific data</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#timeline-server-rest-api-v1" class="sidebar-link">Timeline Server REST API V1</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#root-path" class="sidebar-link">Root path</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#domains-ws-v1-timeline-domain" class="sidebar-link">Domains /ws/v1/timeline/domain</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#domain-summary-information-ws-v1-timeline-domain" class="sidebar-link">Domain summary information /ws/v1/timeline/domain</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#specific-information-about-a-domain-ws-v1-timeline-domain-domainid" class="sidebar-link">Specific information about a Domain /ws/v1/timeline/domain/{domainId}</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#post-new-domain-ws-v1-timeline-domain" class="sidebar-link">POST new domain /ws/v1/timeline/domain</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#list-domains-of-a-user-get-ws-v1-timeline-domain" class="sidebar-link">List domains of a user: GET /ws/v1/timeline/domain</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#posting-timeline-entities" class="sidebar-link">Posting Timeline Entities</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-timelineputresponse" class="sidebar-link">response: TimelinePutResponse</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#request-examples" class="sidebar-link">Request Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#timeline-entity-list" class="sidebar-link">Timeline Entity List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-2" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-2" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-2" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-entities-timeline-entity-list-object" class="sidebar-link">Elements of the entities (Timeline Entity List) Object</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#timeline-entity-2" class="sidebar-link">Timeline Entity</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-3" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-3" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-3" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-entity-timeline-entity-object" class="sidebar-link">Elements of the entity (Timeline Entity) Object:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-2" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#timeline-event-list" class="sidebar-link">Timeline Event List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-4" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-4" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-4" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-events-timeline-entity-list-object" class="sidebar-link">Elements of the events (Timeline Entity List) Object</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-3" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#about" class="sidebar-link">About</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-5" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-5" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-5" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-about-application-object" class="sidebar-link">Elements of the about (Application) Object:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-4" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#application-list" class="sidebar-link">Application List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-6" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-6" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-6" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-apps-application-list-object" class="sidebar-link">Elements of the apps (Application List) Object</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-5" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#application" class="sidebar-link">Application</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-7" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-7" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-7" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-app-application-object" class="sidebar-link">Elements of the app (Application) Object:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-6" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#application-attempt-list" class="sidebar-link">Application Attempt List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-8" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-8" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-8" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-appattempts-application-attempt-list-object" class="sidebar-link">Elements of the appattempts (Application Attempt List) Object</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-7" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#application-attempt" class="sidebar-link">Application Attempt</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-9" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-9" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-9" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-appattempt-application-attempt-object" class="sidebar-link">Elements of the appattempt (Application Attempt) Object:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-8" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#container-list" class="sidebar-link">Container List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-10" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-10" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-10" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-containers-container-list-object" class="sidebar-link">Elements of the containers (Container List) Object</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-9" class="sidebar-link">Response Examples:</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#container" class="sidebar-link">Container</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#uri-11" class="sidebar-link">URI:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#http-operations-supported-11" class="sidebar-link">HTTP Operations Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#query-parameters-supported-11" class="sidebar-link">Query Parameters Supported:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#elements-of-the-container-container-object" class="sidebar-link">Elements of the container (Container) Object:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-examples-10" class="sidebar-link">Response Examples:</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#response-codes" class="sidebar-link">Response Codes</a></li></ul></li><li><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#timeline-server-performance-test-tool" class="sidebar-link">Timeline Server Performance Test Tool</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#highlights" class="sidebar-link">Highlights</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#usage" class="sidebar-link">Usage</a></li><li class="sidebar-sub-header"><a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServer.html#sample-runs" class="sidebar-link">Sample Runs</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="the-yarn-timeline-server"><a href="#the-yarn-timeline-server" class="header-anchor">#</a> The YARN Timeline Server</h1> <h2 id="overview"><a href="#overview" class="header-anchor">#</a> Overview</h2> <h3 id="introduction"><a href="#introduction" class="header-anchor">#</a> Introduction</h3> <p>The Storage and retrieval of application’s current and historic information in a generic fashion is addressed in YARN through the Timeline Server. It has two responsibilities:</p> <h4 id="persisting-application-specific-information"><a href="#persisting-application-specific-information" class="header-anchor">#</a> Persisting Application Specific Information</h4> <p>The collection and retrieval of information completely specific to an application or framework. For example, the Hadoop MapReduce framework can include pieces of information like number of map tasks, reduce tasks, counters…etc. Application developers can publish the specific information to the Timeline server via TimelineClient in the Application Master and/or the application’s containers.</p> <p>This information is then queryable via REST APIs for rendering by application/framework specific UIs.</p> <h4 id="persisting-generic-information-about-completed-applications"><a href="#persisting-generic-information-about-completed-applications" class="header-anchor">#</a> Persisting Generic Information about Completed Applications</h4> <p>Previously this was supported purely for MapReduce jobs by the Application History Server. With the introduction of the timeline server, the Application History Server becomes just one use of the Timeline Server.</p> <p>Generic information includes application level data such as</p> <ul><li>queue-name,</li> <li>user information and the like set in the ApplicationSubmissionContext,</li> <li>a list of application-attempts that ran for an application</li> <li>information about each application-attempt</li> <li>the list of containers run under each application-attempt</li> <li>information about each container.</li></ul> <p>Generic data is published by the YARN Resource Manager to the timeline store and used by its web-UI to display information about completed applications.</p> <h3 id="current-status-and-future-plans"><a href="#current-status-and-future-plans" class="header-anchor">#</a> Current Status and Future Plans</h3> <p>Current status</p> <ol><li>The core functionality of the timeline server has been completed.</li> <li>It works in both secure and non secure clusters.</li> <li>The generic history service is built on the timeline store.</li> <li>The history can be stored in memory or in a leveldb database store; the latter ensures the history is preserved over Timeline Server restarts.</li> <li>The ability to install framework specific UIs in YARN is not supported.</li> <li>Application specific information is only available via RESTful APIs using JSON type content.</li> <li>The “Timeline Server v1” REST API has been declared one of the REST APIs whose compatibility will be maintained in future releases.</li> <li>The single-server implementation of the Timeline Server places a limit on the scalability of the service; it also prevents the service being High-Availability component of the YARN infrastructure.</li></ol> <p>Future Plans</p> <ol><li>Future releases will introduce a next generation timeline service which is scalable and reliable, <a href="/docs/hadoop-yarn/hadoop-yarn-site/TimelineServiceV2.html">“Timeline Service v2”</a>.</li> <li>The expanded features of this service may not be available to applications using the Timeline Server v1 REST API. That includes extended data structures as well as the ability of the client to failover between Timeline Server instances.</li></ol> <h3 id="timeline-structure"><a href="#timeline-structure" class="header-anchor">#</a> Timeline Structure</h3> <img src="/images/timeline_structure.jpg" alt="Timeline Structure"> <h4 id="timeline-domain"><a href="#timeline-domain" class="header-anchor">#</a> Timeline Domain</h4> <p>The Timeline Domain offers a namespace for Timeline server allowing users to host multiple entities, isolating them from other users and applications. Timeline server Security is defined at this level.</p> <p>A “Domain” primarily stores owner info, read and&amp; write ACL information, created and modified time stamp information. Each Domain is identified by an ID which must be unique across all users in the YARN cluster.</p> <h4 id="timeline-entity"><a href="#timeline-entity" class="header-anchor">#</a> Timeline Entity</h4> <p>A Timeline Entity contains the the meta information of a conceptual entity and its related events.</p> <p>The entity can be an application, an application attempt, a container or any user-defined object.</p> <p>It contains Primary filters which will be used to index the entities in the Timeline Store. Accordingly, users/applications should carefully choose the information they want to store as the primary filters.</p> <p>The remaining data can be stored as unindexed information. Each Entity is uniquely identified by an EntityId and EntityType.</p> <h4 id="timeline-events"><a href="#timeline-events" class="header-anchor">#</a> Timeline Events</h4> <p>A Timeline Event describes an event that is related to a specific Timeline Entity of an application.</p> <p>Users are free to define what an event means —such as starting an application, getting allocated a container, an operation failures or other information considered relevant to users and cluster operators.</p> <h2 id="deployment"><a href="#deployment" class="header-anchor">#</a> Deployment</h2> <h3 id="configurations"><a href="#configurations" class="header-anchor">#</a> Configurations</h3> <h4 id="basic-configuration"><a href="#basic-configuration" class="header-anchor">#</a> Basic Configuration</h4> <table><thead><tr><th>Configuration Property</th> <th>Description</th></tr></thead> <tbody><tr><td>yarn.timeline-service.enabled</td> <td>In the server side it indicates whether timeline service is enabled or not. And in the client side, users can enable it to indicate whether client wants to use timeline service. If it’s enabled in the client side along with security, then yarn client tries to fetch the delegation tokens for the timeline server. Defaults to false.</td></tr> <tr><td>yarn.resourcemanager.system-metrics-publisher.enabled</td> <td>The setting that controls whether or not YARN system metrics are published on the timeline server by RM. Defaults to false.</td></tr> <tr><td>yarn.timeline-service.generic-application-history.enabled</td> <td>Indicate to clients whether to query generic application data from timeline history-service or not. If not enabled then application data is queried only from Resource Manager. Defaults to false.</td></tr></tbody></table> <h4 id="timeline-store-and-state-store-configuration"><a href="#timeline-store-and-state-store-configuration" class="header-anchor">#</a> Timeline store and state store configuration</h4> <table><thead><tr><th>Configuration Property</th> <th>Description</th></tr></thead> <tbody><tr><td>yarn.timeline-service.store-class</td> <td>Store class name for timeline store. Defaults to org.apache.hadoop.yarn.server.timeline.LeveldbTimelineStore.</td></tr> <tr><td>yarn.timeline-service.leveldb-timeline-store.path</td> <td>Store file name for leveldb timeline store. Defaults to ${hadoop.tmp.dir}/yarn/timeline.</td></tr> <tr><td>yarn.timeline-service.leveldb-timeline-store.ttl-interval-ms</td> <td>Length of time to wait between deletion cycles of leveldb timeline store in milliseconds. Defaults to 300000.</td></tr> <tr><td>yarn.timeline-service.leveldb-timeline-store.read-cache-size</td> <td>Size of read cache for uncompressed blocks for leveldb timeline store in bytes. Defaults to 104857600.</td></tr> <tr><td>yarn.timeline-service.leveldb-timeline-store.start-time-read-cache-size</td> <td>Size of cache for recently read entity start times for leveldb timeline store in number of entities. Defaults to 10000.</td></tr> <tr><td>yarn.timeline-service.leveldb-timeline-store.start-time-write-cache-size</td> <td>Size of cache for recently written entity start times for leveldb timeline store in number of entities. Defaults to 10000.</td></tr> <tr><td>yarn.timeline-service.recovery.enabled</td> <td>Defaults to false.</td></tr> <tr><td>yarn.timeline-service.state-store-class</td> <td>Store class name for timeline state store. Defaults to org.apache.hadoop.yarn.server.timeline.recovery.LeveldbTimelineStateStore.</td></tr> <tr><td>yarn.timeline-service.leveldb-state-store.path</td> <td>Store file name for leveldb timeline state store.</td></tr></tbody></table> <h4 id="web-and-rpc-configuration"><a href="#web-and-rpc-configuration" class="header-anchor">#</a> Web and RPC Configuration</h4> <table><thead><tr><th>Configuration Property</th> <th>Description</th></tr></thead> <tbody><tr><td>yarn.timeline-service.hostname</td> <td>The hostname of the Timeline service web application. Defaults to 0.0.0.0</td></tr> <tr><td>yarn.timeline-service.address</td> <td>Address for the Timeline server to start the RPC server. Defaults to ${yarn.timeline-service.hostname}:10200.</td></tr> <tr><td>yarn.timeline-service.webapp.address</td> <td>The http address of the Timeline service web application. Defaults to ${yarn.timeline-service.hostname}:8188.</td></tr> <tr><td>yarn.timeline-service.webapp.https.address</td> <td>The https address of the Timeline service web application. Defaults to ${yarn.timeline-service.hostname}:8190.</td></tr> <tr><td>yarn.timeline-service.bind-host</td> <td>The actual address the server will bind to. If this optional address is set, the RPC and webapp servers will bind to this address and the port specified in yarn.timeline-service.address and yarn.timeline-service.webapp.address, respectively. This is most useful for making the service listen on all interfaces by setting to 0.0.0.0.</td></tr> <tr><td>yarn.timeline-service.http-cross-origin.enabled</td> <td>Enables cross-origin support (CORS) for web services where cross-origin web response headers are needed. For example, javascript making a web services request to the timeline server. Defaults to false.</td></tr> <tr><td>yarn.timeline-service.http-cross-origin.allowed-origins</td> <td>Comma separated list of origins that are allowed. Values prefixed with regex: are interpreted as regular expressions. Values containing wildcards (*) are possible as well, here a regular expression is generated, the use is discouraged and support is only available for backward compatibility. Defaults to *.</td></tr> <tr><td>yarn.timeline-service.http-cross-origin.allowed-methods</td> <td>Comma separated list of methods that are allowed for web services needing cross-origin (CORS) support. Defaults to GET,POST,HEAD.</td></tr> <tr><td>yarn.timeline-service.http-cross-origin.allowed-headers</td> <td>Comma separated list of headers that are allowed for web services needing cross-origin (CORS) support. Defaults to X-Requested-With,Content-Type,Accept,Origin.</td></tr> <tr><td>yarn.timeline-service.http-cross-origin.max-age</td> <td>The number of seconds a pre-flighted request can be cached for web services needing cross-origin (CORS) support. Defaults to 1800.</td></tr></tbody></table> <p>Note that the selection between the HTTP and HTTPS binding is made in the TimelineClient based upon the value of the YARN-wide configuration option yarn.http.policy; the HTTPS endpoint will be selected if this policy is HTTPS_ONLY.</p> <h4 id="advanced-server-side-configuration"><a href="#advanced-server-side-configuration" class="header-anchor">#</a> Advanced Server-side configuration</h4> <table><thead><tr><th>Configuration Property</th> <th>Description</th></tr></thead> <tbody><tr><td>yarn.timeline-service.ttl-enable</td> <td>Enable deletion of aged data within the timeline store. Defaults to true.</td></tr> <tr><td>yarn.timeline-service.ttl-ms</td> <td>Time to live for timeline store data in milliseconds. Defaults to 604800000 (7 days).</td></tr> <tr><td>yarn.timeline-service.handler-thread-count</td> <td>Handler thread count to serve the client RPC requests. Defaults to 10.</td></tr> <tr><td>yarn.timeline-service.client.max-retries</td> <td>The maximum number of retries for attempts to publish data to the timeline service.Defaults to 30.</td></tr> <tr><td>yarn.timeline-service.client.retry-interval-ms</td> <td>The interval in milliseconds between retries for the timeline service client. Defaults to 1000.</td></tr> <tr><td>yarn.timeline-service.generic-application-history.max-applications</td> <td>The max number of applications could be fetched by using REST API or application history protocol and shown in timeline server web ui. Defaults to 10000.</td></tr></tbody></table> <h4 id="ui-hosting-configuration"><a href="#ui-hosting-configuration" class="header-anchor">#</a> UI Hosting Configuration</h4> <p>The timeline service can host multiple UIs if enabled. The service can support both static web sites hosted in a directory or war files bundled. The web UI is then hosted on the timeline service HTTP port under the path configured.</p> <table><thead><tr><th>Configuration Property</th> <th>Description</th></tr></thead> <tbody><tr><td>yarn.timeline-service.ui-names</td> <td>Comma separated list of UIs that will be hosted. Defaults to none.</td></tr> <tr><td>yarn.timeline-service.ui-on-disk-path.$name</td> <td>For each of the ui-names, an on disk path should be specified to the directory service static content or the location of a web archive (war file).</td></tr> <tr><td>yarn.timeline-service.ui-web-path.$name</td> <td>For each of the ui-names, the web path should be specified relative to the Timeline server root. Paths should begin with a starting slash.</td></tr></tbody></table> <h4 id="security-configuration"><a href="#security-configuration" class="header-anchor">#</a> Security Configuration</h4> <p>Security can be enabled by setting yarn.timeline-service.http-authentication.type to kerberos, after which the following configuration options are available:</p> <table><thead><tr><th>Configuration Property</th> <th>Description</th></tr></thead> <tbody><tr><td>yarn.timeline-service.http-authentication.type</td> <td>Defines authentication used for the timeline server HTTP endpoint. Supported values are: simple / kerberos / #AUTHENTICATION_HANDLER_CLASSNAME#. Defaults to simple.</td></tr> <tr><td>yarn.timeline-service.http-authentication.simple.anonymous.allowed</td> <td>Indicates if anonymous requests are allowed by the timeline server when using ‘simple’ authentication. Defaults to true.</td></tr> <tr><td>yarn.timeline-service.principal</td> <td>The Kerberos principal for the timeline server.</td></tr> <tr><td>yarn.timeline-service.keytab</td> <td>The Kerberos keytab for the timeline server. Defaults on Unix to to /etc/krb5.keytab.</td></tr> <tr><td>yarn.timeline-service.delegation.key.update-interval</td> <td>Defaults to 86400000 (1 day).</td></tr> <tr><td>yarn.timeline-service.delegation.token.renew-interval</td> <td>Defaults to 86400000 (1 day).</td></tr> <tr><td>yarn.timeline-service.delegation.token.max-lifetime</td> <td>Defaults to 604800000 (7 days).</td></tr> <tr><td>yarn.timeline-service.client.best-effort</td> <td>Should the failure to obtain a delegation token be considered an application failure (option = false), or should the client attempt to continue to publish information without it (option=true). Default: false</td></tr></tbody></table> <h4 id="enabling-the-timeline-service-and-the-generic-history-service"><a href="#enabling-the-timeline-service-and-the-generic-history-service" class="header-anchor">#</a> Enabling the timeline service and the generic history service</h4> <p>Following are the basic configuration to start Timeline server.</p> <pre><code>&lt;property&gt;
+  &lt;description&gt;Indicate to clients whether Timeline service is enabled or not.
+  If enabled, the TimelineClient library used by end-users will post entities
+  and events to the Timeline server.&lt;/description&gt;
+  &lt;name&gt;yarn.timeline-service.enabled&lt;/name&gt;
+  &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;description&gt;The setting that controls whether yarn system metrics is
+  published on the timeline server or not by RM.&lt;/description&gt;
+  &lt;name&gt;yarn.resourcemanager.system-metrics-publisher.enabled&lt;/name&gt;
+  &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;description&gt;Indicate to clients whether to query generic application
+  data from timeline history-service or not. If not enabled then application
+  data is queried only from Resource Manager.&lt;/description&gt;
+  &lt;name&gt;yarn.timeline-service.generic-application-history.enabled&lt;/name&gt;
+  &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+</code></pre> <h3 id="running-the-timeline-server"><a href="#running-the-timeline-server" class="header-anchor">#</a> Running the Timeline Server</h3> <p>Assuming all the aforementioned configurations are set properly admins can start the Timeline server/history service with the following command:</p> <pre><code>yarn timelineserver
+</code></pre> <p>To start the Timeline server / history service as a daemon, the command is</p> <pre><code>$HADOOP_YARN_HOME/sbin/yarn-daemon.sh start timelineserver
+</code></pre> <h3 id="accessing-generic-data-via-command-line"><a href="#accessing-generic-data-via-command-line" class="header-anchor">#</a> Accessing generic-data via command-line</h3> <p>Users can access applications’ generic historic data via the command line below</p> <pre><code>$ yarn application -status &lt;Application ID&gt;
+$ yarn applicationattempt -list &lt;Application ID&gt;
+$ yarn applicationattempt -status &lt;Application Attempt ID&gt;
+$ yarn container -list &lt;Application Attempt ID&gt;
+$ yarn container -status &lt;Container ID&gt;
+</code></pre> <p>Note that the same commands are usable to obtain the corresponding information about running applications.</p> <h3 id="publishing-application-specific-data"><a href="#publishing-application-specific-data" class="header-anchor">#</a> Publishing application specific data</h3> <p>Developers can define what information they want to record for their applications by constructing TimelineEntity and TimelineEvent objects then publishing the entities and events to the Timeline Server via the TimelineClient API.</p> <p>Here is an example:</p> <pre><code>// Create and start the Timeline client
+TimelineClient client = TimelineClient.createTimelineClient();
+client.init(conf);
+client.start();
+
+try {
+  TimelineDomain myDomain = new TimelineDomain();
+  myDomain.setId(&quot;MyDomain&quot;);
+  // Compose other Domain info ....
+
+  client.putDomain(myDomain);
+
+  TimelineEntity myEntity = new TimelineEntity();
+  myEntity.setDomainId(myDomain.getId());
+  myEntity.setEntityType(&quot;APPLICATION&quot;);
+  myEntity.setEntityId(&quot;MyApp1&quot;);
+  // Compose other entity info
+
+  TimelinePutResponse response = client.putEntities(entity);
+
+  TimelineEvent event = new TimelineEvent();
+  event.setEventType(&quot;APP_FINISHED&quot;);
+  event.setTimestamp(System.currentTimeMillis());
+  event.addEventInfo(&quot;Exit Status&quot;, &quot;SUCCESS&quot;);
+  // Compose other Event info ....
+
+  myEntity.addEvent(event);
+  TimelinePutResponse response = timelineClient.putEntities(entity);
+
+} catch (IOException e) {
+  // Handle the exception
+} catch (RuntimeException e) {
+  // In Hadoop 2.6, if attempts submit information to the Timeline Server fail more than the retry limit,
+  // a RuntimeException will be raised. This may change in future releases, being
+  // replaced with a IOException that is (or wraps) that which triggered retry failures.
+} catch (YarnException e) {
+  // Handle the exception
+} finally {
+  // Stop the Timeline client
+  client.stop();
+}
+</code></pre> <ol><li>Publishing of data to Timeline Server is a synchronous operation; the call will not return until successful.</li> <li>The TimelineClient implementation class is a subclass of the YARN Service API; it can be placed under a CompositeService to ease its lifecycle management.</li> <li>The result of a putEntities() call is a TimelinePutResponse object. This contains a (hopefully empty) list of those timeline entities reject by the timeline server, along with an error code indicating the cause of each failure.</li></ol> <p>In Hadoop 2.6 and 2.7, the error codes are:</p> <table><thead><tr><th>Error Code</th> <th>Description</th></tr></thead> <tbody><tr><td>1</td> <td>No start time</td></tr> <tr><td>2</td> <td>IOException</td></tr> <tr><td>3</td> <td>System Filter conflict (reserved filter key used)</td></tr> <tr><td>4</td> <td>Access Denied</td></tr> <tr><td>5</td> <td>No domain</td></tr> <tr><td>6</td> <td>Forbidden relation</td></tr></tbody></table> <p>Further error codes may be defined in future.</p> <p>Note : Following are the points which need to be observed when updating a entity.</p> <ul><li>Domain ID should not be modified for already existing entity.</li> <li>After a modification of a Primary filter value, the new value will be appended to the old value; the original value will not be replaced.</li> <li>It’s advisable to have same primary filters for all updates on entity. Any on modification of a primary filter by in an update will result in queries with updated primary filter to not fetching the information before the update</li></ul> <h1 id="generic-data-web-ui"><a href="#generic-data-web-ui" class="header-anchor">#</a> Generic Data Web UI</h1> <p>Users can access the generic historic information of applications via web UI:</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/applicationhistory
+</code></pre> <h2 id="timeline-server-rest-api-v1"><a href="#timeline-server-rest-api-v1" class="header-anchor">#</a> Timeline Server REST API V1</h2> <p>Querying the timeline server is currently only supported via REST API calls; there is no API client implemented in the YARN libraries. In Java, the Jersey client is effective at querying the server, even in secure mode (provided the caller has the appropriate Kerberos tokens or keytab).</p> <p>The v1 REST API is implemented at under the path, /ws/v1/timeline/ on the Timeline Server web service.</p> <p>Here is a non-normative description of the API.</p> <h3 id="root-path"><a href="#root-path" class="header-anchor">#</a> Root path</h3> <pre><code>GET /ws/v1/timeline/
+</code></pre> <p>Returns a JSON object describing the server instance and version information.</p> <pre><code> {
+   About: &quot;Timeline API&quot;,
+   timeline-service-version: &quot;3.0.0-SNAPSHOT&quot;,
+   timeline-service-build-version: &quot;3.0.0-SNAPSHOT from fcd0702c10ce574b887280476aba63d6682d5271 by zshen source checksum e9ec74ea3ff7bc9f3d35e9cac694fb&quot;,
+   timeline-service-version-built-on: &quot;2015-05-13T19:45Z&quot;,
+   hadoop-version: &quot;3.0.0-SNAPSHOT&quot;,
+   hadoop-build-version: &quot;3.0.0-SNAPSHOT from fcd0702c10ce574b887280476aba63d6682d5271 by zshen source checksum 95874b192923b43cdb96a6e483afd60&quot;,
+   hadoop-version-built-on: &quot;2015-05-13T19:44Z&quot;
+ }
+</code></pre> <h2 id="domains-ws-v1-timeline-domain"><a href="#domains-ws-v1-timeline-domain" class="header-anchor">#</a> Domains /ws/v1/timeline/domain</h2> <h3 id="domain-summary-information-ws-v1-timeline-domain"><a href="#domain-summary-information-ws-v1-timeline-domain" class="header-anchor">#</a> Domain summary information /ws/v1/timeline/domain</h3> <pre><code>GET /ws/v1/timeline/domain?owner=$OWNER
+</code></pre> <p>Returns a list of domains belonging to a specific user, in the JSON-marshalled TimelineDomains data structure.</p> <p>The owner MUST be set on a GET which is not authenticated.</p> <p>On an authenticated request, the owner defaults to the caller.</p> <pre><code>PUT /ws/v1/timeline/domain
+</code></pre> <p>A PUT of a serialized TimelineDomain structure to this path will add the domain to the list of domains owned by the specified/current user. A successful operation returns status code of 200 and a TimelinePutResponse containing no errors.</p> <h3 id="specific-information-about-a-domain-ws-v1-timeline-domain-domainid"><a href="#specific-information-about-a-domain-ws-v1-timeline-domain-domainid" class="header-anchor">#</a> Specific information about a Domain /ws/v1/timeline/domain/{domainId}</h3> <p>Returns a JSON-marshalled TimelineDomain structure describing a domain.</p> <p>If the domain is not found, then an HTTP 404 response is returned.</p> <h3 id="post-new-domain-ws-v1-timeline-domain"><a href="#post-new-domain-ws-v1-timeline-domain" class="header-anchor">#</a> POST new domain /ws/v1/timeline/domain</h3> <p>Creates a new timeline domain, or overrides an existing one.</p> <p>When attempting to create a new domain, the ID in the submission MUST be unique across all domains in the cluster.</p> <p>When attempting to update an existing domain, the ID of that domain must be set. The submitter must have the appropriate permissions to update the domain.</p> <p>submission: TimelineDomain</p> <p>response: TimelinePutResponse</p> <h3 id="list-domains-of-a-user-get-ws-v1-timeline-domain"><a href="#list-domains-of-a-user-get-ws-v1-timeline-domain" class="header-anchor">#</a> List domains of a user: GET /ws/v1/timeline/domain</h3> <p>Retrieves a list of all domains of a user.</p> <p>If an owner is specified, that owner name overrides that of the caller.</p> <table><thead><tr><th>Query Parameter</th> <th>Description</th></tr></thead> <tbody><tr><td>owner</td> <td>owner of the domains to list</td></tr></tbody></table> <pre><code>GET http://localhost:8188/ws/v1/timeline/domain?owner=alice
+
+{
+&quot;domains&quot;:
+  [
+    {
+    &quot;id&quot;:&quot;DS_DOMAIN_2&quot;,
+    &quot;owner&quot;:&quot;alice&quot;,
+    &quot;readers&quot;:&quot;peter&quot;,
+    &quot;writers&quot;:&quot;john&quot;,
+    &quot;createdtime&quot;:1430425000337,
+    &quot;modifiedtime&quot;:1430425000337
+    },
+    {
+    &quot;id&quot;:&quot;DS_DOMAIN_1&quot;,
+    &quot;owner&quot;:&quot;alice&quot;,
+    &quot;readers&quot;:&quot;bar&quot;,
+    &quot;writers&quot;:&quot;foo&quot;,
+    &quot;createdtime&quot;:1430424955963,
+    &quot;modifiedtime&quot;:1430424955963
+    }
+    ,
+    {&quot;id&quot;:&quot;DEFAULT&quot;,
+    &quot;description&quot;:&quot;System Default Domain&quot;,
+    &quot;owner&quot;:&quot;alice&quot;,
+    &quot;readers&quot;:&quot;*&quot;,
+    &quot;writers&quot;:&quot;*&quot;,
+    &quot;createdtime&quot;:1430424022699,
+    &quot;modifiedtime&quot;:1430424022699
+    }
+  ]
+}
+</code></pre> <p>response: TimelineDomains</p> <p>If the user lacks the permission to list the domains of the specified owner, an TimelineDomains response with no domain listings is returned.</p> <h4 id="retrieve-details-of-a-specific-domain-get-ws-v1-timeline-domain-domainid"><a href="#retrieve-details-of-a-specific-domain-get-ws-v1-timeline-domain-domainid" class="header-anchor">#</a> Retrieve details of a specific domain: GET /ws/v1/timeline/domain/{domainId}</h4> <p>Retrieves the details of a single domain</p> <pre><code>GET http://localhost:8188/ws/v1/timeline/domain/DS_DOMAIN_1
+</code></pre> <p>Response: TimelineDomain</p> <pre><code>{
+  &quot;id&quot;:&quot;DS_DOMAIN_1&quot;,
+  &quot;owner&quot;:&quot;zshen&quot;,
+  &quot;readers&quot;:&quot;bar&quot;,
+  &quot;writers&quot;:&quot;foo&quot;,
+  &quot;createdtime&quot;:1430424955963,
+  &quot;modifiedtime&quot;:1430424955963
+}
+</code></pre> <p>If the user lacks the permission to query the details of that domain, a 404, not found exception is returned —the same response which is returned if there is no entry with that ID.</p> <h2 id="posting-timeline-entities"><a href="#posting-timeline-entities" class="header-anchor">#</a> Posting Timeline Entities</h2> <p>With the Posting Entities API, you can post the entities and events, which contain the per-framework information you want to record, to the timeline server.</p> <h3 id="uri"><a href="#uri" class="header-anchor">#</a> URI:</h3> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/timeline
+</code></pre> <h3 id="http-operations-supported"><a href="#http-operations-supported" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>POST
+</code></pre> <h3 id="query-parameters-supported"><a href="#query-parameters-supported" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="response-timelineputresponse"><a href="#response-timelineputresponse" class="header-anchor">#</a> response: TimelinePutResponse</h3> <h3 id="request-examples"><a href="#request-examples" class="header-anchor">#</a> Request Examples:</h3> <h4 id="json-request"><a href="#json-request" class="header-anchor">#</a> JSON request</h4> <p>HTTP Request:</p> <pre><code>POST http://&lt;timeline server http address:port&gt;/ws/v1/timeline
+</code></pre> <p>Request Header:</p> <pre><code>POST /ws/v1/timeline HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Request Body:</p> <pre><code>{
+  &quot;entities&quot; : [ {
+    &quot;entity&quot; : &quot;entity id 0&quot;,
+    &quot;entitytype&quot; : &quot;entity type 0&quot;,
+    &quot;relatedentities&quot; : {
+      &quot;test ref type 2&quot; : [ &quot;test ref id 2&quot; ],
+      &quot;test ref type 1&quot; : [ &quot;test ref id 1&quot; ]
+    },
+    &quot;events&quot; : [ {
+      &quot;timestamp&quot; : 1395818851590,
+      &quot;eventtype&quot; : &quot;event type 0&quot;,
+      &quot;eventinfo&quot; : {
+        &quot;key2&quot; : &quot;val2&quot;,
+        &quot;key1&quot; : &quot;val1&quot;
+      }
+    }, {
+      &quot;timestamp&quot; : 1395818851590,
+      &quot;eventtype&quot; : &quot;event type 1&quot;,
+      &quot;eventinfo&quot; : {
+        &quot;key2&quot; : &quot;val2&quot;,
+        &quot;key1&quot; : &quot;val1&quot;
+      }
+    } ],
+    &quot;primaryfilters&quot; : {
+      &quot;pkey2&quot; : [ &quot;pval2&quot; ],
+      &quot;pkey1&quot; : [ &quot;pval1&quot; ]
+    },
+    &quot;otherinfo&quot; : {
+      &quot;okey2&quot; : &quot;oval2&quot;,
+      &quot;okey1&quot; : &quot;oval1&quot;
+    },
+    &quot;starttime&quot; : 1395818851588
+  }, {
+    &quot;entity&quot; : &quot;entity id 1&quot;,
+    &quot;entitytype&quot; : &quot;entity type 0&quot;,
+    &quot;relatedentities&quot; : {
+      &quot;test ref type 2&quot; : [ &quot;test ref id 2&quot; ],
+      &quot;test ref type 1&quot; : [ &quot;test ref id 1&quot; ]
+    },
+    &quot;events&quot; : [ {
+      &quot;timestamp&quot; : 1395818851590,
+      &quot;eventtype&quot; : &quot;event type 0&quot;,
+      &quot;eventinfo&quot; : {
+        &quot;key2&quot; : &quot;val2&quot;,
+        &quot;key1&quot; : &quot;val1&quot;
+      }
+    }, {
+      &quot;timestamp&quot; : 1395818851590,
+      &quot;eventtype&quot; : &quot;event type 1&quot;,
+      &quot;eventinfo&quot; : {
+        &quot;key2&quot; : &quot;val2&quot;,
+        &quot;key1&quot; : &quot;val1&quot;
+      }
+    } ],
+    &quot;primaryfilters&quot; : {
+      &quot;pkey2&quot; : [ &quot;pval2&quot; ],
+      &quot;pkey1&quot; : [ &quot;pval1&quot; ]
+    },
+    &quot;otherinfo&quot; : {
+      &quot;okey2&quot; : &quot;oval2&quot;,
+      &quot;okey1&quot; : &quot;oval1&quot;
+    },
+    &quot;starttime&quot; : 1395818851590
+  } ]
+}
+</code></pre> <p>Required fields</p> <p>Entity: type and id. starttime is required unless the entity contains one or more event). Event: type and timestamp.</p> <h2 id="timeline-entity-list"><a href="#timeline-entity-list" class="header-anchor">#</a> Timeline Entity List</h2> <p>With the Timeline Entity List API, you can retrieve a list of entity object, sorted by the starting timestamp for the entity, descending. The starting timestamp of an entity can be a timestamp specified by the your application. If it is not explicitly specified, it will be chosen by the store to be the earliest timestamp of the events received in the first post for the entity.</p> <h3 id="uri-2"><a href="#uri-2" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain all the entity objects of a given entityType.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/timeline/{entityType}
+</code></pre> <h3 id="http-operations-supported-2"><a href="#http-operations-supported-2" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-2"><a href="#query-parameters-supported-2" class="header-anchor">#</a> Query Parameters Supported:</h3> <ol><li>limit - A limit on the number of entities to return. If null, defaults to 100.</li> <li>windowStart - The earliest start timestamp to retrieve (exclusive). If null, defaults to retrieving all entities until the limit is reached.</li> <li>windowEnd - The latest start timestamp to retrieve (inclusive). If null, defaults to the max value of Long.</li> <li>fromId - If fromId is not null, retrieve entities earlier than and including the specified ID. If no start time is found for the specified ID, an empty list of entities will be returned. The windowEnd parameter will take precedence if the start time of this entity falls later than windowEnd.</li> <li>fromTs - If fromTs is not null, ignore entities that were inserted into the store after the given timestamp. The entity’s insert timestamp used for this comparison is the store’s system time when the first put for the entity was received (not the entity’s start time).</li> <li>primaryFilter - Retrieves only entities that have the specified primary filter. If null, retrieves all entities. This is an indexed retrieval, and no entities that do not match the filter are scanned.</li> <li>secondaryFilters - Retrieves only entities that have exact matches for all the specified filters in their primary filters or other info. This is not an indexed retrieval, so all entities are scanned but only those matching the filters are returned.</li> <li>fields - Specifies which fields of the entity object to retrieve: EVENTS, RELATED_ENTITIES, PRIMARY_FILTERS, OTHER_INFO, LAST_EVENT_ONLY. If the set of fields contains LAST_EVENT_ONLY and not EVENTS, the most recent event for each entity is retrieved. If null, retrieves all fields.</li></ol> <p>Note that the value of the key/value pair for primaryFilter and secondaryFilters parameters can be of different data types, and matching is data type sensitive. Users need to format the value properly. For example, 123 and &quot;123&quot; means an integer and a string respectively. If the entity has a string &quot;123&quot; for primaryFilter, but the parameter is set to the integer 123, the entity will not be matched. Similarly, true means a boolean while &quot;true&quot; means a string. In general, the value will be casted as a certain Java type in consistent with jackson library parsing a JSON clip.</p> <h3 id="elements-of-the-entities-timeline-entity-list-object"><a href="#elements-of-the-entities-timeline-entity-list-object" class="header-anchor">#</a> Elements of the entities (Timeline Entity List) Object</h3> <p>When you make a request for the list of timeline entities, the information will be returned as a collection of container objects. See also Timeline Entity for syntax of the timeline entity object.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>entities</td> <td>array of timeline entity objects(JSON)</td> <td>The collection of timeline entity objects</td></tr></tbody></table> <h3 id="response-examples"><a href="#response-examples" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response"><a href="#json-response" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/timeline/DS_APP_ATTEMPT
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;entities&quot;:[
+  {
+  &quot;entitytype&quot;:&quot;DS_APP_ATTEMPT&quot;,
+  &quot;entity&quot;:&quot;appattempt_1430424020775_0004_000001&quot;,
+  &quot;events&quot;:[
+    {
+    &quot;timestamp&quot;:1430425008796,
+    &quot;eventtype&quot;:&quot;DS_APP_ATTEMPT_END&quot;,
+    &quot;eventinfo&quot;: { }
+    }
+    {
+    &quot;timestamp&quot;:1430425004161,
+    &quot;eventtype&quot;:&quot;DS_APP_ATTEMPT_START&quot;,
+    &quot;eventinfo&quot;: { }
+    }
+  ]
+  &quot;starttime&quot;:1430425004161,
+  &quot;domain&quot;:&quot;DS_DOMAIN_2&quot;,
+  &quot;relatedentities&quot;: { },
+  &quot;primaryfilters&quot;:
+    {
+    &quot;user&quot;:[&quot;zshen&quot;]
+    },
+  &quot;otherinfo&quot;: { }
+  }
+  {
+  &quot;entitytype&quot;:&quot;DS_APP_ATTEMPT&quot;,
+  &quot;entity&quot;:&quot;appattempt_1430424020775_0003_000001&quot;,
+  &quot;starttime&quot;:1430424959169,
+  &quot;domain&quot;:&quot;DS_DOMAIN_1&quot;,
+  &quot;events&quot;:[
+    {
+    &quot;timestamp&quot;:1430424963836,
+    &quot;eventinfo&quot;: { }
+     }
+    {
+    &quot;timestamp&quot;:1430424959169,
+    &quot;eventinfo&quot;: { }
+    }
+   ]
+  &quot;relatedentities&quot;: { },
+  &quot;primaryfilters&quot;: {
+    &quot;user&quot;:[&quot;zshen&quot;]
+   },
+  &quot;otherinfo&quot;: { }
+   }
+  ]
+}
+</code></pre> <h2 id="timeline-entity-2"><a href="#timeline-entity-2" class="header-anchor">#</a> Timeline Entity</h2> <p>With the Timeline Entity API, you can retrieve the entity information for a given entity identifier.</p> <h3 id="uri-3"><a href="#uri-3" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain the entity object identified by the entityType value and the entityId value.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/timeline/{entityType}/{entityId}
+</code></pre> <h3 id="http-operations-supported-3"><a href="#http-operations-supported-3" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-3"><a href="#query-parameters-supported-3" class="header-anchor">#</a> Query Parameters Supported:</h3> <ol><li>fields - Specifies which fields of the entity object to retrieve: EVENTS, RELATED_ENTITIES, PRIMARY_FILTERS, OTHER_INFO, LAST_EVENT_ONLY. If the set of fields contains LAST_EVENT_ONLY and not EVENTS, the most recent event for each entity is retrieved. If null, retrieves all fields.</li></ol> <h3 id="elements-of-the-entity-timeline-entity-object"><a href="#elements-of-the-entity-timeline-entity-object" class="header-anchor">#</a> Elements of the entity (Timeline Entity) Object:</h3> <p>See also Timeline Event List for syntax of the timeline event object. Note that value of primaryfilters and otherinfo is an Object instead of a String.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>entity</td> <td>string</td> <td>The entity id</td></tr> <tr><td>entitytype</td> <td>string</td> <td>The entity type</td></tr> <tr><td>relatedentities</td> <td>map</td> <td>The related entities’ identifiers, which are organized in a map of entityType : [entity1, entity2, …]</td></tr> <tr><td>events</td> <td>list</td> <td>The events of the entity</td></tr> <tr><td>primaryfilters</td> <td>map</td> <td>The primary filters of the entity, which are organized in a map of key : [value1, value2, …]</td></tr> <tr><td>otherinfo</td> <td>map</td> <td>The other information of the entity, which is organized in a map of key : value</td></tr> <tr><td>starttime</td> <td>long</td> <td>The start time of the entity</td></tr></tbody></table> <h3 id="response-examples-2"><a href="#response-examples-2" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-2"><a href="#json-response-2" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/timeline/DS_APP_ATTEMPT/appattempt_1430424020775_0003_000001
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;events&quot;:[
+    {
+    &quot;timestamp&quot;:1430424959169,
+    &quot;eventtype&quot;:&quot;DS_APP_ATTEMPT_START&quot;,
+    &quot;eventinfo&quot;:  {}}],
+    &quot;entitytype&quot;:&quot;DS_APP_ATTEMPT&quot;,
+    &quot;entity&quot;:&quot;appattempt_1430424020775_0003_000001&quot;,
+    &quot;starttime&quot;:1430424959169,
+    &quot;domain&quot;:&quot;DS_DOMAIN_1&quot;,
+    &quot;relatedentities&quot;:  {},
+    &quot;primaryfilters&quot;:  {
+        &quot;user&quot;:[&quot;zshen&quot;]
+        },
+    &quot;otherinfo&quot;:  {}
+    }
+  ]
+}
+</code></pre> <h2 id="timeline-event-list"><a href="#timeline-event-list" class="header-anchor">#</a> Timeline Event List</h2> <p>With the Timeline Events API, you can retrieve the event objects for a list of entities all of the same entity type. The events for each entity are sorted in order of their timestamps, descending.</p> <h3 id="uri-4"><a href="#uri-4" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain the event objects of the given entityType.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/timeline/{entityType}/events
+</code></pre> <h3 id="http-operations-supported-4"><a href="#http-operations-supported-4" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-4"><a href="#query-parameters-supported-4" class="header-anchor">#</a> Query Parameters Supported:</h3> <ol><li>entityId - The entity IDs to retrieve events for. If null, no events will be returned. Multiple entityIds can be given as comma separated values.</li> <li>limit - A limit on the number of events to return for each entity. If null, defaults to 100 events per entity.</li> <li>windowStart - If not null, retrieves only events later than the given time (exclusive)</li> <li>windowEnd - If not null, retrieves only events earlier than the given time (inclusive)</li> <li>eventType - Restricts the events returned to the given types. If null, events of all types will be returned. Multiple eventTypes can be given as comma separated values.</li></ol> <h3 id="elements-of-the-events-timeline-entity-list-object"><a href="#elements-of-the-events-timeline-entity-list-object" class="header-anchor">#</a> Elements of the events (Timeline Entity List) Object</h3> <p>When you make a request for the list of timeline events, the information will be returned as a collection of event objects.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>events</td> <td>array of timeline event objects(JSON)</td> <td>The collection of timeline event objects</td></tr></tbody></table> <p>Below is the elements of a single event object. Note that value of eventinfo and otherinfo is an Object instead of a String.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>eventtype</td> <td>string</td> <td>The event type</td></tr> <tr><td>eventinfo</td> <td>map</td> <td>The information of the event, which is orgainzied in a map of key : value</td></tr> <tr><td>timestamp</td> <td>long</td> <td>The timestamp of the event</td></tr></tbody></table> <h3 id="response-examples-3"><a href="#response-examples-3" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-3"><a href="#json-response-3" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/timeline/DS_APP_ATTEMPT/events?entityId=appattempt_1430424020775_0003_000001
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+&quot;events&quot;: [
+  {
+  &quot;entity&quot;:&quot;appattempt_1430424020775_0003_000001&quot;,
+  &quot;entitytype&quot;:&quot;DS_APP_ATTEMPT&quot;}
+  &quot;events&quot;:[
+    {
+    &quot;timestamp&quot;:1430424963836,
+    &quot;eventtype&quot;:&quot;DS_APP_ATTEMPT_END&quot;,
+    &quot;eventinfo&quot;:{}},
+    {
+    &quot;timestamp&quot;:1430424959169,
+    &quot;eventtype&quot;:&quot;DS_APP_ATTEMPT_START&quot;,
+    &quot;eventinfo&quot;:{}}
+    ],
+   }
+  ]
+}
+</code></pre> <h1 id="generic-data-rest-apis"><a href="#generic-data-rest-apis" class="header-anchor">#</a> Generic Data REST APIs</h1> <p>Users can access the generic historic information of applications via REST APIs.</p> <h2 id="about"><a href="#about" class="header-anchor">#</a> About</h2> <p>With the about API, you can get an timeline about resource that contains generic history REST API description and version information.</p> <p>It is essentially a XML/JSON-serialized form of the YARN TimelineAbout structure.</p> <h3 id="uri-5"><a href="#uri-5" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain an timeline about object.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/about
+</code></pre> <h3 id="http-operations-supported-5"><a href="#http-operations-supported-5" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-5"><a href="#query-parameters-supported-5" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="elements-of-the-about-application-object"><a href="#elements-of-the-about-application-object" class="header-anchor">#</a> Elements of the about (Application) Object:</h3> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>About</td> <td>string</td> <td>The description about the service</td></tr> <tr><td>timeline-service-version</td> <td>string</td> <td>The timeline service version</td></tr> <tr><td>timeline-service-build-version</td> <td>string</td> <td>The timeline service build version</td></tr> <tr><td>timeline-service-version-built-on</td> <td>string</td> <td>On what time the timeline service is built</td></tr> <tr><td>hadoop-version</td> <td>string</td> <td>Hadoop version</td></tr> <tr><td>hadoop-build-version</td> <td>string</td> <td>Hadoop build version</td></tr> <tr><td>hadoop-version-built-on</td> <td>string</td> <td>On what time Hadoop is built</td></tr></tbody></table> <h3 id="response-examples-4"><a href="#response-examples-4" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-4"><a href="#json-response-4" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>http://localhost:8188/ws/v1/applicationhistory/about
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  About: &quot;Generic History Service API&quot;,
+  timeline-service-version: &quot;3.0.0-SNAPSHOT&quot;,
+  timeline-service-build-version: &quot;3.0.0-SNAPSHOT from fcd0702c10ce574b887280476aba63d6682d5271 by zshen source checksum e9ec74ea3ff7bc9f3d35e9cac694fb&quot;,
+  timeline-service-version-built-on: &quot;2015-05-13T19:45Z&quot;,
+  hadoop-version: &quot;3.0.0-SNAPSHOT&quot;,
+  hadoop-build-version: &quot;3.0.0-SNAPSHOT from fcd0702c10ce574b887280476aba63d6682d5271 by zshen source checksum 95874b192923b43cdb96a6e483afd60&quot;,
+  hadoop-version-built-on: &quot;2015-05-13T19:44Z&quot;
+}
+</code></pre> <h4 id="xml-response"><a href="#xml-response" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/about
+Accept: application/xml
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 748
+</code></pre> <p>Response Body:</p> <pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+ &lt;about&gt;
+   &lt;About&gt;Generic History Service API&lt;/About&gt;
+   &lt;hadoop-build-version&gt;3.0.0-SNAPSHOT from fcd0702c10ce574b887280476aba63d6682d5271 by zshen source checksum 95874b192923b43cdb96a6e483afd60&lt;/hadoop-build-version&gt;
+   &lt;hadoop-version&gt;3.0.0-SNAPSHOT&lt;/hadoop-version&gt;
+   &lt;hadoop-version-built-on&gt;2015-05-13T19:44Z&lt;/hadoop-version-built-on&gt;
+   &lt;timeline-service-build-version&gt;3.0.0-SNAPSHOT from fcd0702c10ce574b887280476aba63d6682d5271 by zshen source checksum e9ec74ea3ff7bc9f3d35e9cac694fb&lt;/timeline-service-build-version&gt;
+   &lt;timeline-service-version&gt;3.0.0-SNAPSHOT&lt;/timeline-service-version&gt;
+   &lt;timeline-service-version-built-on&gt;2015-05-13T19:45Z&lt;/timeline-service-version-built-on&gt;
+ &lt;/about&gt;
+</code></pre> <h2 id="application-list"><a href="#application-list" class="header-anchor">#</a> Application List</h2> <p>With the Application List API, you can obtain a collection of resources, each of which represents an application. When you run a GET operation on this resource, you obtain a collection of application objects.</p> <h3 id="uri-6"><a href="#uri-6" class="header-anchor">#</a> URI:</h3> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/apps
+</code></pre> <h3 id="http-operations-supported-6"><a href="#http-operations-supported-6" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-6"><a href="#query-parameters-supported-6" class="header-anchor">#</a> Query Parameters Supported:</h3> <ol><li><p>states - applications matching the given application states, specified as a comma-separated list</p></li> <li><p>finalStatus - the final status of the application - reported by the application itself</p></li> <li><p>user - user name</p></li> <li><p>queue - queue name</p></li> <li><p>limit - total number of app objects to be returned</p></li> <li><p>startedTimeBegin - applications with start time beginning with this time, specified in ms since epoch</p></li> <li><p>startedTimeEnd - applications with start time ending with this time, specified in ms since epoch</p></li> <li><p>finishedTimeBegin - applications with finish time beginning with this time, specified in ms since epoch</p></li> <li><p>finishedTimeEnd - applications with finish time ending with this time, specified in ms since epoch</p></li> <li><p>applicationTypes - applications matching the given application types, specified as a comma-separated list</p></li></ol> <h3 id="elements-of-the-apps-application-list-object"><a href="#elements-of-the-apps-application-list-object" class="header-anchor">#</a> Elements of the apps (Application List) Object</h3> <p>When you make a request for the list of applications, the information will be returned as a collection of application objects. See also Application for syntax of the application object.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>app</td> <td>array of app objects(JSON)/zero or more application objects(XML)</td> <td>The collection of application objects</td></tr></tbody></table> <h3 id="response-examples-5"><a href="#response-examples-5" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-5"><a href="#json-response-5" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET http://&lt;timeline server http address:port&gt;/ws/v1/applicationhistory/apps
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;app&quot;:
+  [
+      {
+      &quot;appId&quot;:&quot;application_1430424020775_0004&quot;,
+      &quot;currentAppAttemptId&quot;:&quot;appattempt_1430424020775_0004_000001&quot;,
+      &quot;user&quot;:&quot;zshen&quot;,
+      &quot;name&quot;:&quot;DistributedShell&quot;,
+      &quot;queue&quot;:&quot;default&quot;,
+      &quot;type&quot;:&quot;YARN&quot;,
+      &quot;host&quot;:&quot;d-69-91-129-173.dhcp4.washington.edu/69.91.129.173&quot;,
+      &quot;rpcPort&quot;:-1,
+      &quot;appState&quot;:&quot;FINISHED&quot;,
+      &quot;progress&quot;:100.0,
+      &quot;diagnosticsInfo&quot;:&quot;&quot;,
+      &quot;originalTrackingUrl&quot;:&quot;N/A&quot;,
+      &quot;trackingUrl&quot;:&quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0004/&quot;,
+      &quot;finalAppStatus&quot;:&quot;SUCCEEDED&quot;,
+      &quot;submittedTime&quot;:1430425001004,
+      &quot;startedTime&quot;:1430425001004,
+      &quot;finishedTime&quot;:1430425008861,
+      &quot;elapsedTime&quot;:7857,
+      &quot;unmanagedApplication&quot;:&quot;false&quot;,
+      &quot;applicationPriority&quot;:0,
+      &quot;appNodeLabelExpression&quot;:&quot;&quot;,
+      &quot;amNodeLabelExpression&quot;:&quot;&quot;
+      },
+      {
+      &quot;appId&quot;:&quot;application_1430424020775_0003&quot;,
+      &quot;currentAppAttemptId&quot;:&quot;appattempt_1430424020775_0003_000001&quot;,
+      &quot;user&quot;:&quot;zshen&quot;,
+      &quot;name&quot;:&quot;DistributedShell&quot;,
+      &quot;queue&quot;:&quot;default&quot;,
+      &quot;type&quot;:&quot;YARN&quot;,
+      &quot;host&quot;:&quot;d-69-91-129-173.dhcp4.washington.edu/69.91.129.173&quot;,
+      &quot;rpcPort&quot;:-1,
+      &quot;appState&quot;:&quot;FINISHED&quot;,
+      &quot;progress&quot;:100.0,
+      &quot;diagnosticsInfo&quot;:&quot;&quot;,
+      &quot;originalTrackingUrl&quot;:&quot;N/A&quot;,
+      &quot;trackingUrl&quot;:&quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0003/&quot;,
+      &quot;finalAppStatus&quot;:&quot;SUCCEEDED&quot;,
+      &quot;submittedTime&quot;:1430424956650,
+      &quot;startedTime&quot;:1430424956650,
+      &quot;finishedTime&quot;:1430424963907,
+      &quot;elapsedTime&quot;:7257,
+      &quot;unmanagedApplication&quot;:&quot;false&quot;,
+      &quot;applicationPriority&quot;:0,
+      &quot;appNodeLabelExpression&quot;:&quot;&quot;,
+      &quot;amNodeLabelExpression&quot;:&quot;&quot;
+      },
+      {
+      &quot;appId&quot;:&quot;application_1430424020775_0002&quot;,
+      &quot;currentAppAttemptId&quot;:&quot;appattempt_1430424020775_0002_000001&quot;,
+      &quot;user&quot;:&quot;zshen&quot;,
+      &quot;name&quot;:&quot;DistributedShell&quot;,
+      &quot;queue&quot;:&quot;default&quot;,
+      &quot;type&quot;:&quot;YARN&quot;,
+      &quot;host&quot;:&quot;d-69-91-129-173.dhcp4.washington.edu/69.91.129.173&quot;,
+      &quot;rpcPort&quot;:-1,
+      &quot;appState&quot;:&quot;FINISHED&quot;,
+      &quot;progress&quot;:100.0,
+      &quot;diagnosticsInfo&quot;:&quot;&quot;,
+      &quot;originalTrackingUrl&quot;:&quot;N/A&quot;,
+      &quot;trackingUrl&quot;:&quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0002/&quot;,
+      &quot;finalAppStatus&quot;:&quot;SUCCEEDED&quot;,
+      &quot;submittedTime&quot;:1430424769395,
+      &quot;startedTime&quot;:1430424769395,
+      &quot;finishedTime&quot;:1430424776594,
+      &quot;elapsedTime&quot;:7199,
+      &quot;unmanagedApplication&quot;:&quot;false&quot;,
+      &quot;applicationPriority&quot;:0,
+      &quot;appNodeLabelExpression&quot;:&quot;&quot;,
+      &quot;amNodeLabelExpression&quot;:&quot;&quot;
+      },
+      {
+      &quot;appId&quot;:&quot;application_1430424020775_0001&quot;,
+      &quot;currentAppAttemptId&quot;:&quot;appattempt_1430424020775_0001_000001&quot;,
+      &quot;user&quot;:&quot;zshen&quot;,
+      &quot;name&quot;:&quot;QuasiMonteCarlo&quot;,
+      &quot;queue&quot;:&quot;default&quot;,
+      &quot;type&quot;:&quot;MAPREDUCE&quot;,
+      &quot;host&quot;:&quot;localhost&quot;,
+      &quot;rpcPort&quot;:56264,
+      &quot;appState&quot;:&quot;FINISHED&quot;,
+      &quot;progress&quot;:100.0,
+      &quot;diagnosticsInfo&quot;:&quot;&quot;,
+      &quot;originalTrackingUrl&quot;:&quot;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&quot;,
+      &quot;trackingUrl&quot;:&quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&quot;,
+      &quot;finalAppStatus&quot;:&quot;SUCCEEDED&quot;,
+      &quot;submittedTime&quot;:1430424053809,
+      &quot;startedTime&quot;:1430424072153,
+      &quot;finishedTime&quot;:1430424776594,
+      &quot;elapsedTime&quot;:18344,
+      &quot;applicationTags&quot;:&quot;mrapplication,ta-example&quot;,
+      &quot;unmanagedApplication&quot;:&quot;false&quot;,
+      &quot;applicationPriority&quot;:0,
+      &quot;appNodeLabelExpression&quot;:&quot;&quot;,
+      &quot;amNodeLabelExpression&quot;:&quot;&quot;
+      }
+  ]
+}
+</code></pre> <h4 id="xml-response-2"><a href="#xml-response-2" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 1710
+</code></pre> <p>Response Body:</p> <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;apps&gt;
+  &lt;app&gt;
+    &lt;appId&gt;application_1430424020775_0004&lt;/appId&gt;
+    &lt;currentAppAttemptId&gt;appattempt_1430424020775_0004_000001&lt;/currentAppAttemptId&gt;
+    &lt;user&gt;zshen&lt;/user&gt;
+    &lt;name&gt;DistributedShell&lt;/name&gt;
+    &lt;queue&gt;default&lt;/queue&gt;
+    &lt;type&gt;YARN&lt;/type&gt;
+    &lt;host&gt;d-69-91-129-173.dhcp4.washington.edu/69.91.129.173&lt;/host&gt;
+    &lt;rpcPort&gt;-1&lt;/rpcPort&gt;
+    &lt;appState&gt;FINISHED&lt;/appState&gt;
+    &lt;progress&gt;100.0&lt;/progress&gt;
+    &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+    &lt;originalTrackingUrl&gt;N/A&lt;/originalTrackingUrl&gt;
+    &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0004/&lt;/trackingUrl&gt;
+    &lt;finalAppStatus&gt;SUCCEEDED&lt;/finalAppStatus&gt;
+    &lt;submittedTime&gt;1430425001004&lt;/submittedTime&gt;
+    &lt;startedTime&gt;1430425001004&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430425008861&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7857&lt;/elapsedTime&gt;
+    &lt;unmanagedApplication&gt;false&lt;/unmanagedApplication&gt;
+    &lt;applicationPriority&gt;0&lt;/applicationPriority&gt;
+    &lt;appNodeLabelExpression&gt;&lt;/appNodeLabelExpression&gt;
+    &lt;amNodeLabelExpression&gt;&lt;/amNodeLabelExpression&gt;
+  &lt;/app&gt;
+  &lt;app&gt;
+    &lt;appId&gt;application_1430424020775_0003&lt;/appId&gt;
+    &lt;currentAppAttemptId&gt;appattempt_1430424020775_0003_000001&lt;/currentAppAttemptId&gt;
+    &lt;user&gt;zshen&lt;/user&gt;
+    &lt;name&gt;DistributedShell&lt;/name&gt;
+    &lt;queue&gt;default&lt;/queue&gt;
+    &lt;type&gt;YARN&lt;/type&gt;
+    &lt;host&gt;d-69-91-129-173.dhcp4.washington.edu/69.91.129.173&lt;/host&gt;
+    &lt;rpcPort&gt;-1&lt;/rpcPort&gt;
+    &lt;appState&gt;FINISHED&lt;/appState&gt;
+    &lt;progress&gt;100.0&lt;/progress&gt;
+    &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+    &lt;originalTrackingUrl&gt;N/A&lt;/originalTrackingUrl&gt;
+    &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0003/&lt;/trackingUrl&gt;
+    &lt;finalAppStatus&gt;SUCCEEDED&lt;/finalAppStatus&gt;
+    &lt;submittedTime&gt;1430424956650&lt;/submittedTime&gt;
+    &lt;startedTime&gt;1430424956650&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424963907&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7257&lt;/elapsedTime&gt;
+    &lt;unmanagedApplication&gt;false&lt;/unmanagedApplication&gt;
+    &lt;applicationPriority&gt;0&lt;/applicationPriority&gt;
+    &lt;appNodeLabelExpression&gt;&lt;/appNodeLabelExpression&gt;
+    &lt;amNodeLabelExpression&gt;&lt;/amNodeLabelExpression&gt;
+  &lt;/app&gt;
+  &lt;app&gt;
+    &lt;appId&gt;application_1430424020775_0002&lt;/appId&gt;
+    &lt;currentAppAttemptId&gt;appattempt_1430424020775_0002_000001&lt;/currentAppAttemptId&gt;
+    &lt;user&gt;zshen&lt;/user&gt;
+    &lt;name&gt;DistributedShell&lt;/name&gt;
+    &lt;queue&gt;default&lt;/queue&gt;
+    &lt;type&gt;YARN&lt;/type&gt;
+    &lt;host&gt;d-69-91-129-173.dhcp4.washington.edu/69.91.129.173&lt;/host&gt;
+    &lt;rpcPort&gt;-1&lt;/rpcPort&gt;
+    &lt;appState&gt;FINISHED&lt;/appState&gt;
+    &lt;progress&gt;100.0&lt;/progress&gt;
+    &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+    &lt;originalTrackingUrl&gt;N/A&lt;/originalTrackingUrl&gt;
+    &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0002/&lt;/trackingUrl&gt;
+    &lt;finalAppStatus&gt;SUCCEEDED&lt;/finalAppStatus&gt;
+    &lt;submittedTime&gt;1430424769395&lt;/submittedTime&gt;
+    &lt;startedTime&gt;1430424769395&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424776594&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7199&lt;/elapsedTime&gt;
+    &lt;unmanagedApplication&gt;false&lt;/unmanagedApplication&gt;
+    &lt;applicationPriority&gt;0&lt;/applicationPriority&gt;
+    &lt;appNodeLabelExpression&gt;&lt;/appNodeLabelExpression&gt;
+    &lt;amNodeLabelExpression&gt;&lt;/amNodeLabelExpression&gt;
+  &lt;/app&gt;
+  &lt;app&gt;
+    &lt;appId&gt;application_1430424020775_0001&lt;/appId&gt;
+    &lt;currentAppAttemptId&gt;appattempt_1430424020775_0001_000001&lt;/currentAppAttemptId&gt;
+    &lt;user&gt;zshen&lt;/user&gt;
+    &lt;name&gt;QuasiMonteCarlo&lt;/name&gt;
+    &lt;queue&gt;default&lt;/queue&gt;
+    &lt;type&gt;MAPREDUCE&lt;/type&gt;
+    &lt;host&gt;localhost&lt;/host&gt;
+    &lt;rpcPort&gt;56264&lt;/rpcPort&gt;
+    &lt;appState&gt;FINISHED&lt;/appState&gt;
+    &lt;progress&gt;100.0&lt;/progress&gt;
+    &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+    &lt;originalTrackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&lt;/originalTrackingUrl&gt;
+    &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&lt;/trackingUrl&gt;
+    &lt;finalAppStatus&gt;SUCCEEDED&lt;/finalAppStatus&gt;
+    &lt;submittedTime&gt;1430424053809&lt;/submittedTime&gt;
+    &lt;startedTime&gt;1430424053809&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424072153&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;18344&lt;/elapsedTime&gt;
+    &lt;applicationTags&gt;mrapplication,ta-example&lt;/applicationTags&gt;
+    &lt;unmanagedApplication&gt;false&lt;/unmanagedApplication&gt;
+    &lt;applicationPriority&gt;0&lt;/applicationPriority&gt;
+    &lt;appNodeLabelExpression&gt;&lt;/appNodeLabelExpression&gt;
+    &lt;amNodeLabelExpression&gt;&lt;/amNodeLabelExpression&gt;
+  &lt;/app&gt;
+&lt;/apps&gt;
+</code></pre> <h2 id="application"><a href="#application" class="header-anchor">#</a> Application</h2> <p>With the Application API, you can get an application resource contains information about a particular application that was running on an YARN cluster.</p> <p>It is essentially a XML/JSON-serialized form of the YARN ApplicationReport structure.</p> <h3 id="uri-7"><a href="#uri-7" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain an application object identified by the appid value.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/apps/{appid}
+</code></pre> <h3 id="http-operations-supported-7"><a href="#http-operations-supported-7" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-7"><a href="#query-parameters-supported-7" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="elements-of-the-app-application-object"><a href="#elements-of-the-app-application-object" class="header-anchor">#</a> Elements of the app (Application) Object:</h3> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>appId</td> <td>string</td> <td>The application ID</td></tr> <tr><td>user</td> <td>string</td> <td>The user who started the application</td></tr> <tr><td>name</td> <td>string</td> <td>The application name</td></tr> <tr><td>type</td> <td>string</td> <td>The application type</td></tr> <tr><td>queue</td> <td>string</td> <td>The queue to which the application submitted</td></tr> <tr><td>appState</td> <td>string</td> <td>The application state according to the ResourceManager - valid values are members of the YarnApplicationState enum: FINISHED, FAILED, KILLED</td></tr> <tr><td>finalStatus</td> <td>string</td> <td>The final status of the application if finished - reported by the application itself - valid values are: UNDEFINED, SUCCEEDED, FAILED, KILLED</td></tr> <tr><td>progress</td> <td>float</td> <td>The reported progress of the application as a percent. Long-lived YARN services may not provide a meaninful value here —or use it as a metric of actual vs desired container counts</td></tr> <tr><td>trackingUrl</td> <td>string</td> <td>The web URL of the application (via the RM Proxy)</td></tr> <tr><td>originalTrackingUrl</td> <td>string</td> <td>The actual web URL of the application</td></tr> <tr><td>diagnosticsInfo</td> <td>string</td> <td>Detailed diagnostics information on a completed application</td></tr> <tr><td>startedTime</td> <td>long</td> <td>The time in which application started (in ms since epoch)</td></tr> <tr><td>finishedTime</td> <td>long</td> <td>The time in which the application finished (in ms since epoch)</td></tr> <tr><td>elapsedTime</td> <td>long</td> <td>The elapsed time since the application started (in ms)</td></tr> <tr><td>allocatedMB</td> <td>int</td> <td>The sum of memory in MB allocated to the application’s running containers</td></tr> <tr><td>allocatedVCores</td> <td>int</td> <td>The sum of virtual cores allocated to the application’s running containers</td></tr> <tr><td>currentAppAttemptId</td> <td>string</td> <td>The latest application attempt ID</td></tr> <tr><td>host</td> <td>string</td> <td>The host of the ApplicationMaster</td></tr> <tr><td>rpcPort</td> <td>int</td> <td>The RPC port of the ApplicationMaster; zero if no IPC service declared</td></tr> <tr><td>applicationTags</td> <td>string</td> <td>The application tags.</td></tr> <tr><td>unmanagedApplication</td> <td>boolean</td> <td>Is the application unmanaged.</td></tr> <tr><td>applicationPriority</td> <td>int</td> <td>Priority of the submitted application.</td></tr> <tr><td>appNodeLabelExpression</td> <td>string</td> <td>Node Label expression which is used to identify the nodes on which application’s containers are expected to run by default.</td></tr> <tr><td>amNodeLabelExpression</td> <td>string</td> <td>Node Label expression which is used to identify the node on which application’s AM container is expected to run.</td></tr></tbody></table> <h3 id="response-examples-6"><a href="#response-examples-6" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-6"><a href="#json-response-6" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;appId&quot;: &quot;application_1430424020775_0001&quot;,
+  &quot;currentAppAttemptId&quot;: &quot;appattempt_1430424020775_0001_000001&quot;,
+  &quot;user&quot;: &quot;zshen&quot;,
+  &quot;name&quot;: &quot;QuasiMonteCarlo&quot;,
+  &quot;queue&quot;: &quot;default&quot;,
+  &quot;type&quot;: &quot;MAPREDUCE&quot;,
+  &quot;host&quot;: &quot;localhost&quot;,
+  &quot;rpcPort&quot;: 56264,
+  &quot;appState&quot;: &quot;FINISHED&quot;,
+  &quot;progress&quot;: 100.0,
+  &quot;diagnosticsInfo&quot;: &quot;&quot;,
+  &quot;originalTrackingUrl&quot;: &quot;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&quot;,
+  &quot;trackingUrl&quot;: &quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&quot;,
+  &quot;finalAppStatus&quot;: &quot;SUCCEEDED&quot;,
+  &quot;submittedTime&quot;: 1430424053809,
+  &quot;startedTime&quot;: 1430424053809,
+  &quot;finishedTime&quot;: 1430424072153,
+  &quot;elapsedTime&quot;: 18344,
+  &quot;applicationTags&quot;: mrapplication,tag-example,
+  &quot;unmanagedApplication&quot;: &quot;false&quot;,
+  &quot;applicationPriority&quot;: 0,
+  &quot;appNodeLabelExpression&quot;: &quot;&quot;,
+  &quot;amNodeLabelExpression&quot;: &quot;&quot;
+}
+</code></pre> <h4 id="xml-response-3"><a href="#xml-response-3" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001
+Accept: application/xml
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 873
+</code></pre> <p>Response Body:</p> <pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+ &lt;app&gt;
+   &lt;appId&gt;application_1430424020775_0001&lt;/appId&gt;
+   &lt;currentAppAttemptId&gt;appattempt_1430424020775_0001_000001&lt;/currentAppAttemptId&gt;
+   &lt;user&gt;zshen&lt;/user&gt;
+   &lt;name&gt;QuasiMonteCarlo&lt;/name&gt;
+   &lt;queue&gt;default&lt;/queue&gt;
+   &lt;type&gt;MAPREDUCE&lt;/type&gt;
+   &lt;host&gt;localhost&lt;/host&gt;
+   &lt;rpcPort&gt;56264&lt;/rpcPort&gt;
+   &lt;appState&gt;FINISHED&lt;/appState&gt;
+   &lt;progress&gt;100.0&lt;/progress&gt;
+   &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+   &lt;originalTrackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&lt;/originalTrackingUrl&gt;
+   &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&lt;/trackingUrl&gt;
+   &lt;finalAppStatus&gt;SUCCEEDED&lt;/finalAppStatus&gt;
+   &lt;submittedTime&gt;1430424053809&lt;/submittedTime&gt;
+   &lt;startedTime&gt;1430424053809&lt;/startedTime&gt;
+   &lt;finishedTime&gt;1430424072153&lt;/finishedTime&gt;
+   &lt;elapsedTime&gt;18344&lt;/elapsedTime&gt;
+   &lt;applicationTags&gt;mrapplication,ta-example&lt;/applicationTags&gt;
+   &lt;unmanagedApplication&gt;false&lt;/unmanagedApplication&gt;
+   &lt;applicationPriority&gt;0&lt;/applicationPriority&gt;
+   &lt;appNodeLabelExpression&gt;&lt;appNodeLabelExpression&gt;
+   &lt;amNodeLabelExpression&gt;&lt;amNodeLabelExpression&gt;
+ &lt;/app&gt;
+</code></pre> <h2 id="application-attempt-list"><a href="#application-attempt-list" class="header-anchor">#</a> Application Attempt List</h2> <p>With the Application Attempt List API, you can obtain a collection of resources, each of which represents an application attempt. When you run a GET operation on this resource, you obtain a collection of application attempt objects.</p> <h3 id="uri-8"><a href="#uri-8" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain all the attempt objects of an application identified by the appid value.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/apps/{appid}/appattempts
+</code></pre> <h3 id="http-operations-supported-8"><a href="#http-operations-supported-8" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-8"><a href="#query-parameters-supported-8" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="elements-of-the-appattempts-application-attempt-list-object"><a href="#elements-of-the-appattempts-application-attempt-list-object" class="header-anchor">#</a> Elements of the appattempts (Application Attempt List) Object</h3> <p>When you make a request for the list of application attempts, the information will be returned as a collection of application attempt objects. See Application Attempt for the syntax of the application attempt object.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>appattempt</td> <td>array of appattempt objects(JSON)/zero or more application attempt objects(XML)</td> <td>The collection of application attempt objects</td></tr></tbody></table> <h3 id="response-examples-7"><a href="#response-examples-7" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-7"><a href="#json-response-7" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET  http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;appAttempt&quot;: [
+    {
+      &quot;appAttemptId&quot;: &quot;appattempt_1430424020775_0001_000001&quot;,
+      &quot;host&quot;: &quot;localhost&quot;,
+      &quot;rpcPort&quot;: 56264,
+      &quot;trackingUrl&quot;: &quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&quot;,
+      &quot;originalTrackingUrl&quot;: &quot;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&quot;,
+      &quot;diagnosticsInfo&quot;: &quot;&quot;,
+      &quot;appAttemptState&quot;: &quot;FINISHED&quot;,
+      &quot;amContainerId&quot;: &quot;container_1430424020775_0001_01_000001&quot;
+    }
+  ]
+}
+</code></pre> <h4 id="xml-response-4"><a href="#xml-response-4" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts
+Accept: application/xml
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/xml
+</code></pre> <p>Response Body:</p> <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;appAttempts&gt;
+  &lt;appAttempt&gt;
+    &lt;appAttemptId&gt;appattempt_1430424020775_0001_000001&lt;/appAttemptId&gt;
+    &lt;host&gt;localhost&lt;/host&gt;
+    &lt;rpcPort&gt;56264&lt;/rpcPort&gt;
+    &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&lt;/trackingUrl&gt;
+    &lt;originalTrackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&lt;/originalTrackingUrl&gt;
+    &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+    &lt;appAttemptState&gt;FINISHED&lt;/appAttemptState&gt;
+    &lt;amContainerId&gt;container_1430424020775_0001_01_000001&lt;/amContainerId&gt;
+  &lt;/appAttempt&gt;
+&lt;/appAttempts&gt;
+</code></pre> <h2 id="application-attempt"><a href="#application-attempt" class="header-anchor">#</a> Application Attempt</h2> <p>With the Application Attempt API, you can get an application attempt resource contains information about a particular application attempt of an application that was running on an YARN cluster.</p> <h3 id="uri-9"><a href="#uri-9" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain an application attempt object identified by the appid value and the appattemptid value.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/apps/{appid}/appattempts/{appattemptid}
+</code></pre> <h3 id="http-operations-supported-9"><a href="#http-operations-supported-9" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-9"><a href="#query-parameters-supported-9" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="elements-of-the-appattempt-application-attempt-object"><a href="#elements-of-the-appattempt-application-attempt-object" class="header-anchor">#</a> Elements of the appattempt (Application Attempt) Object:</h3> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>appAttemptId</td> <td>string</td> <td>The application attempt Id</td></tr> <tr><td>amContainerId</td> <td>string</td> <td>The ApplicationMaster container Id</td></tr> <tr><td>appAttemptState</td> <td>string</td> <td>The application attempt state according to the ResourceManager - valid values are members of the YarnApplicationAttemptState enum: FINISHED, FAILED, KILLED</td></tr> <tr><td>trackingUrl</td> <td>string</td> <td>The web URL that can be used to track the application</td></tr> <tr><td>originalTrackingUrl</td> <td>string</td> <td>The actual web URL of the application</td></tr> <tr><td>diagnosticsInfo</td> <td>string</td> <td>Detailed diagnostics information</td></tr> <tr><td>host</td> <td>string</td> <td>The host of the ApplicationMaster</td></tr> <tr><td>rpcPort</td> <td>int</td> <td>The rpc port of the ApplicationMaster</td></tr></tbody></table> <h3 id="response-examples-8"><a href="#response-examples-8" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-8"><a href="#json-response-8" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts/appattempt_1430424020775_0001_000001
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;appAttemptId&quot;: &quot;appattempt_1430424020775_0001_000001&quot;,
+  &quot;host&quot;: &quot;localhost&quot;,
+  &quot;rpcPort&quot;: 56264,
+  &quot;trackingUrl&quot;: &quot;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&quot;,
+  &quot;originalTrackingUrl&quot;: &quot;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&quot;,
+  &quot;diagnosticsInfo&quot;: &quot;&quot;,
+  &quot;appAttemptState&quot;: &quot;FINISHED&quot;,
+  &quot;amContainerId&quot;: &quot;container_1430424020775_0001_01_000001&quot;
+}
+</code></pre> <h4 id="xml-response-5"><a href="#xml-response-5" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://&lt;timeline server http address:port&gt;/ws/v1/applicationhistory/apps/application_1395789200506_0001/appattempts/appattempt_1395789200506_0001_000001
+Accept: application/xml
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 488
+</code></pre> <p>Response Body:</p> <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;appAttempt&gt;
+  &lt;appAttemptId&gt;appattempt_1430424020775_0001_000001&lt;/appAttemptId&gt;
+  &lt;host&gt;localhost&lt;/host&gt;
+  &lt;rpcPort&gt;56264&lt;/rpcPort&gt;
+  &lt;trackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:8088/proxy/application_1430424020775_0001/&lt;/trackingUrl&gt;
+  &lt;originalTrackingUrl&gt;http://d-69-91-129-173.dhcp4.washington.edu:19888/jobhistory/job/job_1430424020775_0001&lt;/originalTrackingUrl&gt;
+  &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+  &lt;appAttemptState&gt;FINISHED&lt;/appAttemptState&gt;
+  &lt;amContainerId&gt;container_1430424020775_0001_01_000001&lt;/amContainerId&gt;
+&lt;/appAttempt&gt;
+</code></pre> <h2 id="container-list"><a href="#container-list" class="header-anchor">#</a> Container List</h2> <p>With the Container List API, you can obtain a collection of resources, each of which represents a container. When you run a GET operation on this resource, you obtain a collection of container objects.</p> <h3 id="uri-10"><a href="#uri-10" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain all the container objects of an application attempt identified by the appid value and the appattemptid value.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/apps/{appid}/appattempts/{appattemptid}/containers
+</code></pre> <h3 id="http-operations-supported-10"><a href="#http-operations-supported-10" class="header-anchor">#</a> HTTP Operations Supported:</h3> <pre><code>GET
+</code></pre> <h3 id="query-parameters-supported-10"><a href="#query-parameters-supported-10" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="elements-of-the-containers-container-list-object"><a href="#elements-of-the-containers-container-list-object" class="header-anchor">#</a> Elements of the containers (Container List) Object</h3> <p>When you make a request for the list of containers, the information will be returned as a collection of container objects. See also Container for syntax of the container object.</p> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>container</td> <td>array of container objects(JSON)/zero or more container objects(XML)</td> <td>The collection of container objects</td></tr></tbody></table> <h3 id="response-examples-9"><a href="#response-examples-9" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-9"><a href="#json-response-9" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts/appattempt_1430424020775_0001_000001/containers?
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;container&quot;: [
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000007&quot;,
+      &quot;allocatedMB&quot;: 1024,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 10,
+      &quot;startedTime&quot;: 1430424068296,
+      &quot;finishedTime&quot;: 1430424073006,
+      &quot;elapsedTime&quot;: 4710,
+      &quot;diagnosticsInfo&quot;: &quot;Container killed by the ApplicationMaster.\nContainer killed on request. Exit code is 143\nContainer exited with a non-zero exit code 143\n&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000007/container_1430424020775_0001_01_000007/zshen&quot;,
+      &quot;containerExitStatus&quot;: -105,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    },
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000006&quot;,
+      &quot;allocatedMB&quot;: 1024,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 20,
+      &quot;startedTime&quot;: 1430424060317,
+      &quot;finishedTime&quot;: 1430424068293,
+      &quot;elapsedTime&quot;: 7976,
+      &quot;diagnosticsInfo&quot;: &quot;Container killed by the ApplicationMaster.\nContainer killed on request. Exit code is 143\nContainer exited with a non-zero exit code 143\n&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000006/container_1430424020775_0001_01_000006/zshen&quot;,
+      &quot;containerExitStatus&quot;: -105,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    },
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000005&quot;,
+      &quot;allocatedMB&quot;: 1024,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 20,
+      &quot;startedTime&quot;: 1430424060316,
+      &quot;finishedTime&quot;: 1430424068294,
+      &quot;elapsedTime&quot;: 7978,
+      &quot;diagnosticsInfo&quot;: &quot;Container killed by the ApplicationMaster.\nContainer killed on request. Exit code is 143\nContainer exited with a non-zero exit code 143\n&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000005/container_1430424020775_0001_01_000005/zshen&quot;,
+      &quot;containerExitStatus&quot;: -105,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    },
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000003&quot;,
+      &quot;allocatedMB&quot;: 1024,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 20,
+      &quot;startedTime&quot;: 1430424060315,
+      &quot;finishedTime&quot;: 1430424068289,
+      &quot;elapsedTime&quot;: 7974,
+      &quot;diagnosticsInfo&quot;: &quot;Container killed by the ApplicationMaster.\nContainer killed on request. Exit code is 143\nContainer exited with a non-zero exit code 143\n&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000003/container_1430424020775_0001_01_000003/zshen&quot;,
+      &quot;containerExitStatus&quot;: -105,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    },
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000004&quot;,
+      &quot;allocatedMB&quot;: 1024,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 20,
+      &quot;startedTime&quot;: 1430424060315,
+      &quot;finishedTime&quot;: 1430424068291,
+      &quot;elapsedTime&quot;: 7976,
+      &quot;diagnosticsInfo&quot;: &quot;Container killed by the ApplicationMaster.\nContainer killed on request. Exit code is 143\nContainer exited with a non-zero exit code 143\n&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000004/container_1430424020775_0001_01_000004/zshen&quot;,
+      &quot;containerExitStatus&quot;: -105,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    },
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000002&quot;,
+      &quot;allocatedMB&quot;: 1024,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 20,
+      &quot;startedTime&quot;: 1430424060313,
+      &quot;finishedTime&quot;: 1430424067250,
+      &quot;elapsedTime&quot;: 6937,
+      &quot;diagnosticsInfo&quot;: &quot;Container killed by the ApplicationMaster.\nContainer killed on request. Exit code is 143\nContainer exited with a non-zero exit code 143\n&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000002/container_1430424020775_0001_01_000002/zshen&quot;,
+      &quot;containerExitStatus&quot;: -105,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    },
+    {
+      &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000001&quot;,
+      &quot;allocatedMB&quot;: 2048,
+      &quot;allocatedVCores&quot;: 1,
+      &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+      &quot;priority&quot;: 0,
+      &quot;startedTime&quot;: 1430424054314,
+      &quot;finishedTime&quot;: 1430424079022,
+      &quot;elapsedTime&quot;: 24708,
+      &quot;diagnosticsInfo&quot;: &quot;&quot;,
+      &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000001/container_1430424020775_0001_01_000001/zshen&quot;,
+      &quot;containerExitStatus&quot;: 0,
+      &quot;containerState&quot;: &quot;COMPLETE&quot;,
+      &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+    }
+  ]
+}
+</code></pre> <h4 id="xml-response-6"><a href="#xml-response-6" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts/appattempt_1430424020775_0001_000001/containers
+Accept: application/xml
+</code></pre> <p>Response Header:</p> <pre><code>  HTTP/1.1 200 OK
+  Content-Type: application/xml
+  Content-Length: 1428
+</code></pre> <p>Response Body:</p> <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;containers&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000007&lt;/containerId&gt;
+    &lt;allocatedMB&gt;1024&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;10&lt;/priority&gt;
+    &lt;startedTime&gt;1430424068296&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424073006&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;4710&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;Container killed by the ApplicationMaster.
+      Container killed on request. Exit code is 143
+      Container exited with a non-zero exit code 143
+    &lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000007/container_1430424020775_0001_01_000007/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;-105&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000006&lt;/containerId&gt;
+    &lt;allocatedMB&gt;1024&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;20&lt;/priority&gt;
+    &lt;startedTime&gt;1430424060317&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424068293&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7976&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;Container killed by the ApplicationMaster.
+      Container killed on request. Exit code is 143
+      Container exited with a non-zero exit code 143
+    &lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000006/container_1430424020775_0001_01_000006/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;-105&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000005&lt;/containerId&gt;
+    &lt;allocatedMB&gt;1024&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;20&lt;/priority&gt;
+    &lt;startedTime&gt;1430424060316&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424068294&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7978&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;Container killed by the ApplicationMaster.
+      Container killed on request. Exit code is 143
+      Container exited with a non-zero exit code 143
+    &lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000005/container_1430424020775_0001_01_000005/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;-105&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000003&lt;/containerId&gt;
+    &lt;allocatedMB&gt;1024&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;20&lt;/priority&gt;
+    &lt;startedTime&gt;1430424060315&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424068289&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7974&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;Container killed by the ApplicationMaster.
+      Container killed on request. Exit code is 143
+      Container exited with a non-zero exit code 143
+    &lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000003/container_1430424020775_0001_01_000003/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;-105&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000004&lt;/containerId&gt;
+    &lt;allocatedMB&gt;1024&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;20&lt;/priority&gt;
+    &lt;startedTime&gt;1430424060315&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424068291&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;7976&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;Container killed by the ApplicationMaster.
+      Container killed on request. Exit code is 143
+      Container exited with a non-zero exit code 143
+    &lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000004/container_1430424020775_0001_01_000004/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;-105&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000002&lt;/containerId&gt;
+    &lt;allocatedMB&gt;1024&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;20&lt;/priority&gt;
+    &lt;startedTime&gt;1430424060313&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424067250&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;6937&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;Container killed by the ApplicationMaster.
+      Container killed on request. Exit code is 143
+      Container exited with a non-zero exit code 143
+    &lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000002/container_1430424020775_0001_01_000002/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;-105&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+  &lt;container&gt;
+    &lt;containerId&gt;container_1430424020775_0001_01_000001&lt;/containerId&gt;
+    &lt;allocatedMB&gt;2048&lt;/allocatedMB&gt;
+    &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+    &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+    &lt;priority&gt;0&lt;/priority&gt;
+    &lt;startedTime&gt;1430424054314&lt;/startedTime&gt;
+    &lt;finishedTime&gt;1430424079022&lt;/finishedTime&gt;
+    &lt;elapsedTime&gt;24708&lt;/elapsedTime&gt;
+    &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+    &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000001/container_1430424020775_0001_01_000001/zshen&lt;/logUrl&gt;
+    &lt;containerExitStatus&gt;0&lt;/containerExitStatus&gt;
+    &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+    &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+  &lt;/container&gt;
+&lt;/containers&gt;
+</code></pre> <h2 id="container"><a href="#container" class="header-anchor">#</a> Container</h2> <p>With the Container API, you can get a container resource contains information about a particular container of an application attempt of an application that was running on an YARN cluster.</p> <h3 id="uri-11"><a href="#uri-11" class="header-anchor">#</a> URI:</h3> <p>Use the following URI to obtain a container object identified by the appid value, the appattemptid value and the containerid value.</p> <pre><code>http(s)://&lt;timeline server http(s) address:port&gt;/ws/v1/applicationhistory/apps/{appid}/appattempts/{appattemptid}/containers/{containerid}
+</code></pre> <h3 id="http-operations-supported-11"><a href="#http-operations-supported-11" class="header-anchor">#</a> HTTP Operations Supported:</h3> <p>GET</p> <h3 id="query-parameters-supported-11"><a href="#query-parameters-supported-11" class="header-anchor">#</a> Query Parameters Supported:</h3> <p>None</p> <h3 id="elements-of-the-container-container-object"><a href="#elements-of-the-container-container-object" class="header-anchor">#</a> Elements of the container (Container) Object:</h3> <table><thead><tr><th>Item</th> <th>Data Type</th> <th>Description</th></tr></thead> <tbody><tr><td>containerId</td> <td>string</td> <td>The container Id</td></tr> <tr><td>containerState</td> <td>string</td> <td>The container state according to the ResourceManager - valid values are members of the ContainerState enum: COMPLETE</td></tr> <tr><td>containerExitStatus</td> <td>int</td> <td>The container exit status</td></tr> <tr><td>logUrl</td> <td>string</td> <td>The log URL that can be used to access the container aggregated log</td></tr> <tr><td>diagnosticsInfo</td> <td>string</td> <td>Detailed diagnostics information</td></tr> <tr><td>startedTime</td> <td>long</td> <td>The time in which container started (in ms since epoch)</td></tr> <tr><td>finishedTime</td> <td>long</td> <td>The time in which the container finished (in ms since epoch)</td></tr> <tr><td>elapsedTime</td> <td>long</td> <td>The elapsed time since the container started (in ms)</td></tr> <tr><td>allocatedMB</td> <td>int</td> <td>The memory in MB allocated to the container</td></tr> <tr><td>allocatedVCores</td> <td>int</td> <td>The virtual cores allocated to the container</td></tr> <tr><td>priority</td> <td>int</td> <td>The priority of the container</td></tr> <tr><td>assignedNodeId</td> <td>string</td> <td>The assigned node host and port of the container</td></tr></tbody></table> <h3 id="response-examples-10"><a href="#response-examples-10" class="header-anchor">#</a> Response Examples:</h3> <h4 id="json-response-10"><a href="#json-response-10" class="header-anchor">#</a> JSON response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts/appattempt_1430424020775_0001_000001/containers/container_1430424020775_0001_01_000001
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Transfer-Encoding: chunked
+</code></pre> <p>Response Body:</p> <pre><code>{
+  &quot;containerId&quot;: &quot;container_1430424020775_0001_01_000001&quot;,
+  &quot;allocatedMB&quot;: 2048,
+  &quot;allocatedVCores&quot;: 1,
+  &quot;assignedNodeId&quot;: &quot;localhost:9105&quot;,
+  &quot;priority&quot;: 0,
+  &quot;startedTime&quot;: 1430424054314,
+  &quot;finishedTime&quot;: 1430424079022,
+  &quot;elapsedTime&quot;: 24708,
+  &quot;diagnosticsInfo&quot;: &quot;&quot;,
+  &quot;logUrl&quot;: &quot;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000001/container_1430424020775_0001_01_000001/zshen&quot;,
+  &quot;containerExitStatus&quot;: 0,
+  &quot;containerState&quot;: &quot;COMPLETE&quot;,
+  &quot;nodeHttpAddress&quot;: &quot;http://localhost:8042&quot;
+}
+</code></pre> <h4 id="xml-response-7"><a href="#xml-response-7" class="header-anchor">#</a> XML response</h4> <p>HTTP Request:</p> <pre><code>GET http://localhost:8188/ws/v1/applicationhistory/apps/application_1430424020775_0001/appattempts/appattempt_1430424020775_0001_000001/containers/container_1430424020775_0001_01_000001
+Accept: application/xml
+</code></pre> <p>Response Header:</p> <pre><code>HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 669
+</code></pre> <p>Response Body:</p> <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;container&gt;
+  &lt;containerId&gt;container_1430424020775_0001_01_000001&lt;/containerId&gt;
+  &lt;allocatedMB&gt;2048&lt;/allocatedMB&gt;
+  &lt;allocatedVCores&gt;1&lt;/allocatedVCores&gt;
+  &lt;assignedNodeId&gt;localhost:9105&lt;/assignedNodeId&gt;
+  &lt;priority&gt;0&lt;/priority&gt;
+  &lt;startedTime&gt;1430424054314&lt;/startedTime&gt;
+  &lt;finishedTime&gt;1430424079022&lt;/finishedTime&gt;
+  &lt;elapsedTime&gt;24708&lt;/elapsedTime&gt;
+  &lt;diagnosticsInfo&gt;&lt;/diagnosticsInfo&gt;
+  &lt;logUrl&gt;http://0.0.0.0:8188/applicationhistory/logs/localhost:9105/container_1430424020775_0001_01_000001/container_1430424020775_0001_01_000001/zshen&lt;/logUrl&gt;
+  &lt;containerExitStatus&gt;0&lt;/containerExitStatus&gt;
+  &lt;containerState&gt;COMPLETE&lt;/containerState&gt;
+  &lt;nodeHttpAddress&gt;http://localhost:8042&lt;/nodeHttpAddress&gt;
+&lt;/container&gt;
+</code></pre> <h3 id="response-codes"><a href="#response-codes" class="header-anchor">#</a> Response Codes</h3> <ol><li>Queries where a domain, entity type, entity ID or similar cannot be resolved result in HTTP 404, “Not Found” responses.</li> <li>Requests in which the path, parameters or values are invalid result in Bad Request, 400, responses.</li> <li>In a secure cluster, a 401, “Forbidden”, response is generated when attempting to perform operations to which the caller does not have the sufficient rights. There is an exception to this when querying some entities, such as Domains; here the API deliberately downgrades permission-denied outcomes as empty and not-founds responses. This hides details of other domains from an unauthorized caller.</li> <li>If the content of timeline entity PUT operations is invalid, this failure will not result in an HTTP error code being retured. A status code of 200 will be returned —however, there will be an error code in the list of failed entities for each entity which could not be added.</li></ol> <h2 id="timeline-server-performance-test-tool"><a href="#timeline-server-performance-test-tool" class="header-anchor">#</a> Timeline Server Performance Test Tool</h2> <h3 id="highlights"><a href="#highlights" class="header-anchor">#</a> Highlights</h3> <p>The timeline server performance test tool helps measure timeline server’s write performance. The test launches SimpleEntityWriter mappers or JobHistoryFileReplay mappers to write timeline entities to the timeline server. At the end, the transaction rate(ops/s) per mapper and the total transaction rate will be measured and printed out. Running the test with SimpleEntityWriter mappers will also measure and show the IO rate(KB/s) per mapper and the total IO rate.</p> <h3 id="usage"><a href="#usage" class="header-anchor">#</a> Usage</h3> <p>Mapper Types Description:</p> <ol><li>SimpleEntityWriter mapper Each mapper writes a user-specified number of timeline entities with a user-specified size to the timeline server. SimpleEntityWrite is a default mapper of the performance test tool.</li> <li>JobHistoryFileReplay mapper Each mapper replays jobhistory files under a specified directory (both the jhist file and its corresponding conf.xml are required to be present in order to be replayed. The number of mappers should be no more than the number of jobhistory files). Each mapper will get assigned some jobhistory files to replay. For each job history file, a mapper will parse it to get jobinfo and then create timeline entities. Each mapper also has the choice to write all the timeline entities created at once or one at a time.</li></ol> <p>Options:</p> <pre><code>[-m &lt;maps&gt;] number of mappers (default: 1)
+[-v] timeline service version
+[-mtype &lt;mapper type in integer&gt;]
+      1. simple entity write mapper (default)
+      2. jobhistory files replay mapper
+[-s &lt;(KBs)test&gt;] number of KB per put (mtype=1, default: 1 KB)
+[-t] package sending iterations per mapper (mtype=1, default: 100)
+[-d &lt;path&gt;] root path of job history files (mtype=2)
+[-r &lt;replay mode&gt;] (mtype=2)
+      1. write all entities for a job in one put (default)
+      2. write one entity at a time
+</code></pre> <h3 id="sample-runs"><a href="#sample-runs" class="header-anchor">#</a> Sample Runs</h3> <p>Run SimpleEntityWriter test:</p> <pre><code>bin/hadoop jar performanceTest.jar timelineperformance -m 4 -mtype 1 -s 3 -t 200
+</code></pre> <p>Example output of SimpleEntityWriter test :</p> <pre><code>TRANSACTION RATE (per mapper): 20000.0 ops/s
+IO RATE (per mapper): 60000.0 KB/s
+TRANSACTION RATE (total): 80000.0 ops/s
+IO RATE (total): 240000.0 KB/s
+</code></pre> <p>Run JobHistoryFileReplay mapper test</p> <pre><code>$ bin/hadoop jar performanceTest.jar timelineperformance -m 2 -mtype 2 -d /testInput -r 2
+</code></pre> <p>Example input of JobHistoryFileReplay mapper test:</p> <pre><code>$ bin/hadoop fs -ls /testInput
+/testInput/job_1.jhist
+/testInput/job_1_conf.xml
+/testInput/job_2.jhist
+/testInput/job_2_conf.xml
+</code></pre> <p>Example output of JobHistoryFileReplay test:</p> <pre><code>TRANSACTION RATE (per mapper): 4000.0 ops/s
+IO RATE (per mapper): 0.0 KB/s
+TRANSACTION RATE (total): 8000.0 ops/s
+IO RATE (total): 0.0 KB/s
+</code></pre></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.44e5c4e8.js" defer></script><script src="/assets/js/2.fd33e103.js" defer></script><script src="/assets/js/111.531e373d.js" defer></script>
+  </body>
+</html>
