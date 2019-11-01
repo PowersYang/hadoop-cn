@@ -2,7 +2,7 @@
 home: true
 heroImage: /hadoop.jpeg
 actionText: 快速上手 →
-actionLink: /zh/guide/
+actionLink: /docs/hadoop-project-dist/hadoop-common/SingleCluster
 
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
