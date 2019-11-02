@@ -34,9 +34,10 @@ module.exports = {
         },
         nav: [
           { text: '首页', link: '/' },
-          { text: '下载安装', link: '/docs/releases/' },
+          { text: '下载安装', link: '/docs/releases/download' },
           { text: '参考文档', link: '/docs/' },
           { text: '资源教程', link: '/docs/awesome/' },
+          { text: '最新消息', link: '/docs/releases/latestnews'},
           { text: '关于', link: '/about/' }
         ],
       },
@@ -57,11 +58,12 @@ module.exports = {
           }
         },
         nav: [
-          { text: 'Index', link: '/' },
-          { text: 'Download', link: '/docs/releases/' },
-          { text: 'Documentation', link: '/docs/' },
-          { text: 'Awesome', link: '/docs/awesome/' },
-          { text: 'About', link: '/about/' }
+          { text: 'Home', link: '/' },
+          { text: 'Download', link: '/en/releases/download' },
+          { text: 'Documentation', link: '/en/docs/' },
+          { text: 'Awesome', link: '/en/awesome/' },
+          { text: 'Latest News', link: '/en/docs/releases/latestnews'},
+          { text: 'About', link: '/en/about/' }
         ],
       }
     }
