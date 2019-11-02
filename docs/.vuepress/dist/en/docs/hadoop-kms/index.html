@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hadoop Key Management Server (KMS) - Documentation Sets | Hadoop中文网</title>
+    <meta name="description" content="Hadoop官方文档中文社区">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.74fd5345.css" as="style"><link rel="preload" href="/assets/js/app.1efbd24b.js" as="script"><link rel="preload" href="/assets/js/2.8cd1edd2.js" as="script"><link rel="preload" href="/assets/js/153.4f3d9492.js" as="script"><link rel="prefetch" href="/assets/js/10.d1e9cb36.js"><link rel="prefetch" href="/assets/js/100.980e5915.js"><link rel="prefetch" href="/assets/js/101.8d7d02d7.js"><link rel="prefetch" href="/assets/js/102.95c1b6a2.js"><link rel="prefetch" href="/assets/js/103.267b2dad.js"><link rel="prefetch" href="/assets/js/104.5f5393b9.js"><link rel="prefetch" href="/assets/js/105.b94bd9f2.js"><link rel="prefetch" href="/assets/js/106.bae16a13.js"><link rel="prefetch" href="/assets/js/107.e044c70f.js"><link rel="prefetch" href="/assets/js/108.23a38edb.js"><link rel="prefetch" href="/assets/js/109.0f0a6fee.js"><link rel="prefetch" href="/assets/js/11.734039ee.js"><link rel="prefetch" href="/assets/js/110.c1880f58.js"><link rel="prefetch" href="/assets/js/111.7b19b7ea.js"><link rel="prefetch" href="/assets/js/112.96e710ae.js"><link rel="prefetch" href="/assets/js/113.58c2c2a4.js"><link rel="prefetch" href="/assets/js/114.fe548485.js"><link rel="prefetch" href="/assets/js/115.5f5ec12c.js"><link rel="prefetch" href="/assets/js/116.6b1478f0.js"><link rel="prefetch" href="/assets/js/117.f60ad574.js"><link rel="prefetch" href="/assets/js/118.3b54b45e.js"><link rel="prefetch" href="/assets/js/119.645b43ca.js"><link rel="prefetch" href="/assets/js/12.8b98cd3f.js"><link rel="prefetch" href="/assets/js/120.75c61ce0.js"><link rel="prefetch" href="/assets/js/121.a1c8b96e.js"><link rel="prefetch" href="/assets/js/122.efb675f6.js"><link rel="prefetch" href="/assets/js/123.8c26f134.js"><link rel="prefetch" href="/assets/js/124.2c5d5865.js"><link rel="prefetch" href="/assets/js/125.59af84e2.js"><link rel="prefetch" href="/assets/js/126.f8e7e11f.js"><link rel="prefetch" href="/assets/js/127.eefb2c1d.js"><link rel="prefetch" href="/assets/js/128.2df35959.js"><link rel="prefetch" href="/assets/js/129.21ce73d8.js"><link rel="prefetch" href="/assets/js/13.dcaa3aa9.js"><link rel="prefetch" href="/assets/js/130.a0488add.js"><link rel="prefetch" href="/assets/js/131.6f379af3.js"><link rel="prefetch" href="/assets/js/132.f1c9e6bf.js"><link rel="prefetch" href="/assets/js/133.63ed6868.js"><link rel="prefetch" href="/assets/js/134.c7facc8b.js"><link rel="prefetch" href="/assets/js/135.69334f44.js"><link rel="prefetch" href="/assets/js/136.745c3065.js"><link rel="prefetch" href="/assets/js/137.c3c82572.js"><link rel="prefetch" href="/assets/js/138.2ece7d2b.js"><link rel="prefetch" href="/assets/js/139.80c173cf.js"><link rel="prefetch" href="/assets/js/14.4bc9fc9e.js"><link rel="prefetch" href="/assets/js/140.31b78bba.js"><link rel="prefetch" href="/assets/js/141.0526e6fe.js"><link rel="prefetch" href="/assets/js/142.1e37476d.js"><link rel="prefetch" href="/assets/js/143.49542f86.js"><link rel="prefetch" href="/assets/js/144.d9461d7d.js"><link rel="prefetch" href="/assets/js/145.cec78feb.js"><link rel="prefetch" href="/assets/js/146.83d7155d.js"><link rel="prefetch" href="/assets/js/147.83b94365.js"><link rel="prefetch" href="/assets/js/148.a218bcf9.js"><link rel="prefetch" href="/assets/js/149.0b8d68d3.js"><link rel="prefetch" href="/assets/js/15.f1495a71.js"><link rel="prefetch" href="/assets/js/150.da4631dd.js"><link rel="prefetch" href="/assets/js/151.a8a1ef12.js"><link rel="prefetch" href="/assets/js/152.6bb37c33.js"><link rel="prefetch" href="/assets/js/154.e7278750.js"><link rel="prefetch" href="/assets/js/155.18993967.js"><link rel="prefetch" href="/assets/js/156.716cbfb3.js"><link rel="prefetch" href="/assets/js/157.732f4fbf.js"><link rel="prefetch" href="/assets/js/158.d63ed267.js"><link rel="prefetch" href="/assets/js/159.2ffcecac.js"><link rel="prefetch" href="/assets/js/16.f665c0fb.js"><link rel="prefetch" href="/assets/js/160.896190df.js"><link rel="prefetch" href="/assets/js/161.a6e6a707.js"><link rel="prefetch" href="/assets/js/162.f53ecb46.js"><link rel="prefetch" href="/assets/js/163.0786070b.js"><link rel="prefetch" href="/assets/js/164.b4b45bba.js"><link rel="prefetch" href="/assets/js/165.9fde1a12.js"><link rel="prefetch" href="/assets/js/166.4de83080.js"><link rel="prefetch" href="/assets/js/167.827087c1.js"><link rel="prefetch" href="/assets/js/168.da9dd78d.js"><link rel="prefetch" href="/assets/js/169.5fdd3bda.js"><link rel="prefetch" href="/assets/js/17.e4ee18a4.js"><link rel="prefetch" href="/assets/js/170.7589d0a9.js"><link rel="prefetch" href="/assets/js/171.0dc81296.js"><link rel="prefetch" href="/assets/js/172.30b4b867.js"><link rel="prefetch" href="/assets/js/173.9c90fc90.js"><link rel="prefetch" href="/assets/js/174.6183d84e.js"><link rel="prefetch" href="/assets/js/175.1c9e6d1d.js"><link rel="prefetch" href="/assets/js/176.ead63ab4.js"><link rel="prefetch" href="/assets/js/177.c9fc6dbc.js"><link rel="prefetch" href="/assets/js/178.ac7192e3.js"><link rel="prefetch" href="/assets/js/179.30b7a108.js"><link rel="prefetch" href="/assets/js/18.679e1c4b.js"><link rel="prefetch" href="/assets/js/180.7e9ecf02.js"><link rel="prefetch" href="/assets/js/181.bf48d0ec.js"><link rel="prefetch" href="/assets/js/182.9b2b750a.js"><link rel="prefetch" href="/assets/js/183.583d06a0.js"><link rel="prefetch" href="/assets/js/184.268c43fd.js"><link rel="prefetch" href="/assets/js/185.acac94c9.js"><link rel="prefetch" href="/assets/js/186.df6338c3.js"><link rel="prefetch" href="/assets/js/187.8198a600.js"><link rel="prefetch" href="/assets/js/188.399f7a36.js"><link rel="prefetch" href="/assets/js/189.e281b2ce.js"><link rel="prefetch" href="/assets/js/19.c3df06ff.js"><link rel="prefetch" href="/assets/js/190.a1bd92de.js"><link rel="prefetch" href="/assets/js/191.6d6cb9be.js"><link rel="prefetch" href="/assets/js/192.b55454fc.js"><link rel="prefetch" href="/assets/js/193.31d47ee4.js"><link rel="prefetch" href="/assets/js/194.619fa647.js"><link rel="prefetch" href="/assets/js/195.c05e2717.js"><link rel="prefetch" href="/assets/js/196.5455e34a.js"><link rel="prefetch" href="/assets/js/197.c3ba1d50.js"><link rel="prefetch" href="/assets/js/198.3dcc1f5e.js"><link rel="prefetch" href="/assets/js/199.42657e5a.js"><link rel="prefetch" href="/assets/js/20.2006782a.js"><link rel="prefetch" href="/assets/js/200.e202d26f.js"><link rel="prefetch" href="/assets/js/201.9348c033.js"><link rel="prefetch" href="/assets/js/202.4530c36e.js"><link rel="prefetch" href="/assets/js/203.396a50cf.js"><link rel="prefetch" href="/assets/js/204.2ba7d16f.js"><link rel="prefetch" href="/assets/js/205.4d5c1148.js"><link rel="prefetch" href="/assets/js/206.c1150af9.js"><link rel="prefetch" href="/assets/js/207.d0fe1a93.js"><link rel="prefetch" href="/assets/js/208.a9b85cc2.js"><link rel="prefetch" href="/assets/js/209.aeec8fa7.js"><link rel="prefetch" href="/assets/js/21.ff9af4a3.js"><link rel="prefetch" href="/assets/js/210.56c4abe2.js"><link rel="prefetch" href="/assets/js/211.0a62945c.js"><link rel="prefetch" href="/assets/js/212.2e0a53b6.js"><link rel="prefetch" href="/assets/js/213.0c1e7628.js"><link rel="prefetch" href="/assets/js/214.4e70859b.js"><link rel="prefetch" href="/assets/js/215.89e3fd6e.js"><link rel="prefetch" href="/assets/js/216.ebee5911.js"><link rel="prefetch" href="/assets/js/217.65e6fb1a.js"><link rel="prefetch" href="/assets/js/218.3ec81244.js"><link rel="prefetch" href="/assets/js/219.fcd0a298.js"><link rel="prefetch" href="/assets/js/22.42333a57.js"><link rel="prefetch" href="/assets/js/220.2f0bcdf5.js"><link rel="prefetch" href="/assets/js/221.5cbab154.js"><link rel="prefetch" href="/assets/js/222.4fb150fa.js"><link rel="prefetch" href="/assets/js/223.6df2e934.js"><link rel="prefetch" href="/assets/js/224.2a82f981.js"><link rel="prefetch" href="/assets/js/225.f013043f.js"><link rel="prefetch" href="/assets/js/226.436d9a47.js"><link rel="prefetch" href="/assets/js/227.debf53b6.js"><link rel="prefetch" href="/assets/js/228.adb127d4.js"><link rel="prefetch" href="/assets/js/229.d712dd19.js"><link rel="prefetch" href="/assets/js/23.bd1919e0.js"><link rel="prefetch" href="/assets/js/230.0115051e.js"><link rel="prefetch" href="/assets/js/231.f329be38.js"><link rel="prefetch" href="/assets/js/232.78756dd7.js"><link rel="prefetch" href="/assets/js/233.8b606804.js"><link rel="prefetch" href="/assets/js/234.d77ff187.js"><link rel="prefetch" href="/assets/js/235.d0a44e10.js"><link rel="prefetch" href="/assets/js/236.a270bc77.js"><link rel="prefetch" href="/assets/js/237.bf93c463.js"><link rel="prefetch" href="/assets/js/238.ab9c0487.js"><link rel="prefetch" href="/assets/js/239.fb2c347a.js"><link rel="prefetch" href="/assets/js/24.4065fee5.js"><link rel="prefetch" href="/assets/js/240.0a508acb.js"><link rel="prefetch" href="/assets/js/241.e73f9042.js"><link rel="prefetch" href="/assets/js/242.5d119394.js"><link rel="prefetch" href="/assets/js/243.0852d377.js"><link rel="prefetch" href="/assets/js/244.aac64bc3.js"><link rel="prefetch" href="/assets/js/245.8c9f1e44.js"><link rel="prefetch" href="/assets/js/246.fc5d2c03.js"><link rel="prefetch" href="/assets/js/247.74303e39.js"><link rel="prefetch" href="/assets/js/248.f4fdd84f.js"><link rel="prefetch" href="/assets/js/249.b10c51fa.js"><link rel="prefetch" href="/assets/js/25.d95e2035.js"><link rel="prefetch" href="/assets/js/250.1a7ff4ed.js"><link rel="prefetch" href="/assets/js/251.b0d6c581.js"><link rel="prefetch" href="/assets/js/252.8a1f801c.js"><link rel="prefetch" href="/assets/js/253.58fa7f3f.js"><link rel="prefetch" href="/assets/js/254.8cb349b3.js"><link rel="prefetch" href="/assets/js/255.a83f3566.js"><link rel="prefetch" href="/assets/js/256.a517daf4.js"><link rel="prefetch" href="/assets/js/257.deedf7ab.js"><link rel="prefetch" href="/assets/js/258.389cd2fd.js"><link rel="prefetch" href="/assets/js/259.76aecfae.js"><link rel="prefetch" href="/assets/js/26.dcf843b3.js"><link rel="prefetch" href="/assets/js/260.6e818374.js"><link rel="prefetch" href="/assets/js/261.75c0cad1.js"><link rel="prefetch" href="/assets/js/262.29be1dd0.js"><link rel="prefetch" href="/assets/js/263.38b13d89.js"><link rel="prefetch" href="/assets/js/264.3be16df5.js"><link rel="prefetch" href="/assets/js/265.330233bb.js"><link rel="prefetch" href="/assets/js/266.edec9f04.js"><link rel="prefetch" href="/assets/js/267.fd6096d7.js"><link rel="prefetch" href="/assets/js/268.0cd40d5c.js"><link rel="prefetch" href="/assets/js/269.814f292a.js"><link rel="prefetch" href="/assets/js/27.bb2b9a5f.js"><link rel="prefetch" href="/assets/js/28.bb1dd1d1.js"><link rel="prefetch" href="/assets/js/29.3c4e22e4.js"><link rel="prefetch" href="/assets/js/3.12186190.js"><link rel="prefetch" href="/assets/js/30.2f612343.js"><link rel="prefetch" href="/assets/js/31.bb36e762.js"><link rel="prefetch" href="/assets/js/32.d9a27874.js"><link rel="prefetch" href="/assets/js/33.41cad49e.js"><link rel="prefetch" href="/assets/js/34.48c9cd36.js"><link rel="prefetch" href="/assets/js/35.670feed8.js"><link rel="prefetch" href="/assets/js/36.4e4025ea.js"><link rel="prefetch" href="/assets/js/37.f9544d59.js"><link rel="prefetch" href="/assets/js/38.0a79d2ef.js"><link rel="prefetch" href="/assets/js/39.7e6f626d.js"><link rel="prefetch" href="/assets/js/4.688aea8c.js"><link rel="prefetch" href="/assets/js/40.6049d25c.js"><link rel="prefetch" href="/assets/js/41.efaf9086.js"><link rel="prefetch" href="/assets/js/42.7ec5f386.js"><link rel="prefetch" href="/assets/js/43.73882f4b.js"><link rel="prefetch" href="/assets/js/44.bd9237b2.js"><link rel="prefetch" href="/assets/js/45.b82bdc89.js"><link rel="prefetch" href="/assets/js/46.964042e4.js"><link rel="prefetch" href="/assets/js/47.1ac801fb.js"><link rel="prefetch" href="/assets/js/48.96bd249c.js"><link rel="prefetch" href="/assets/js/49.efa4ffbd.js"><link rel="prefetch" href="/assets/js/5.06dc3e30.js"><link rel="prefetch" href="/assets/js/50.26a6f561.js"><link rel="prefetch" href="/assets/js/51.e697ab24.js"><link rel="prefetch" href="/assets/js/52.2b4ed74b.js"><link rel="prefetch" href="/assets/js/53.1d40565d.js"><link rel="prefetch" href="/assets/js/54.23dd5509.js"><link rel="prefetch" href="/assets/js/55.97638dfd.js"><link rel="prefetch" href="/assets/js/56.a6a789a7.js"><link rel="prefetch" href="/assets/js/57.46a9e477.js"><link rel="prefetch" href="/assets/js/58.a2605148.js"><link rel="prefetch" href="/assets/js/59.b61f348e.js"><link rel="prefetch" href="/assets/js/6.cd1b69bf.js"><link rel="prefetch" href="/assets/js/60.45ce71dc.js"><link rel="prefetch" href="/assets/js/61.422d8ce0.js"><link rel="prefetch" href="/assets/js/62.708dfa97.js"><link rel="prefetch" href="/assets/js/63.bf87eca7.js"><link rel="prefetch" href="/assets/js/64.849b066d.js"><link rel="prefetch" href="/assets/js/65.312217c0.js"><link rel="prefetch" href="/assets/js/66.a538fe2e.js"><link rel="prefetch" href="/assets/js/67.ee990cae.js"><link rel="prefetch" href="/assets/js/68.1ecf9924.js"><link rel="prefetch" href="/assets/js/69.adc481ab.js"><link rel="prefetch" href="/assets/js/7.0bd1884d.js"><link rel="prefetch" href="/assets/js/70.7bf35175.js"><link rel="prefetch" href="/assets/js/71.13d875f2.js"><link rel="prefetch" href="/assets/js/72.13c32246.js"><link rel="prefetch" href="/assets/js/73.dabe70e7.js"><link rel="prefetch" href="/assets/js/74.a012e667.js"><link rel="prefetch" href="/assets/js/75.82d9cd14.js"><link rel="prefetch" href="/assets/js/76.56e29578.js"><link rel="prefetch" href="/assets/js/77.3c04b332.js"><link rel="prefetch" href="/assets/js/78.a98bdb60.js"><link rel="prefetch" href="/assets/js/79.d05db886.js"><link rel="prefetch" href="/assets/js/8.f75bda51.js"><link rel="prefetch" href="/assets/js/80.669f2672.js"><link rel="prefetch" href="/assets/js/81.107cd6be.js"><link rel="prefetch" href="/assets/js/82.f1569a57.js"><link rel="prefetch" href="/assets/js/83.f648dac4.js"><link rel="prefetch" href="/assets/js/84.b5b6802a.js"><link rel="prefetch" href="/assets/js/85.b049a798.js"><link rel="prefetch" href="/assets/js/86.c5af02d1.js"><link rel="prefetch" href="/assets/js/87.4a7e9da8.js"><link rel="prefetch" href="/assets/js/88.889dec42.js"><link rel="prefetch" href="/assets/js/89.f44762c6.js"><link rel="prefetch" href="/assets/js/9.0cf90f60.js"><link rel="prefetch" href="/assets/js/90.2e3fc763.js"><link rel="prefetch" href="/assets/js/91.cd601f08.js"><link rel="prefetch" href="/assets/js/92.e0274556.js"><link rel="prefetch" href="/assets/js/93.f6c134ff.js"><link rel="prefetch" href="/assets/js/94.8df97042.js"><link rel="prefetch" href="/assets/js/95.ae4a963c.js"><link rel="prefetch" href="/assets/js/96.d4e1513c.js"><link rel="prefetch" href="/assets/js/97.489e7496.js"><link rel="prefetch" href="/assets/js/98.9def64cf.js"><link rel="prefetch" href="/assets/js/99.14a64144.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.74fd5345.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hadoop.jpeg" alt="Hadoop中文网" class="logo"> <span class="site-name can-hide">Hadoop中文网</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/docs/releases/" class="nav-link">下载安装</a></div><div class="nav-item"><a href="/docs/" class="nav-link">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="选择语言" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/docs/en/" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/docs/releases/" class="nav-link">下载安装</a></div><div class="nav-item"><a href="/docs/" class="nav-link">参考文档</a></div><div class="nav-item"><a href="/docs/awesome/" class="nav-link">资源教程</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="选择语言" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----> <a href="/docs/en/" class="nav-link">English</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">关于</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>General</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/" class="sidebar-link">Overview</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/SingleCluster.html" class="sidebar-link">Single Node Setup</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/ClusterSetup.html" class="sidebar-link">Cluster Setup</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/CommandsManual.html" class="sidebar-link">Commands Reference</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/FileSystemShell.html" class="sidebar-link">FileSystem Shell</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/Compatibility.html" class="sidebar-link">Compatibility Specification</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/DownstreamDev.html" class="sidebar-link">Downstream Developer's Guide</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/AdminCompatibilityGuide.html" class="sidebar-link">Admin Compatibility Guide</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/InterfaceClassification.html" class="sidebar-link">Interface Classification</a></li><li><a href="/docs/hadoop-project-dist/hadoop-common/filesystem/" class="sidebar-link">FileSystem Specification</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Common</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HDFS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MapReduce</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MapReduce REST APIs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>YARN</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>YARN REST APIs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>YARN Service</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Submarine</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Hadoop Compatible File Systems</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Auth</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Tools</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Reference</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>配置</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hadoop-key-management-server-kms-documentation-sets"><a href="#hadoop-key-management-server-kms-documentation-sets" class="header-anchor">#</a> Hadoop Key Management Server (KMS) - Documentation Sets</h1> <ul><li>KMS Client Configuration</li> <li>KMS
+<ul><li>Start/Stop the KMS</li> <li>KMS Configuration</li> <li>KMS HTTP Configuration</li> <li>KMS Cache
+<ul><li>CachingKeyProvider</li> <li>KeyProvider</li></ul></li> <li>KMS Aggregated Audit logs</li> <li>KMS Security Configuration
+<ul><li>Enabling Kerberos HTTP SPNEGO Authentication</li> <li>KMS Proxyuser Configuration</li> <li>KMS over HTTPS (SSL)</li> <li>ACLs (Access Control Lists)</li></ul></li> <li>KMS Delegation Token Configuration</li> <li>High Availability
+<ul><li>Behind a Load-Balancer or VIP</li> <li>Using LoadBalancingKMSClientProvider</li> <li>HTTP Kerberos Principals Configuration</li> <li>HTTP Authentication Signature</li> <li>Delegation Tokens</li></ul></li> <li>KMS HTTP REST API
+<ul><li>Create a Key</li> <li>Rollover Key</li> <li>Invalidate Cache of a Key</li> <li>Delete Key</li> <li>Get Key Metadata</li> <li>Get Current Key</li> <li>Generate Encrypted Key for Current KeyVersion</li> <li>Decrypt Encrypted Key</li> <li>Re-encrypt Encrypted Key With The Latest KeyVersion</li> <li>Batch Re-encrypt Encrypted Keys With The Latest KeyVersion</li> <li>Get Key Version</li> <li>Get Key Versions</li> <li>Get Key Names</li> <li>Get Keys Metadata</li></ul></li> <li>Deprecated Environment Variables</li> <li>Default HTTP Services</li></ul></li></ul> <p>Hadoop KMS is a cryptographic key management server based on Hadoop’s KeyProvider API.</p> <p>It provides a client and a server components which communicate over HTTP using a REST API.</p> <p>The client is a KeyProvider implementation interacts with the KMS using the KMS HTTP REST API.</p> <p>KMS and its client have built-in security and they support HTTP SPNEGO Kerberos authentication and HTTPS secure transport.</p> <p>KMS is a Java Jetty web-application.</p> <h2 id="kms-client-configuration"><a href="#kms-client-configuration" class="header-anchor">#</a> KMS Client Configuration</h2> <p>The KMS client KeyProvider uses the kms scheme, and the embedded URL must be the URL of the KMS. For example, for a KMS running on http://localhost:9600/kms, the KeyProvider URI is kms://http@localhost:9600/kms. And, for a KMS running on https://localhost:9600/kms, the KeyProvider URI is kms://https@localhost:9600/kms</p> <p>The following is an example to configure HDFS NameNode as a KMS client in core-site.xml:</p> <pre><code>&lt;property&gt;
+  &lt;name&gt;hadoop.security.key.provider.path&lt;/name&gt;
+  &lt;value&gt;kms://http@localhost:9600/kms&lt;/value&gt;
+  &lt;description&gt;
+    The KeyProvider to use when interacting with encryption keys used
+    when reading and writing to an encryption zone.
+  &lt;/description&gt;
+&lt;/property&gt;
+</code></pre> <h2 id="kms"><a href="#kms" class="header-anchor">#</a> KMS</h2> <h3 id="start-stop-the-kms"><a href="#start-stop-the-kms" class="header-anchor">#</a> Start/Stop the KMS</h3> <p>To start/stop KMS, use hadoop --daemon start|stop kms. For example:</p> <pre><code>hadoop-3.2.1 $ hadoop --daemon start kms
+</code></pre> <p>NOTE: The script kms.sh is deprecated. It is now just a wrapper of hadoop kms.</p> <h3 id="kms-configuration"><a href="#kms-configuration" class="header-anchor">#</a> KMS Configuration</h3> <p>Configure the KMS backing KeyProvider properties in the etc/hadoop/kms-site.xml configuration file:</p> <pre><code>  &lt;property&gt;
+     &lt;name&gt;hadoop.kms.key.provider.uri&lt;/name&gt;
+     &lt;value&gt;jceks://file@/${user.home}/kms.keystore&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.security.keystore.java-keystore-provider.password-file&lt;/name&gt;
+    &lt;value&gt;kms.keystore.password&lt;/value&gt;
+  &lt;/property&gt;
+</code></pre> <p>The password file is looked up in the Hadoop’s configuration directory via the classpath.</p> <p>NOTE: You need to restart the KMS for the configuration changes to take effect.</p> <p>NOTE: The KMS server can choose any KeyProvider implementation as the backing provider. The example here uses a JavaKeyStoreProvider, which should only be used for experimental purposes and never be used in production. For detailed usage and caveats of JavaKeyStoreProvider, please see <a href="/en/docs/hadoop-project-dist/hadoop-common/CredentialProviderAPI.html#Keystore_Passwords">Keystore Passwords section of the Credential Provider API</a>.</p> <h3 id="kms-http-configuration"><a href="#kms-http-configuration" class="header-anchor">#</a> KMS HTTP Configuration</h3> <p>KMS pre-configures the HTTP port to 9600.</p> <p>KMS supports the following HTTP <a href="/en/docs/hadoop-kms/kms-default.html">configuration properties</a> in etc/hadoop/kms-site.xml.</p> <p>NOTE: You need to restart the KMS for the configuration changes to take effect.</p> <h3 id="kms-cache"><a href="#kms-cache" class="header-anchor">#</a> KMS Cache</h3> <p>KMS has two kinds of caching: a CachingKeyProvider for caching the encryption keys, and a KeyProvider for caching the EEKs.</p> <h4 id="cachingkeyprovider"><a href="#cachingkeyprovider" class="header-anchor">#</a> CachingKeyProvider</h4> <p>KMS caches encryption keys for a short period of time to avoid excessive hits to the underlying KeyProvider.</p> <p>This Cache is enabled by default (can be disabled by setting the hadoop.kms.cache.enable boolean property to false)</p> <p>This cache is used with the following 3 methods only, getCurrentKey() and getKeyVersion() and getMetadata().</p> <p>For the getCurrentKey() method, cached entries are kept for a maximum of 30000 milliseconds regardless the number of times the key is being accessed (to avoid stale keys to be considered current).</p> <p>For the getKeyVersion() and getMetadata() methods, cached entries are kept with a default inactivity timeout of 600000 milliseconds (10 mins).</p> <p>The cache is invalidated when the key is deleted by deleteKey(), or when invalidateCache() is called.</p> <p>These configurations can be changed via the following properties in the etc/hadoop/kms-site.xml configuration file:</p> <pre><code>   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.cache.enable&lt;/name&gt;
+     &lt;value&gt;true&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.cache.timeout.ms&lt;/name&gt;
+     &lt;value&gt;600000&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.current.key.cache.timeout.ms&lt;/name&gt;
+     &lt;value&gt;30000&lt;/value&gt;
+   &lt;/property&gt;
+</code></pre> <h4 id="keyprovider"><a href="#keyprovider" class="header-anchor">#</a> KeyProvider</h4> <p>Architecturally, both server-side (e.g. KMS) and client-side (e.g. NameNode) have a cache for EEKs. The following are configurable on the cache:</p> <ul><li>The size of the cache. This is the maximum number of EEKs that can be cached under each key name.</li> <li>A low watermark on the cache. For each key name, if after a get call, the number of cached EEKs are less than (size * low watermark), then the cache under this key name will be filled asynchronously. For each key name, only 1 thread could be running for the asynchronous filling.</li> <li>The maximum number of asynchronous threads overall, across key names, allowed to fill the queue in a cache.</li> <li>The cache expiry time, in milliseconds. Internally Guava cache is used as the cache implementation. The expiry approach is <a href="https://code.google.com/p/guava-libraries/wiki/CachesExplained" target="_blank" rel="noopener noreferrer">expireAfterAccess<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</li></ul> <p>Note that due to the asynchronous filling mechanism, it is possible that after rollNewVersion(), the caller still gets the old EEKs. In the worst case, the caller may get up to (server-side cache size + client-side cache size) number of old EEKs, or until both caches expire. This behavior is a trade off to avoid locking on the cache, and is acceptable since the old version EEKs can still be used to decrypt.</p> <p>Below are the configurations and their default values:</p> <p>Server-side can be changed via the following properties in the etc/hadoop/kms-site.xml configuration file:</p> <pre><code>   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.encrypted.key.cache.size&lt;/name&gt;
+     &lt;value&gt;500&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.encrypted.key.cache.low.watermark&lt;/name&gt;
+     &lt;value&gt;0.3&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.encrypted.key.cache.num.fill.threads&lt;/name&gt;
+     &lt;value&gt;2&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.encrypted.key.cache.expiry&lt;/name&gt;
+     &lt;value&gt;43200000&lt;/value&gt;
+   &lt;/property&gt;
+</code></pre> <p>Client-side can be changed via the following properties in the etc/hadoop/core-site.xml configuration file:</p> <pre><code>   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.client.encrypted.key.cache.size&lt;/name&gt;
+     &lt;value&gt;500&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.client.encrypted.key.cache.low-watermark&lt;/name&gt;
+     &lt;value&gt;0.3&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.client.encrypted.key.cache.num.refill.threads&lt;/name&gt;
+     &lt;value&gt;2&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.security.kms.client.encrypted.key.cache.expiry&lt;/name&gt;
+     &lt;value&gt;43200000&lt;/value&gt;
+   &lt;/property&gt;
+</code></pre> <h3 id="kms-aggregated-audit-logs"><a href="#kms-aggregated-audit-logs" class="header-anchor">#</a> KMS Aggregated Audit logs</h3> <p>Audit logs are aggregated for API accesses to the GET_KEY_VERSION, GET_CURRENT_KEY, DECRYPT_EEK, GENERATE_EEK, REENCRYPT_EEK operations.</p> <p>Entries are grouped by the (user,key,operation) combined key for a configurable aggregation interval after which the number of accesses to the specified end-point by the user for a given key is flushed to the audit log.</p> <p>The Aggregation interval is configured via the property :</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.aggregation.delay.ms&lt;/name&gt;
+    &lt;value&gt;10000&lt;/value&gt;
+  &lt;/property&gt;
+</code></pre> <h3 id="kms-security-configuration"><a href="#kms-security-configuration" class="header-anchor">#</a> KMS Security Configuration</h3> <h4 id="enabling-kerberos-http-spnego-authentication"><a href="#enabling-kerberos-http-spnego-authentication" class="header-anchor">#</a> Enabling Kerberos HTTP SPNEGO Authentication</h4> <p>Configure the Kerberos etc/krb5.conf file with the information of your KDC server.</p> <p>Create a service principal and its keytab for the KMS, it must be an HTTP service principal.</p> <p>Configure KMS etc/hadoop/kms-site.xml with the correct security values, for example:</p> <pre><code>   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.authentication.type&lt;/name&gt;
+     &lt;value&gt;kerberos&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.authentication.kerberos.keytab&lt;/name&gt;
+     &lt;value&gt;${user.home}/kms.keytab&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.authentication.kerberos.principal&lt;/name&gt;
+     &lt;value&gt;HTTP/localhost&lt;/value&gt;
+   &lt;/property&gt;
+
+   &lt;property&gt;
+     &lt;name&gt;hadoop.kms.authentication.kerberos.name.rules&lt;/name&gt;
+     &lt;value&gt;DEFAULT&lt;/value&gt;
+   &lt;/property&gt;
+</code></pre> <p>NOTE: You need to restart the KMS for the configuration changes to take effect.</p> <h4 id="kms-proxyuser-configuration"><a href="#kms-proxyuser-configuration" class="header-anchor">#</a> KMS Proxyuser Configuration</h4> <p>Each proxyuser must be configured in etc/hadoop/kms-site.xml using the following properties:</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.proxyuser.#USER#.users&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.proxyuser.#USER#.groups&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.proxyuser.#USER#.hosts&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+  &lt;/property&gt;
+</code></pre> <p>#USER# is the username of the proxyuser to configure.</p> <p>The users property indicates the users that can be impersonated.</p> <p>The groups property indicates the groups users being impersonated must belong to.</p> <p>At least one of the users or groups properties must be defined. If both are specified, then the configured proxyuser will be able to impersonate and user in the users list and any user belonging to one of the groups in the groups list.</p> <p>The hosts property indicates from which host the proxyuser can make impersonation requests.</p> <p>If users, groups or hosts has a *, it means there are no restrictions for the proxyuser regarding users, groups or hosts.</p> <h4 id="kms-over-https-ssl"><a href="#kms-over-https-ssl" class="header-anchor">#</a> KMS over HTTPS (SSL)</h4> <p>Enable SSL in etc/hadoop/kms-site.xml:</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.ssl.enabled&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+    &lt;description&gt;
+      Whether SSL is enabled. Default is false, i.e. disabled.
+    &lt;/description&gt;
+  &lt;/property&gt;
+</code></pre> <p>Configure etc/hadoop/ssl-server.xml with proper values, for example:</p> <pre><code>&lt;property&gt;
+  &lt;name&gt;ssl.server.keystore.location&lt;/name&gt;
+  &lt;value&gt;${user.home}/.keystore&lt;/value&gt;
+  &lt;description&gt;Keystore to be used. Must be specified.&lt;/description&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;name&gt;ssl.server.keystore.password&lt;/name&gt;
+  &lt;value&gt;&lt;/value&gt;
+  &lt;description&gt;Must be specified.&lt;/description&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;name&gt;ssl.server.keystore.keypassword&lt;/name&gt;
+  &lt;value&gt;&lt;/value&gt;
+  &lt;description&gt;Must be specified.&lt;/description&gt;
+&lt;/property&gt;
+</code></pre> <p>The SSL passwords can be secured by a credential provider. See <a href="/hadoop-project-dist/hadoop-common/CredentialProviderAPI.html">Credential Provider API</a>.</p> <p>You need to create an SSL certificate for the KMS. As the kms Unix user, using the Java keytool command to create the SSL certificate:</p> <pre><code>$ keytool -genkey -alias jetty -keyalg RSA
+</code></pre> <p>You will be asked a series of questions in an interactive prompt. It will create the keystore file, which will be named .keystore and located in the user’s home directory.</p> <p>The password you enter for “keystore password” must match the value of the property ssl.server.keystore.password set in the ssl-server.xml in the configuration directory.</p> <p>The answer to “What is your first and last name?” (i.e. “CN”) must be the hostname of the machine where the KMS will be running.</p> <p>NOTE: You need to restart the KMS for the configuration changes to take effect.</p> <p>NOTE: Some old SSL clients may use weak ciphers that are not supported by the KMS server. It is recommended to upgrade the SSL client.</p> <h4 id="acls-access-control-lists"><a href="#acls-access-control-lists" class="header-anchor">#</a> ACLs (Access Control Lists)</h4> <p>KMS supports ACLs (Access Control Lists) for fine-grained permission control.</p> <p>Two levels of ACLs exist in KMS: KMS ACLs and Key ACLs. KMS ACLs control access at KMS operation level, and precede Key ACLs. In particular, only if permission is granted at KMS ACLs level, shall the permission check against Key ACLs be performed.</p> <p>The configuration and usage of KMS ACLs and Key ACLs are described in the sections below.</p> <h5 id="kms-acls"><a href="#kms-acls" class="header-anchor">#</a> KMS ACLs</h5> <p>KMS ACLs configuration are defined in the KMS etc/hadoop/kms-acls.xml configuration file. This file is hot-reloaded when it changes.</p> <p>KMS supports both fine grained access control as well as blacklist for kms operations via a set ACL configuration properties.</p> <p>A user accessing KMS is first checked for inclusion in the Access Control List for the requested operation and then checked for exclusion in the Black list for the operation before access is granted.</p> <pre><code>&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.CREATE&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+          ACL for create-key operations.
+          If the user is not in the GET ACL, the key material is not returned
+          as part of the response.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.CREATE&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          Blacklist for create-key operations.
+          If the user is in the Blacklist, the key material is not returned
+          as part of the response.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.DELETE&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+          ACL for delete-key operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.DELETE&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          Blacklist for delete-key operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.ROLLOVER&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+          ACL for rollover-key operations.
+          If the user is not in the GET ACL, the key material is not returned
+          as part of the response.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.ROLLOVER&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          Blacklist for rollover-key operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.GET&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+          ACL for get-key-version and get-current-key operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.GET&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          ACL for get-key-version and get-current-key operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.GET_KEYS&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+         ACL for get-keys operation.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.GET_KEYS&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          Blacklist for get-keys operation.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.GET_METADATA&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+        ACL for get-key-metadata and get-keys-metadata operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.GET_METADATA&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+         Blacklist for get-key-metadata and get-keys-metadata operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.SET_KEY_MATERIAL&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+            Complimentary ACL for CREATE and ROLLOVER operation to allow the client
+            to provide the key material when creating or rolling a key.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.SET_KEY_MATERIAL&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+            Complimentary Blacklist for CREATE and ROLLOVER operation to allow the client
+            to provide the key material when creating or rolling a key.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.GENERATE_EEK&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+          ACL for generateEncryptedKey
+          CryptoExtension operations
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.GENERATE_EEK&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          Blacklist for generateEncryptedKey
+          CryptoExtension operations
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.acl.DECRYPT_EEK&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+          ACL for decrypt EncryptedKey
+          CryptoExtension operations
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.blacklist.DECRYPT_EEK&lt;/name&gt;
+    &lt;value&gt;hdfs,foo&lt;/value&gt;
+    &lt;description&gt;
+          Blacklist for decrypt EncryptedKey
+          CryptoExtension operations
+    &lt;/description&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre> <h5 id="key-acls"><a href="#key-acls" class="header-anchor">#</a> Key ACLs</h5> <p>KMS supports access control for all non-read operations at the Key level. All Key Access operations are classified as :</p> <ul><li>MANAGEMENT - createKey, deleteKey, rolloverNewVersion</li> <li>GENERATE_EEK - generateEncryptedKey, reencryptEncryptedKey, reencryptEncryptedKeys, warmUpEncryptedKeys</li> <li>DECRYPT_EEK - decryptEncryptedKey</li> <li>READ - getKeyVersion, getKeyVersions, getMetadata, getKeysMetadata, getCurrentKey</li> <li>ALL - all of the above</li></ul> <p>These can be defined in the KMS etc/hadoop/kms-acls.xml as follows</p> <p>For all keys for which a key access has not been explicitly configured, It is possible to configure a default key access control for a subset of the operation types.</p> <p>It is also possible to configure a “whitelist” key ACL for a subset of the operation types. The whitelist key ACL grants access to the key, in addition to the explicit or default per-key ACL. That is, if no per-key ACL is explicitly set, a user will be granted access if they are present in the default per-key ACL or the whitelist key ACL. If a per-key ACL is explicitly set, a user will be granted access if they are present in the per-key ACL or the whitelist key ACL.</p> <p>If no ACL is configured for a specific key AND no default ACL is configured AND no whitelist key ACL is configured for the requested operation, then access will be DENIED.</p> <p>NOTE: The default and whitelist key ACL does not support ALL operation qualifier.</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;key.acl.testKey1.MANAGEMENT&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+      ACL for create-key, deleteKey and rolloverNewVersion operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;key.acl.testKey2.GENERATE_EEK&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+      ACL for generateEncryptedKey operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;key.acl.testKey3.DECRYPT_EEK&lt;/name&gt;
+    &lt;value&gt;admink3&lt;/value&gt;
+    &lt;description&gt;
+      ACL for decryptEncryptedKey operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;key.acl.testKey4.READ&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+      ACL for getKeyVersion, getKeyVersions, getMetadata, getKeysMetadata,
+      getCurrentKey operations
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;key.acl.testKey5.ALL&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+    &lt;description&gt;
+      ACL for ALL operations.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;whitelist.key.acl.MANAGEMENT&lt;/name&gt;
+    &lt;value&gt;admin1&lt;/value&gt;
+    &lt;description&gt;
+      whitelist ACL for MANAGEMENT operations for all keys.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;!--
+  'testKey3' key ACL is defined. Since a 'whitelist'
+  key is also defined for DECRYPT_EEK, in addition to
+  admink3, admin1 can also perform DECRYPT_EEK operations
+  on 'testKey3'
+--&gt;
+  &lt;property&gt;
+    &lt;name&gt;whitelist.key.acl.DECRYPT_EEK&lt;/name&gt;
+    &lt;value&gt;admin1&lt;/value&gt;
+    &lt;description&gt;
+      whitelist ACL for DECRYPT_EEK operations for all keys.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;default.key.acl.MANAGEMENT&lt;/name&gt;
+    &lt;value&gt;user1,user2&lt;/value&gt;
+    &lt;description&gt;
+      default ACL for MANAGEMENT operations for all keys that are not
+      explicitly defined.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;default.key.acl.GENERATE_EEK&lt;/name&gt;
+    &lt;value&gt;user1,user2&lt;/value&gt;
+    &lt;description&gt;
+      default ACL for GENERATE_EEK operations for all keys that are not
+      explicitly defined.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;default.key.acl.DECRYPT_EEK&lt;/name&gt;
+    &lt;value&gt;user1,user2&lt;/value&gt;
+    &lt;description&gt;
+      default ACL for DECRYPT_EEK operations for all keys that are not
+      explicitly defined.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;default.key.acl.READ&lt;/name&gt;
+    &lt;value&gt;user1,user2&lt;/value&gt;
+    &lt;description&gt;
+      default ACL for READ operations for all keys that are not
+      explicitly defined.
+    &lt;/description&gt;
+  &lt;/property&gt;
+</code></pre> <h3 id="kms-delegation-token-configuration"><a href="#kms-delegation-token-configuration" class="header-anchor">#</a> KMS Delegation Token Configuration</h3> <p>KMS supports delegation tokens to authenticate to the key providers from processes without Kerberos credentials.</p> <p>KMS delegation token authentication extends the default Hadoop authentication. Same as Hadoop authentication, KMS delegation tokens must not be fetched or renewed using delegation token authentication. See <a href="/en/docs/hadoop-auth/index.html">Hadoop Auth</a> page for more details.</p> <p>Additionally, KMS delegation token secret manager can be configured with the following properties:</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.delegation-token.update-interval.sec&lt;/name&gt;
+    &lt;value&gt;86400&lt;/value&gt;
+    &lt;description&gt;
+      How often the master key is rotated, in seconds. Default value 1 day.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.delegation-token.max-lifetime.sec&lt;/name&gt;
+    &lt;value&gt;604800&lt;/value&gt;
+    &lt;description&gt;
+      Maximum lifetime of a delegation token, in seconds. Default value 7 days.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.delegation-token.renew-interval.sec&lt;/name&gt;
+    &lt;value&gt;86400&lt;/value&gt;
+    &lt;description&gt;
+      Renewal interval of a delegation token, in seconds. Default value 1 day.
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.delegation-token.removal-scan-interval.sec&lt;/name&gt;
+    &lt;value&gt;3600&lt;/value&gt;
+    &lt;description&gt;
+      Scan interval to remove expired delegation tokens.
+    &lt;/description&gt;
+  &lt;/property&gt;
+</code></pre> <h3 id="high-availability"><a href="#high-availability" class="header-anchor">#</a> High Availability</h3> <p>Multiple KMS instances may be used to provide high availability and scalability. Currently there are two approaches to supporting multiple KMS instances: running KMS instances behind a load-balancer/VIP, or using LoadBalancingKMSClientProvider.</p> <p>In both approaches, KMS instances must be specially configured to work properly as a single logical service, because requests from the same client may be handled by different KMS instances. In particular, Kerberos Principals Configuration, HTTP Authentication Signature and Delegation Tokens require special attention.</p> <h4 id="behind-a-load-balancer-or-vip"><a href="#behind-a-load-balancer-or-vip" class="header-anchor">#</a> Behind a Load-Balancer or VIP</h4> <p>Because KMS clients and servers communicate via a REST API over HTTP, Load-balancer or VIP may be used to distribute incoming traffic to achieve scalability and HA. In this mode, clients are unaware of multiple KMS instances at the server-side.</p> <h4 id="using-loadbalancingkmsclientprovider"><a href="#using-loadbalancingkmsclientprovider" class="header-anchor">#</a> Using LoadBalancingKMSClientProvider</h4> <p>An alternative to running multiple KMS instances behind a load-balancer or VIP, is to use LoadBalancingKMSClientProvider. Using this approach, a KMS client (for example, a HDFS NameNode) is aware of multiple KMS instances, and it sends requests to them in a round-robin fashion. LoadBalancingKMSClientProvider is implicitly used when more than one URI is specified in hadoop.security.key.provider.path.</p> <p>The following example in core-site.xml configures two KMS instances, kms01.example.com and kms02.example.com. The hostnames are separated by semi-colons, and all KMS instances must run on the same port.</p> <pre><code>&lt;property&gt;
+  &lt;name&gt;hadoop.security.key.provider.path&lt;/name&gt;
+  &lt;value&gt;kms://https@kms01.example.com;kms02.example.com:9600/kms&lt;/value&gt;
+  &lt;description&gt;
+    The KeyProvider to use when interacting with encryption keys used
+    when reading and writing to an encryption zone.
+  &lt;/description&gt;
+&lt;/property&gt;
+</code></pre> <p>If a request to a KMS instance fails, clients retry with the next instance. The request is returned as failure only if all instances fail.</p> <h4 id="http-kerberos-principals-configuration"><a href="#http-kerberos-principals-configuration" class="header-anchor">#</a> HTTP Kerberos Principals Configuration</h4> <p>When KMS instances are behind a load-balancer or VIP, clients will use the hostname of the VIP. For Kerberos SPNEGO authentication, the hostname of the URL is used to construct the Kerberos service name of the server, HTTP/#HOSTNAME#. This means that all KMS instances must have a Kerberos service name with the load-balancer or VIP hostname.</p> <p>In order to be able to access directly a specific KMS instance, the KMS instance must also have Keberos service name with its own hostname. This is required for monitoring and admin purposes.</p> <p>Both Kerberos service principal credentials (for the load-balancer/VIP hostname and for the actual KMS instance hostname) must be in the keytab file configured for authentication. And the principal name specified in the configuration must be ‘*’. For example:</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.kerberos.principal&lt;/name&gt;
+    &lt;value&gt;*&lt;/value&gt;
+  &lt;/property&gt;
+</code></pre> <p>NOTE: If using HTTPS, the SSL certificate used by the KMS instance must be configured to support multiple hostnames (see Java 7 keytool SAN extension support for details on how to do this).</p> <h4 id="http-authentication-signature"><a href="#http-authentication-signature" class="header-anchor">#</a> HTTP Authentication Signature</h4> <p>KMS uses Hadoop Authentication for HTTP authentication. Hadoop Authentication issues a signed HTTP Cookie once the client has authenticated successfully. This HTTP Cookie has an expiration time, after which it will trigger a new authentication sequence. This is done to avoid triggering the authentication on every HTTP request of a client.</p> <p>A KMS instance must verify the HTTP Cookie signatures signed by other KMS instances. To do this, all KMS instances must share the signing secret. Please see <a href="/en/docs/hadoop-auth/Configuration.html#SignerSecretProvider_Configuration">SignerSecretProvider Configuration</a> for detailed description and configuration examples. Note that KMS configurations need to be prefixed with hadoop.kms.authentication, as shown in the example below.</p> <p>This secret sharing can be done using a Zookeeper service which is configured in KMS with the following properties in the kms-site.xml:</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.signer.secret.provider&lt;/name&gt;
+    &lt;value&gt;zookeeper&lt;/value&gt;
+    &lt;description&gt;
+      Indicates how the secret to sign the authentication cookies will be
+      stored. Options are 'random' (default), 'file' and 'zookeeper'.
+      If using a setup with multiple KMS instances, 'zookeeper' should be used.
+      If using file, signature.secret.file should be configured and point to the secret file.
+    &lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.signer.secret.provider.zookeeper.path&lt;/name&gt;
+    &lt;value&gt;/hadoop-kms/hadoop-auth-signature-secret&lt;/value&gt;
+    &lt;description&gt;
+      The Zookeeper ZNode path where the KMS instances will store and retrieve
+      the secret from. All KMS instances that need to coordinate should point to the same path.
+    &lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.signer.secret.provider.zookeeper.connection.string&lt;/name&gt;
+    &lt;value&gt;#HOSTNAME#:#PORT#,...&lt;/value&gt;
+    &lt;description&gt;
+      The Zookeeper connection string, a list of hostnames and port comma
+      separated.
+    &lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.signer.secret.provider.zookeeper.auth.type&lt;/name&gt;
+    &lt;value&gt;sasl&lt;/value&gt;
+    &lt;description&gt;
+      The Zookeeper authentication type, 'none' (default) or 'sasl' (Kerberos).
+    &lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.signer.secret.provider.zookeeper.kerberos.keytab&lt;/name&gt;
+    &lt;value&gt;/etc/hadoop/conf/kms.keytab&lt;/value&gt;
+    &lt;description&gt;
+      The absolute path for the Kerberos keytab with the credentials to
+      connect to Zookeeper.
+    &lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.authentication.signer.secret.provider.zookeeper.kerberos.principal&lt;/name&gt;
+    &lt;value&gt;kms/#HOSTNAME#&lt;/value&gt;
+    &lt;description&gt;
+      The Kerberos service principal used to connect to Zookeeper.
+    &lt;/description&gt;
+  &lt;/property&gt;
+</code></pre> <h4 id="delegation-tokens"><a href="#delegation-tokens" class="header-anchor">#</a> Delegation Tokens</h4> <p>Similar to HTTP authentication, KMS uses Hadoop Authentication for delegation tokens too.</p> <p>Under HA, A KMS instance must verify the delegation token given by another KMS instance, by checking the shared secret used to sign the delegation token. To do this, all KMS instances must be able to retrieve the shared secret from ZooKeeper.</p> <p>Please see the examples given in HTTP Authentication section to configure ZooKeeper for secret sharing.</p> <h3 id="kms-http-rest-api"><a href="#kms-http-rest-api" class="header-anchor">#</a> KMS HTTP REST API</h3> <h4 id="create-a-key"><a href="#create-a-key" class="header-anchor">#</a> Create a Key</h4> <p>REQUEST:</p> <pre><code>POST http://HOST:PORT/kms/v1/keys
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;&lt;key-name&gt;&quot;,
+  &quot;cipher&quot;      : &quot;&lt;cipher&gt;&quot;,
+  &quot;length&quot;      : &lt;length&gt;,        //int
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+  &quot;description&quot; : &quot;&lt;description&gt;&quot;
+}
+</code></pre> <p>RESPONSE:</p> <pre><code>201 CREATED
+LOCATION: http://HOST:PORT/kms/v1/key/&lt;key-name&gt;
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;versionName&quot;,
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64, not present without GET ACL
+}
+</code></pre> <h4 id="rollover-key"><a href="#rollover-key" class="header-anchor">#</a> Rollover Key</h4> <p>REQUEST:</p> <pre><code>POST http://HOST:PORT/kms/v1/key/&lt;key-name&gt;
+Content-Type: application/json
+
+{
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,
+}
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;versionName&quot;,
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64, not present without GET ACL
+}
+</code></pre> <h4 id="invalidate-cache-of-a-key"><a href="#invalidate-cache-of-a-key" class="header-anchor">#</a> Invalidate Cache of a Key</h4> <p>REQUEST:</p> <pre><code>POST http://HOST:PORT/kms/v1/key/&lt;key-name&gt;/_invalidatecache
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+</code></pre> <h4 id="delete-key"><a href="#delete-key" class="header-anchor">#</a> Delete Key</h4> <p>REQUEST:</p> <pre><code>DELETE http://HOST:PORT/kms/v1/key/&lt;key-name&gt;
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+</code></pre> <h4 id="get-key-metadata"><a href="#get-key-metadata" class="header-anchor">#</a> Get Key Metadata</h4> <p>REQUEST:</p> <pre><code>GET http://HOST:PORT/kms/v1/key/&lt;key-name&gt;/_metadata
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;&lt;key-name&gt;&quot;,
+  &quot;cipher&quot;      : &quot;&lt;cipher&gt;&quot;,
+  &quot;length&quot;      : &lt;length&gt;,        //int
+  &quot;description&quot; : &quot;&lt;description&gt;&quot;,
+  &quot;created&quot;     : &lt;millis-epoc&gt;,   //long
+  &quot;versions&quot;    : &lt;versions&gt;       //int
+}
+</code></pre> <h4 id="get-current-key"><a href="#get-current-key" class="header-anchor">#</a> Get Current Key</h4> <p>REQUEST:</p> <pre><code>GET http://HOST:PORT/kms/v1/key/&lt;key-name&gt;/_currentversion
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;versionName&quot;,
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+}
+</code></pre> <h4 id="generate-encrypted-key-for-current-keyversion"><a href="#generate-encrypted-key-for-current-keyversion" class="header-anchor">#</a> Generate Encrypted Key for Current KeyVersion</h4> <p>REQUEST:</p> <pre><code>GET http://HOST:PORT/kms/v1/key/&lt;key-name&gt;/_eek?eek_op=generate&amp;num_keys=&lt;number-of-keys-to-generate&gt;
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+[
+  {
+    &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+    &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,          //base64
+    &quot;encryptedKeyVersion&quot; : {
+        &quot;versionName&quot;       : &quot;EEK&quot;,
+        &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+    }
+  },
+  {
+    &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+    &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,          //base64
+    &quot;encryptedKeyVersion&quot; : {
+        &quot;versionName&quot;       : &quot;EEK&quot;,
+        &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+    }
+  },
+  ...
+]
+</code></pre> <h4 id="decrypt-encrypted-key"><a href="#decrypt-encrypted-key" class="header-anchor">#</a> Decrypt Encrypted Key</h4> <p>REQUEST:</p> <pre><code>POST http://HOST:PORT/kms/v1/keyversion/&lt;version-name&gt;/_eek?eek_op=decrypt
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;&lt;key-name&gt;&quot;,
+  &quot;iv&quot;          : &quot;&lt;iv&gt;&quot;,          //base64
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+}
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;EK&quot;,
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+}
+</code></pre> <h4 id="re-encrypt-encrypted-key-with-the-latest-keyversion"><a href="#re-encrypt-encrypted-key-with-the-latest-keyversion" class="header-anchor">#</a> Re-encrypt Encrypted Key With The Latest KeyVersion</h4> <p>This command takes a previously generated encrypted key, and re-encrypts it using the latest KeyVersion encryption key in the KeyProvider. If the latest KeyVersion is the same as the one used to generate the encrypted key, the same encrypted key is returned.</p> <p>This is usually useful after a Rollover of an encryption key. Re-encrypting the encrypted key will allow it to be encrypted using the latest version of the encryption key, but still with the same key material and initialization vector.</p> <p>REQUEST:</p> <pre><code>POST http://HOST:PORT/kms/v1/keyversion/&lt;version-name&gt;/_eek?eek_op=reencrypt
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;&lt;key-name&gt;&quot;,
+  &quot;iv&quot;          : &quot;&lt;iv&gt;&quot;,          //base64
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+}
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+{
+  &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+  &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,            //base64
+  &quot;encryptedKeyVersion&quot; : {
+      &quot;versionName&quot;       : &quot;EEK&quot;,
+      &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+  }
+}
+</code></pre> <h4 id="batch-re-encrypt-encrypted-keys-with-the-latest-keyversion"><a href="#batch-re-encrypt-encrypted-keys-with-the-latest-keyversion" class="header-anchor">#</a> Batch Re-encrypt Encrypted Keys With The Latest KeyVersion</h4> <p>Batched version of the above re-encrypt Encrypted Key. This command takes a list of previously generated encrypted key, and re-encrypts them using the latest KeyVersion encryption key in the KeyProvider, and return the re-encrypted encrypted keys in the same sequence. For each encrypted key, if the latest KeyVersion is the same as the one used to generate the encrypted key, no action is taken and the same encrypted key is returned.</p> <p>This is usually useful after a Rollover of an encryption key. Re-encrypting the encrypted key will allow it to be encrypted using the latest version of the encryption key, but still with the same key material and initialization vector.</p> <p>All Encrypted keys for a batch request must be under the same encryption key name, but could be potentially under different versions of the encryption key.</p> <p>REQUEST:</p> <pre><code>POST http://HOST:PORT/kms/v1/key/&lt;key-name&gt;/_reencryptbatch
+Content-Type: application/json
+
+[
+  {
+    &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+    &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,            //base64
+    &quot;encryptedKeyVersion&quot; : {
+        &quot;versionName&quot;       : &quot;EEK&quot;,
+        &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+    }
+  },
+  {
+    &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+    &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,            //base64
+    &quot;encryptedKeyVersion&quot; : {
+        &quot;versionName&quot;       : &quot;EEK&quot;,
+        &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+    }
+  },
+  ...
+]
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+[
+  {
+    &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+    &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,            //base64
+    &quot;encryptedKeyVersion&quot; : {
+        &quot;versionName&quot;       : &quot;EEK&quot;,
+        &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+    }
+  },
+  {
+    &quot;versionName&quot;         : &quot;&lt;encryptionVersionName&gt;&quot;,
+    &quot;iv&quot;                  : &quot;&lt;iv&gt;&quot;,            //base64
+    &quot;encryptedKeyVersion&quot; : {
+        &quot;versionName&quot;       : &quot;EEK&quot;,
+        &quot;material&quot;          : &quot;&lt;material&gt;&quot;,    //base64
+    }
+  },
+  ...
+]
+</code></pre> <h4 id="get-key-version"><a href="#get-key-version" class="header-anchor">#</a> Get Key Version</h4> <p>REQUEST:</p> <pre><code>GET http://HOST:PORT/kms/v1/keyversion/&lt;version-name&gt;
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+{
+  &quot;name&quot;        : &quot;versionName&quot;,
+  &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+}
+</code></pre> <h4 id="get-key-versions"><a href="#get-key-versions" class="header-anchor">#</a> Get Key Versions</h4> <p>REQUEST:</p> <pre><code>GET http://HOST:PORT/kms/v1/key/&lt;key-name&gt;/_versions
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+[
+  {
+    &quot;name&quot;        : &quot;versionName&quot;,
+    &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+  },
+  {
+    &quot;name&quot;        : &quot;versionName&quot;,
+    &quot;material&quot;    : &quot;&lt;material&gt;&quot;,    //base64
+  },
+  ...
+]
+</code></pre> <h4 id="get-key-names"><a href="#get-key-names" class="header-anchor">#</a> Get Key Names</h4> <p>REQUEST:</p> <pre><code>GET http://HOST:PORT/kms/v1/keys/names
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+[
+  &quot;&lt;key-name&gt;&quot;,
+  &quot;&lt;key-name&gt;&quot;,
+  ...
+]
+</code></pre> <h4 id="get-keys-metadata"><a href="#get-keys-metadata" class="header-anchor">#</a> Get Keys Metadata</h4> <pre><code>GET http://HOST:PORT/kms/v1/keys/metadata?key=&lt;key-name&gt;&amp;key=&lt;key-name&gt;,...
+</code></pre> <p>RESPONSE:</p> <pre><code>200 OK
+Content-Type: application/json
+
+[
+  {
+    &quot;name&quot;        : &quot;&lt;key-name&gt;&quot;,
+    &quot;cipher&quot;      : &quot;&lt;cipher&gt;&quot;,
+    &quot;length&quot;      : &lt;length&gt;,        //int
+    &quot;description&quot; : &quot;&lt;description&gt;&quot;,
+    &quot;created&quot;     : &lt;millis-epoc&gt;,   //long
+    &quot;versions&quot;    : &lt;versions&gt;       //int
+  },
+  {
+    &quot;name&quot;        : &quot;&lt;key-name&gt;&quot;,
+    &quot;cipher&quot;      : &quot;&lt;cipher&gt;&quot;,
+    &quot;length&quot;      : &lt;length&gt;,        //int
+    &quot;description&quot; : &quot;&lt;description&gt;&quot;,
+    &quot;created&quot;     : &lt;millis-epoc&gt;,   //long
+    &quot;versions&quot;    : &lt;versions&gt;       //int
+  },
+  ...
+]
+</code></pre> <h3 id="deprecated-environment-variables"><a href="#deprecated-environment-variables" class="header-anchor">#</a> Deprecated Environment Variables</h3> <p>The following environment variables are deprecated. Set the corresponding configuration properties instead.</p> <table><thead><tr><th>Environment Variable</th> <th>Configuration Property</th> <th>Configuration File</th></tr></thead> <tbody><tr><td>KMS_TEMP</td> <td>hadoop.http.temp.dir</td> <td>kms-site.xml</td></tr> <tr><td>KMS_HTTP_PORT</td> <td>hadoop.kms.http.port</td> <td>kms-site.xml</td></tr> <tr><td>KMS_MAX_HTTP_HEADER_SIZE</td> <td>hadoop.http.max.request.header.size and hadoop.http.max.response.header.size</td> <td>kms-site.xml</td></tr> <tr><td>KMS_MAX_THREADS</td> <td>hadoop.http.max.threads</td> <td>kms-site.xml</td></tr> <tr><td>KMS_SSL_ENABLED</td> <td>hadoop.kms.ssl.enabled</td> <td>kms-site.xml</td></tr> <tr><td>KMS_SSL_KEYSTORE_FILE</td> <td>ssl.server.keystore.location</td> <td>ssl-server.xml</td></tr> <tr><td>KMS_SSL_KEYSTORE_PASS</td> <td>ssl.server.keystore.password</td> <td>ssl-server.xml</td></tr></tbody></table> <h3 id="default-http-services"><a href="#default-http-services" class="header-anchor">#</a> Default HTTP Services</h3> <table><thead><tr><th>Name</th> <th>Description</th></tr></thead> <tbody><tr><td>/conf</td> <td>Display configuration properties</td></tr> <tr><td>/jmx</td> <td>Java JMX management interface</td></tr> <tr><td>/logLevel</td> <td>Get or set log level per class</td></tr> <tr><td>/logs</td> <td>Display log files</td></tr> <tr><td>/stacks</td> <td>Display JVM stacks</td></tr> <tr><td>/static/index.html</td> <td>The static home page</td></tr></tbody></table> <p>To control the access to servlet /conf, /jmx, /logLevel, /logs, and /stacks, configure the following properties in kms-site.xml:</p> <pre><code>  &lt;property&gt;
+    &lt;name&gt;hadoop.security.authorization&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+    &lt;description&gt;Is service-level authorization enabled?&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.security.instrumentation.requires.admin&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+    &lt;description&gt;
+      Indicates if administrator ACLs are required to access
+      instrumentation servlets (JMX, METRICS, CONF, STACKS).
+    &lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hadoop.kms.http.administrators&lt;/name&gt;
+    &lt;value&gt;&lt;/value&gt;
+    &lt;description&gt;ACL for the admins, this configuration is used to control
+      who can access the default KMS servlets. The value should be a comma
+      separated list of users and groups. The user list comes first and is
+      separated by a space followed by the group list,
+      e.g. &quot;user1,user2 group1,group2&quot;. Both users and groups are optional,
+      so &quot;user1&quot;, &quot; group1&quot;, &quot;&quot;, &quot;user1 group1&quot;, &quot;user1,user2 group1,group2&quot;
+      are all valid (note the leading space in &quot; group1&quot;). '*' grants access
+      to all users and groups, e.g. '*', '* ' and ' *' are all valid.
+    &lt;/description&gt;
+  &lt;/property&gt;
+</code></pre></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1efbd24b.js" defer></script><script src="/assets/js/2.8cd1edd2.js" defer></script><script src="/assets/js/153.4f3d9492.js" defer></script>
+  </body>
+</html>

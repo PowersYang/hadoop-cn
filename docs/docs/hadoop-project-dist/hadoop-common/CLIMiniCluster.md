@@ -2,7 +2,7 @@
 
 # Hadoop: CLI MiniCluster.
 
-## Purpose
+## 目的
 
 Using the CLI MiniCluster, users can simply start and stop a single-node Hadoop cluster with a single command, and without the need to set any environment variables or manage configuration files. The CLI MiniCluster starts both a YARN/MapReduce & HDFS clusters.
 
@@ -15,7 +15,7 @@ You should be able to obtain the Hadoop tarball from the release. Also, you can 
     
     $ mvn clean install -DskipTests
     $ mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip
-    
+
 
 NOTE: You will need [protoc 2.5.0](http://code.google.com/p/protobuf/) installed.
 
@@ -27,7 +27,7 @@ From inside the root directory of the extracted tarball, you can start the CLI M
     
     
     $ bin/mapred minicluster -rmport RM_PORT -jhsport JHS_PORT
-    
+
 
 In the example command above, RM_PORT and JHS_PORT should be replaced by the user’s choice of these port numbers. If not specified, random free ports will be used.
 
@@ -49,6 +49,6 @@ There are a number of command line arguments that the users can use to control w
     $ -rmport <arg>          ResourceManager port (default 0--we choose)
     $ -writeConfig <path>    Save configuration to this XML file.
     $ -writeDetails <path>   Write basic information to this JSON file.
-    
+
 
 To display this full list of available arguments, the user can pass the -help argument to the above command.
