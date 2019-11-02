@@ -13,6 +13,13 @@ action2Link: /docs/releases/
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
+::: warning 提示
+各路英雄豪杰、武林盟主、绿林好汉：
+    
+你们好！
+    
+本站刚搭建不久，内容还在丰富中。若各路英雄有意参与本站建设、贡献翻译以及提出优化建议等，请与站长[联系](/about/)。
+:::
 <div class="features">
   <div class="feature">
     <h2>什么是Hadoop？</h2>

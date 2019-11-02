@@ -8,9 +8,10 @@ module.exports = {
     '/en/': {
       lang: 'en-US',
       title: 'Hadoop Chinese Website',
-      description: 'Hadoop Chinese Website, Hadoop Chinese community.'
+      description: 'Hadoop Chinese Website, Hadoop Chinese Community.'
     }
   },
+  
   themeConfig: {
     logo: '/hadoop.jpeg',
     locales: {
