@@ -1,4 +1,7 @@
 module.exports = {
+  head: [
+    ['link', { rel: 'shortcut icon', href: '/hadoop.jpeg', type: 'image/jpeg' }]
+  ],
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -41,7 +44,7 @@ module.exports = {
         label: 'English',
         editLinkText: 'Edit this page on GitHub',
         nav: [
-          { text: 'Home', link: '/' },
+          { text: 'Home', link: '/en/' },
           { text: 'Download', link: '/en/releases/download' },
           { text: 'Documentation', link: '/en/docs/' },
           { text: 'Awesome', link: '/en/awesome/' },
@@ -52,5 +55,8 @@ module.exports = {
     }
   },
 
-  plugins: ['@vuepress/back-to-top']
+  plugins: [
+    '@vuepress/back-to-top',
+    '@vuepress/nprogress'
+  ]
 }

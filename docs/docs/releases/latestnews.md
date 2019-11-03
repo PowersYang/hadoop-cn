@@ -2,42 +2,42 @@
 sidebar: false
 ---
 
-::: tip Release 2.10.0 available <span style="float:right">2019 Oct 29</span>
+::: tip Release 2.10.0 <span style="float:right">2019年10月29日发布</span>
 
-This is the first stable release of Apache Hadoop 2.10 line. It contains 362 bug fixes, improvements and enhancements since 2.9.0.
+这是Apache Hadoop 2.10系列的第一个稳定版本。自2.9.0起，它包含362个错误修复，改进和增强。
 
-Users are encouraged to read the overview of major changes since 2.9.0. For details of 362 bug fixes, improvements, and other enhancements since the previous 2.9.0 release, please check release notes and changelog detail the changes since 2.9.0.
-
-:::
-
-::: tip Release 3.1.3 available <span style="float:right">2019 Oct 21</span>
-
-This is the third stable release of Apache Hadoop 3.1 line. It contains 246 bug fixes, improvements and enhancements since 3.1.2.
-
-Users are encouraged to read the overview of major changes since 3.1.2. For details of the bug fixes, improvements, and other enhancements since the previous 3.1.2 release, please check release notes and changelog
+鼓励用户阅读自2.9.0版以来的主要更改概述。有关自先前的2.9.0版本以来的362个错误修复，改进和其他增强的详细信息，请查看发行说明，并更改日志详细说明自2.9.0起的更改。
 
 :::
 
-::: tip Ozone 0.4.1-alpha is released <span style="float:right">2019 Oct 13</span>
+::: tip Release 3.1.3 <span style="float:right">2019年10月21日发布</span>
 
-Next version of Apache Hadoop Ozone is released with Native ACLs, K8s support and improved stability.
+这是Apache Hadoop 3.1系列的第三个稳定版本。自3.1.2起，它包含246个错误修复，改进和增强。
 
-For more information check the ozone site.
-
-:::
-
-::: tip Release 3.2.1 available <span style="float:right">2019 Sep 22</span>
-
-This is the second stable release of Apache Hadoop 3.2 line. It contains 493 bug fixes, improvements and enhancements since 3.2.0
-
-Users are encouraged to read the overview of major changes since 3.2.0 For details of 493 bug fixes, improvements, and other enhancements since the previous 3.2.0 release, please check release notes and changelog detail the changes since 3.2.0
+鼓励用户阅读3.1.2以来的主要更改概述。有关自先前的3.1.2版本以来的错误修复，改进和其他增强的详细信息，请查看发行说明和changelog。
 
 :::
 
-::: tip Ozone 0.4.0-alpha is released <span style="float:right">2019 May 7</span>
+::: tip Ozone 0.4.1-alpha <span style="float:right">2019年10月13日发布</span>
 
-Ozone 0.4.0 alpha version supports kerberos and transparent data encryption. This is first secure Ozone release. It is compatible with apache Spark, Hive and Yarn.
+下一版本的Apache Hadoop Ozone具有本机ACL，K8支持和更高的稳定性。
 
-For more information check the ozone site.
+有关更多信息，请检查Ozone站点。
+
+:::
+
+::: tip Release 3.2.1 <span style="float:right">2019年9月22日发布</span>
+
+这是Apache Hadoop 3.2系列的第二个稳定版本。自3.2.0起，它包含493个错误修复，改进和增强功能。
+
+鼓励用户阅读3.2.0以来的主要更改概述有关自3.2.0以前的版本以来493个错误修复，改进和其他增强的详细信息，请查看发行说明并更改日志以详细说明3.2.0以来的更改。
+
+:::
+
+::: tip Ozone 0.4.0-alpha <span style="float:right">2019年5月7日发布</span>
+
+Ozone 0.4.0 alpha版本支持kerberos和透明数据加密。这是第一个安全的Ozone版本。它与Apache Spark，Hive和Yarn兼容。
+
+有关更多信息，请检查Ozone站点。
 
 :::
