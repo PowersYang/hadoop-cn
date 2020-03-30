@@ -10,7 +10,7 @@ action2Text: 下载安装
 action2Link: /docs/releases/
 
 
-footer: MIT Licensed | Copyright © 2018-present Evan You
+footer: 陇ICP备19002509号-3
 ---
 
 <div class="features">

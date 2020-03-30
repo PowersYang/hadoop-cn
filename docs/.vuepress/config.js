@@ -1,7 +1,16 @@
 module.exports = {
   head: [
-    ['link', { rel: 'shortcut icon', href: '/hadoop.jpeg', type: 'image/jpeg' }]
-  ],
+    ['link', { rel: 'shortcut icon', href: '/hadoop.jpeg', type: 'image/jpeg' }],
+    ['script', {}, `
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6395e1f7a05d6559b4beec785272bda1";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    `]
+],
   locales: {
     '/': {
       lang: 'zh-CN',
